@@ -1,122 +1,65 @@
-// import { Request, Response } from 'express';
-// import { User } from '@models';
-// import jwt from 'jsonwebtoken';
+import { Request, Response } from 'express';
+import fetch from 'node-fetch';
+import jwt from 'jsonwebtoken';
 
-// export const createUser = async (req: Request, res: Response) => {
-//   try {
-//     if (!req.body.email || !req.body.password || !req.body.name) {
-//       return res.status(400).send();
-//     }
+const DB_URL = process.env.DB_URL;
 
-//     const user = new User(req.body);
-//     await user.save();
-//     res.status(201).send(user);
-//   } catch (error) {
-//     res.status(400).send(error);
-//   }
-// };
+declare module "express-serve-static-core" {
+    interface Request {
+        userId: string
+    }
+}
 
-// export const getUser = async (req: Request, res: Response) => {
-//   try {
-//     const user = await User.findById(req.params.id);
-//     if (!user) {
-//       return res.status(404).send();
-//     }
-//     res.status(200).send(user);
-//   } catch (error) {
-//     if ((<Error>error).name === 'CastError') {
-//       return res.status(404).send();
-//     }
+export const createUser = async (req: Request, res: Response) => {
+    try {
+        if (!req.body.username || !req.body.password || !req.body.name) {
+            return res.status(400).send();
+        }
 
-//     res.status(500).send(error);
-//   }
-// };
+        const response = await fetch(DB_URL + '/users', {
+            method: 'POST',
+            body: JSON.stringify(req.body),
+            headers: { 'Content-Type': 'application/json' },
+        });
 
-// export const getUserToken = async (req: Request, res: Response) => {
-//   try {
-//     const user = await User.findOne({ email: req.body.email });
+        if (!response.ok) {
+            return res.status(400).send();
+        }
 
-//     if (!user) {
-//       return res.status(401).send();
-//     }
+        const user = await response.json();
 
-//     const isPasswordMatch = await user.comparePassword(req.body.password);
-//     if (!isPasswordMatch) {
-//       return res.status(402).send();
-//     }
-//     const token = jwt.sign(
-//       { _id: user._id.toString() },
-//       process.env.SECRET_KEY!,
-//     );
-//     res.status(200).send({ token });
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// };
+        res.status(201).send(user);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+};
 
-// export const updateUser = async (
-//   req: Request<{ id: string }>,
-//   res: Response,
-// ) => {
-//   const updates = Object.keys(req.body) as string[];
-//   const allowedUpdates = ['email', 'password', 'name'];
-//   const isValidOperation = updates.every((update) =>
-//     allowedUpdates.includes(update),
-//   );
+export const getUserToken = async (req: Request, res: Response) => {
+    try {
 
-//   if (!isValidOperation) {
-//     return res.status(400).send({ error: 'Invalid updates!' });
-//   }
+        const response = await fetch(DB_URL + '/users/' + req.body.username);
 
-//   try {
-//     const userId = req.params.id;
-//     const userTokenId = req.userId!;
-//     if (userId !== userTokenId) {
-//       return res.status(401).send();
-//     }
+        if (!response.ok) {
+            return res.status(404).send();
+        }
 
-//     const user = User.findByIdAndUpdate(userId, req.body, {
-//       new: true,
-//       runValidators: true,
-//     });
+        const user = await response.json();
 
-//     if (!user) {
-//       return res.status(404).send();
-//     }
+        if (!user) {
+            return res.status(401).send();
+        }
 
-//     res.status(200).send(user);
-//   } catch (error) {
-//     if ((<Error>error).name === 'CastError') {
-//       return res.status(404).send();
-//     }
-//     res.status(400).send(error);
-//   }
-// };
+        const isPasswordMatch = req.body.password === user.password;
 
-// export const deleteUser = async (
-//   req: Request<{ id: string }>,
-//   res: Response,
-// ) => {
-//   try {
-//     const userId = req.params.id;
-//     const userTokenId = req.userId!;
-//     if (userId !== userTokenId) {
-//       return res.status(401).send();
-//     }
-
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(404).send();
-//     }
-
-//     await user.delete();
-//     res.status(200).send(user);
-//   } catch (error) {
-//     console.error(error);
-
-//     if ((<Error>error).name === 'CastError') {
-//       return res.status(404).send();
-//     }
-//     res.status(500).send(error);
-//   }
-// };
+        if (!isPasswordMatch) {
+            return res.status(402).send();
+        }
+        const token = jwt.sign(
+            { _id: user._id.toString() },
+            process.env.SECRET_KEY!,
+        );
+        res.status(200).send({ token });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
