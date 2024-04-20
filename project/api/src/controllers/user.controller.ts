@@ -4,11 +4,11 @@ import jwt from 'jsonwebtoken';
 
 const DB_URL = process.env.DB_URL;
 
-declare module "express-serve-static-core" {
-    interface Request {
-        userId: string
-    }
-}
+// declare module "express-serve-static-core" {
+//     interface Request {
+//         userId: string
+//     }
+// }
 
 export const createUser = async (req: Request, res: Response) => {
     try {
