@@ -1,0 +1,1326 @@
+% A LaTeX template for ARTICLE version of the MSc Thesis submissions to 
+% Politecnico di Milano (PoliMi) - School of Industrial and Information Engineering
+%
+% S. Bonetti, A. Gruttadauria, G. Mescolini, A. Zingaro
+% e-mail: template-tesi-ingind@polimi.it
+%
+% Last Revision: October 2021
+%
+% Copyright 2021 Politecnico di Milano, Italy. Inc. NC-BY
+
+\documentclass[11pt,a4paper]{article} 
+
+%------------------------------------------------------------------------------
+%	REQUIRED PACKAGES AND  CONFIGURATIONS
+%------------------------------------------------------------------------------
+% PACKAGES FOR TITLES
+\usepackage{titlesec}
+\usepackage{color}
+
+% PACKAGES FOR LANGUAGE AND FONT
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % Font encoding
+
+% PACKAGES FOR IMAGES
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{eso-pic} % For the background picture on the title page
+\usepackage{subfig} % Numbered and caption subfigures using \subfloat
+\usepackage{caption} % Coloured captions
+\usepackage{transparent}
+\usepackage{subcaption}
+\usepackage{subfigure}
+
+% STANDARD MATH PACKAGES
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bm}
+\usepackage[overload]{empheq}  % For braced-style systems of equations
+
+% PACKAGES FOR TABLES
+\usepackage{tabularx}
+\usepackage{longtable} % tables that can span several pages
+\usepackage{colortbl}
+
+% PACKAGES FOR ALGORITHMS (PSEUDO-CODE)
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% PACKAGES FOR REFERENCES & BIBLIOGRAPHY
+\usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref} % Adds clickable links at references
+\usepackage{cleveref}
+\usepackage[square, numbers, sort&compress]{natbib} % Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed
+\bibliographystyle{plain} % You may use a different style adapted to your field
+
+% PACKAGES FOR THE APPENDIX
+\usepackage{appendix}
+
+% PACKAGES FOR ITEMIZE & ENUMERATES 
+\usepackage{enumitem}
+
+% OTHER PACKAGES
+\usepackage{amsthm,thmtools,xcolor} % Coloured "Theorem"
+\usepackage{comment} % Comment part of code
+\usepackage{fancyhdr} % Fancy headers and footers
+\usepackage{lipsum} % Insert dummy text
+\usepackage{tcolorbox} % Create coloured boxes (e.g. the one for the key-words)
+
+%-------------------------------------------------------------------------
+%	NEW COMMANDS DEFINED
+%-------------------------------------------------------------------------
+% EXAMPLES OF NEW COMMANDS -> here you see how to define new commands
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\vect}[1]{\underline{#1}}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
+\newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}} % From mathbbm.sty
+\newcommand{\pdev}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\blankpage}{% comando pagina vuota
+    \clearpage
+    \begingroup
+      \null
+      \thispagestyle{foot}%
+      \hypersetup{pageanchor=false}%
+      \clearpage
+    \endgroup
+}
+% NB: you can also override some existing commands with the keyword \renewcommand
+
+%----------------------------------------------------------------------------
+%	ADD YOUR PACKAGES (be careful of package interaction)
+%----------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------
+%	ADD YOUR DEFINITIONS AND COMMANDS (be careful of existing commands)
+%----------------------------------------------------------------------------
+
+\input{config_files_report/config}
+
+% Insert here the info that will be displayed into your Title page 
+% -> title of your work
+\renewcommand{\title}{AMBRA}
+% -> author name and surname
+\renewcommand{\author}{Sergio Pardo, Angela Remolina, Camilo Sinning}
+% -> advisor name and surname
+\newcommand{\advisor}{Prof. Christian Pilato}
+
+% -> academic year
+\newcommand{\YEAR}{2023-2024}
+% -> abstract (only in English)
+\renewcommand{\abstract}{
+
+This report presents the application of a novel variant of Bayesian Additive Regression Trees (BART) proposed by Kim (2022)  for spatial data analysis, specifically tailored to sparse spatial observations. The project aims to analyze and predict air pollution data in Lombardy, Italy, using the AgrImOnIA dataset. The main objectives of this project include understanding and adapting Kim's R code for the MCMC algorithm to suit the project's requirements, integrating additional data sources to construct a dataset of predictors, constructing a Structurally Informed Adjacency Matrix (SIAM), and finally, using the Spatial BART (SBART) model for predicting PM 2.5 concentrations in regional municipalities. The report discusses the methodology employed, challenges faced, and insights gained throughout the project.
+}
+
+% -> key-words (only in English)
+\newcommand{\keywords}{}
+
+%-------------------------------------------------------------------------
+%	BEGIN OF YOUR DOCUMENT
+%-------------------------------------------------------------------------
+\begin{document}
+
+%-----------------------------------------------------------------------------
+% TITLE PAGE
+%-----------------------------------------------------------------------------
+% Do not change Configuration_files/TitlePage.tex (Modify it IF AND ONLY IF you need to add or delete the Co-advisors)
+% This file creates the Title Page of the document
+\input{config_files_report/title_page}
+\newpage
+\blankpage
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%     THESIS MAIN TEXT     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\newpage
+\blankpage
+%-----------------------------------------------------------------------------
+% INTRODUCTION
+%-----------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:introduction}
+The AgrImOnIA project (which stands for Agriculture Impact On Italian Air) is a research endeavor initiated and coordinated by the Università di Bergamo, in collaboration with numerous other universities. Its primary aim is to investigate the impact of agriculture on air quality in Italy, with a particular focus on the Lombardy region.
+
+As a team, our assignment was to utilize a relatively new Bayesian non-parametric model to forecast pollution levels in the municipalities of Lombardy using data collected by the AgrImOnIA project. Additionally, we were tasked with evaluating the model's validity and effectiveness using this project as a testing ground.
+
+To accomplish this, we utilized two components of the dataset. The first part comprises air quality and weather data collected from weather stations, while the second part is the AgrImOnIA Grid Covariate (AGC) dataset. The latter was essential for assigning covariate values to each municipality, enabling us to train the model and make predictions.
+
+In this report, we will initially describe the model, beginning with its simplest form, and then progressively incorporate the modifications introduced by various researchers until we arrive at the final version that we utilized. Subsequently, we will describe the procedures undertaken to modify the model to meet our requirements and how we computed all the data necessary for running it. Finally, we will analyze the results and offer observations on both the acquired data and the model's ability to efficiently and effectively predict data.
+
+All the code and results can be found in the GitHub repository at the following link: \url{https://github.com/Andrea01Fraschini/SBARTProject}.
+
+\section{The BART Model (Chipman et al.)}
+\label{sec:BARTmodel}
+The Bayesian Additive Regression Trees model (BART for short) \cite{Chipman_2010}, is a model developed to estimate an unknown function, denoted as $f(\underline{x}_i)$, where $\underline{x}_i = (x_{i1}, \dots, x_{ip})$ represents the covariates associated with a response variable $y_i$ in a set of observations $\underline{y} = (y_1, \dots, y_n)$ (with $n$ being the number of observations).
+\\
+The main features of this model are its resistance to over-fitting and by keeping track of predictor inclusion
+frequencies, it can also be used for model-free variable selection.
+\\
+The function $f(\underline{x}_i)$ is approximated using a \textit{sum of regression trees}.
+\begin{align}
+     & y_i = f(\underline{x}_i) + \varepsilon_i \approx \sum_{t=1}^m g_t(\underline{x}_i) + \varepsilon_i & \quad \varepsilon_i \sim \mathcal{N}(0, \sigma^2), \; i = 1, \dots, n
+\end{align}
+
+where $g_t(\underline{x}_i) = g(\underline{x}_i; T_t, M_t)$ represents a regression tree model, given a tree structure $T_t$ and a set of leaf parameters $M_t$ and $m$ is the number of trees.
+\\
+Given this model, the marginal distribution of the observed data $\underline{y}$ is given by a Gaussian distribution with the sum of the trees as its mean and $\sigma^2$ as its variance. The full model is:
+\begin{align}
+    Y_i \mid \underline{x}_i, \mathcal{T}, \mathcal{M}, \sigma^2 & \stackrel{ind}{\sim} \mathcal{N}\left(\sum_{t=1}^mg\left(\underline{x}_i;  T_t, M_t\right), \sigma^2\right) & i = 1,...,n   \\
+    \mu_{t1}, \dots, \mu_{tb_t} \mid T_t                         & \stackrel{iid}{\sim} \mathcal{N}(\mu_{\mu}, \sigma^2_{\mu})                                                 & t = 1,\dots,m \\
+    T_1, \dots, T_m                                              & \stackrel{iid}{\sim} Tree(\alpha, \beta)                                                                    &               \\
+    \sigma^2                                                     & \sim inv-gamma\left(\frac{\nu}{2}, \frac{\nu\lambda}{2}\right),                                             &
+\end{align}
+where $\mathcal{T}$ is the set of tree structures, $T_t \in \mathcal{T}$, $\mathcal{M}$ is the set of leaves, $M_t \in \mathcal{M}, M_t = \{\mu_{t1}, ... , \mu_{tb_t}\}$, $b_t = |M_t|$, and $Tree$ is a (non-standard) notation used to represent the process that generates the trees. All parameters are a priori fixed based on the default settings suggested by Chipman et al. \cite{Chipman_2010}.
+
+\subsection{Tree generation process}
+\subsubsection{Notation}
+We will refer to the nodes of the trees as \textit{inner} if the node has at least a child node, and as \textit{leaf} if the node has no child nodes. Furthermore, we indicate as \textit{splitting rule} a rule of type $x_{i} \le c_{ij}$ associated with an inner node, where $x_{i}$ is called \textit{splitting variable} and is one of the covariates ($i = 1, ..., p$, $p$ number of covariates), $c_{ij}$ is called \textit{splitting constant} and is one of the available values of $x_i$ ($j = 1,...,n$).
+
+\newpage
+
+\subsubsection{Marginal for $T_t$'s}
+\label{sec:TreeMarginal}
+The marginal for the $T_t$'s, $Tree$, is specified by three aspects:
+\begin{enumerate}
+    \item the probability that a node at depth $d$ is an inner node is given by: $$\alpha(1+d)^{-\beta}, \qquad \alpha \in (0,1), \beta \in [0, +\infty)$$
+          By default, $\alpha = 0.95, \beta = 2$ (see Chipman et al. \cite{Chipman_2010}).
+    \item the probability of choosing a splitting variable for an inner node is given by a discrete uniform distribution over all of the covariates.
+    \item the probability of choosing a splitting constant, conditionally on the splitting variable, is also given by a discrete uniform distribution over the values available for that variable.
+\end{enumerate}
+
+\subsubsection{Alteration of the tree structures}
+The tree structures are generated iteratively by applying incremental alterations. The MCMC is initialized with root nodes with value $\mu_0 = \bar{Y}/m$ ($\bar{Y}$ sample mean), at each iteration, a new alteration is proposed between GROW, PRUNE, CHANGE, and SWAP based on a selection probability associated to each.
+\begin{itemize}
+    \item GROW: grows a leaf node into an inner node and two new leaf nodes.
+    \item PRUNE: reverse of GROW, prunes two leaf nodes sharing a parent and changes the parent to a leaf node.
+    \item CHANGE: changes the splitting rule in an inner node.
+    \item SWAP: swaps the rules between a parent node and a child node, both parent and child must be inner nodes.
+\end{itemize}
+Once an alteration is chosen, a new tree structure is proposed and accepted (or rejected) using a step of Metropolis-Hastings.
+
+\subsection{Prior distribution}
+The prior induced by the model is:
+\begin{equation}
+    \begin{split}
+        \pi((T_1, M_1), \dots, (T_m, M_m), \sigma) & = \left[\prod_{i = 1}^m \pi(T_j, M_j) \right] \pi(\sigma)                                  \\
+                                                   & = \left[\prod_{i = 1}^m \pi(M_j \mid T_j) \pi(T_j) \right] \pi(\sigma)                     \\
+                                                   & = \left[\prod_{i=1}^m \pi(T_i) \prod_{j=1}^{b_t}\pi(\mu_{ij} \mid T_i) \right] \pi(\sigma)
+    \end{split}
+\end{equation}
+
+The prior is designed in such a way to introduce the following interpretable effects:
+\begin{itemize}
+    \item \textbf{Shrinkage effect}: the distribution over $\mu_{tj} \mid T_t$ reduces the individual effects of trees by assigning more mass to $\mu_{tj}$ around $0$.
+    \item \textbf{Shallowing effect}: the distribution over the depth of tree nodes enforces shallow structures and discourages big trees.
+\end{itemize}
+
+\newpage
+\section{Spatially adjusted BART Model (SBART)}
+\label{sec:SBARTmodel}
+The Spatial BART model (SBART) offers an extension for the base BART that allows to work with spatial data, specifically areal data. This model, first proposed in \cite{Muller_2007}, can be expressed as follows:
+\begin{align}
+    Y_i \mid \underline{x}_i, \mathcal{T}, \mathcal{M}, \sigma^2 & \stackrel{ind}{\sim} \mathcal{N}\left(\sum_{t=1}^mg\left(\underline{x}_i;  T_t, M_t\right) + \theta_i, \sigma^2\right)        & i = 1,...,n     \\
+    \theta_i | \vect{\theta}_{(-i)}, \rho, \tau^2                & \sim \mathcal{N}\left(\frac{\rho}{\sum_{k=1}^nw_{ik}}\sum_{k \neq i} w_{ik}\theta_k, \frac{\tau^2}{\sum_{k=1}^nw_{ik}}\right) & i = 1, \dots, n \\
+    \mu_{t1}, \dots, \mu_{tb_t} \mid T_t                         & \stackrel{iid}{\sim} \mathcal{N}(\mu_{\mu}, \sigma^2_{\mu})                                                                   & t = 1,\dots,m   \\
+    T_1, \dots, T_m                                              & \stackrel{iid}{\sim} Tree(\alpha, \beta)                                                                                      &                 \\
+    \sigma^2                                                     & \sim inv-gamma\left(\frac{\nu}{2}, \frac{\nu\lambda}{2}\right)                                                                &                 \\
+    \tau^2                                                       & \sim inv-gamma(a,b)                                                                                                           &                 \\
+    \rho                                                         & \sim Uniform(0, 1),                                                                                                           &
+\end{align}
+where $\vect{\theta} = (\theta_1, \dots, \theta_n)$ describes a spatial random effect with a CAR prior, $\rho$ is a smoothing parameter that determines the spatial dependency between neighbors, $w_{ij}$ denotes the $(i, j)$th element of the $n\times n$ adjacency matrix $\mat{W}$ such that $w_{ij} = 1$ if $i$ and $j$ ($i \neq j$) are spatially connected ($w_{ij} = 0$ otherwise).
+
+\section{Kim's SBART Model}
+\label{sec:KimSBARTmodel}
+Kim in \cite{Kim_2022} proposes a new version of SBART that replaces the adjacency matrix $\mat{W}$ with a Structurally Informed Adjacency Matrix (SIAM) which proposes to take into account the specific spatial structure of the application. Such information may vary based on the purpose of the model.
+
+Generally, we denote with $i \leftrightarrow j$ that the $i$th and $j$th locations are spatially connected, and we redefine $w_{ij} = I(i \leftrightarrow j)$. We also introduce a flexible distance function $f \in \mathcal{F}_d = \{f_1, f_2, ... , f_q\}$ to represent geographic proximity between locations.
+
+The proposed SIAM matrix, as in \cite{Kim_2022}, is defined as:
+\begin{equation}
+    \label{eq:SIAM}
+    \mat{SIAM}: \quad \mat{W}(d) = (w_{ij}), \qquad w_{ij} = \frac{1}{f(d_{ij})}I(i \leftrightarrow j), \qquad f \in \mathcal{F}_d,
+\end{equation}
+where $d_{ij}$ is the distance between $i$ and $j$.
+Further details about the computation of the SIAM can be found in Appendix \ref{sec:SIAM}.
+Given this new definition of the adjacency matrix, and a different CAR marginal for $\vect{\theta}$, the model proposed by Kim in \cite{Kim_2022} is:
+
+\begin{align}
+    Y_i \mid \underline{x}_i, \mathcal{T}, \mathcal{M}, \sigma^2 & \stackrel{ind}{\sim} \mathcal{N}\left(\sum_{t=1}^mg\left(\underline{x}_i;  T_t, M_t\right) + \theta_i, \sigma^2\right)                                   & i = 1,...,n     \\
+    \theta_i | \vect{\theta}_{(-i)}, \rho, \tau^2                & \sim \mathcal{N}\left(\frac{\rho\sum_{k=1}^nw_{ik}\theta_k}{\rho\sum_{k=1}^nw_{ik} + 1 - \rho}, \frac{\tau^2}{\rho\sum_{k=1}^nw_{ik}  + 1 - \rho}\right) & i = 1, \dots, n \\
+    \mu_{t1}, \dots, \mu_{tb_t} \mid T_t                         & \stackrel{iid}{\sim} \mathcal{N}(\mu_{\mu}, \sigma^2_{\mu})                                                                                              & t = 1,\dots,m   \\
+    T_1, \dots, T_m                                              & \stackrel{iid}{\sim} Tree(\alpha, \beta)                                                                                                                 &                 \\
+    \sigma^2                                                     & \sim inv-gamma\left(\frac{\nu}{2}, \frac{\nu\lambda}{2}\right)                                                                                           &                 \\
+    \tau^2                                                       & \sim inv-gamma(a,b)                                                                                                                                      &                 \\
+    \rho                                                         & \sim Uniform(0, 1)                                                                                                                                       &
+\end{align}
+Along with the already-mentioned changes, Kim also introduces a sparsity-inducing prior that substitutes the discrete selection distribution over the covariates described in Section \ref{sec:TreeMarginal}. This sparsity-inducing prior comes in the shape of a Dirichlet distribution and aims at reducing the number of included covariates in the model.
+
+\section{The AgrImOnIA dataset}
+\label{sec:AGRIMONIA}
+
+The AgrImOnIA dataset contains daily registrations from 2016-2021 in the Lombardy region of the following aspects:
+
+\begin{itemize}
+    \item Air quality.
+    \item Weather data.
+    \item Land allocation.
+    \item Emissions.
+    \item Livestock.
+\end{itemize}
+
+In specific, the dataset is divided into two main parts:
+
+The first one can be found in the file called \texttt{AGC\_Dataset\_v\_3\_0\_0.csv}, in this file we can find the columns illustrated in Table~\ref{tab:agc_dataset}. This dataset has the particularity that the covariates are registered in a grid, so for each day, we have a grid of measurements, the points where the measurements were taken can be seen in Figure~\ref{fig:agrimonia_grid}.
+
+\begin{figure} [H]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.71\linewidth]{images/covariates_grid.png}
+        \captionof{figure}{Agrimonia Grid Covariates points.}
+        \label{fig:agrimonia_grid}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.81\linewidth]{images/output_stations.png}
+        \captionsetup{format=hang}
+        \captionof{figure}{Stations of the AgrImOnIA dataset.}
+        \label{fig:agrimonia_stations}
+    \end{minipage}
+\end{figure}
+%i haveleft a comment in section 7, can you clarify that part?
+% Sure, I'll see
+% thanks
+% The pdf stopped compiling 
+%for me it still works
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.48\textwidth]{images/covariates_grid.png}
+%     \caption{Grid points of the AgrImOnIA dataset.}
+%     \label{fig:agrimonia_grid}
+% \end{figure}
+
+The second part of the dataset is the file \texttt{Agrimonia\_Dataset\_v\_3\_0\_0.csv} that contains every data-point generated by stations located in the Lombardy region. The columns of this dataset are illustrated in Table \ref{tab:agrimonia_dataset}. The stations where the measurements were taken can be seen in Figure~\ref{fig:agrimonia_stations}.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{images/output_stations.png}
+%     \caption{Stations of the AgrImOnIA dataset.}
+%     \label{fig:agrimonia_stations}
+% \end{figure}
+
+\subsection{$PM_{2.5}$}
+\label{subsec:pm25}
+
+The measurements concerning $PM_{2.5}$ where taken by the stations and therefore can only be found in the second part of the dataset under the name \texttt{AQ\_pm25}.
+In Figure~\ref{fig:pm25_series} we show the time series of $PM_{2.5}$ values measured in $\mu g/m^3$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/pm25_time.png}
+    \caption{Time series of $PM_{2.5}$ levels between all the stations.}
+    \label{fig:pm25_series}
+\end{figure}
+
+\subsubsection{Missing values}
+
+The absence of stations in every municipality, coupled with intermittent gaps lasting days or even weeks in the data from certain stations, made so that a considerable amount of data was missing not only spatially, which is what we're trying to deal with in this project, but temporally. Additionally, many stations also seem to have stopped registering $PM_{2.5}$ values after 2021 which forced us to exclude the latter part of the dataset from our analysis. In Figure~\ref{fig:pm25_missing} we show for each day the number of missing value across all stations in the \texttt{AQ\_pm25} column.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Nan_per_day.png}
+    \caption{Missing values of $PM_{2.5}$ levels.}
+    \label{fig:pm25_missing}
+\end{figure}
+
+It's important to add that not all stations registered $PM_{2.5}$ levels. We only considered those who took at least one measurement of $PM_{2.5}$.
+
+\section{Methodology}
+\label{sec:methodology}
+
+The work for this project was carried out in three main phases:
+
+\begin{itemize}
+    \item Data pre-processing.
+    \item Building of adjacency matrix and wind adjacency matrix.
+    \item Model training.
+\end{itemize}
+
+Each phase was designed to ensure that the model was in the optimal condition to predict the $PM_{2.5}$ levels with the highest accuracy possible within a feasible computational time. Mainly due to this last consideration, two main approaches were used to pre-process the data, resulting in two different models from which we obtained results.
+
+\section{First approach}
+\label{sec:first_approach}
+At first, we considered all 1504 municipalities in Lombardy as our areas in the model as this was the original goal of the project. In this section, we will explain the results that we obtained and why we chose to opt for a different approach in section \ref{sec:second_approach}.
+
+\subsection{Data pre-processing}
+\label{sec:data_preprocessing}
+
+The first step in the data pre-processing was to aggregate the data from the AgrImOnIA dataset and get the mean for each covariate within the considered period. This was done due to the limitations of the model to handle time-series data.
+
+Then, since our goal is to predict the $PM_{2.5}$ levels for the Lombardy region, we needed a way to mix the grid covariates with the municipalities where we have observed data from the stations. For this purpose, we used an interpolation technique to transform the data from point-referenced to areal.
+
+Through this method, our objective was to assign to each municipality within the Lombardy region a unique value for each covariate. Given the available covariates grid provided by the AgrImOnIA Dataset, we interpolated values for municipalities by taking a weighted average approach, as summarized in Figure~\ref{fig:interp_ex}. In the figure, the black dots represent the available grid of covariates, while the red ones represent the expanded grid used to compute the weights for the average.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{./images/interpolation_example.png}
+    \captionsetup{font=small}
+    \caption{Interpolation example.}
+    \label{fig:interp_ex}
+\end{figure}
+
+
+For each point on the AgrImOnIA grid, we generate a square with a side length equal to the distance between two points, and with the center located at the current point (like shown in Figure \ref{fig:interp_ex} by the dashed lines). Subsequently, we calculate the areas of intersection between each municipality and the squares containing it.
+
+Then we compute the interpolated value by weighting the value of each point at the center of the intersected squares by the area of the intersection, normalized by the total area of the municipality. In the example in Figure \ref{fig:interp_ex} this would be:
+
+\begin{align*}
+    v_{new} & = \frac{A_1 \cdot P_a + A_2 \cdot P_b + A_3 \cdot P_c + A_4 \cdot P_d}{A1 + A2 + A3 + A4},
+\end{align*}
+
+Where $A_i$'s are the areas of the intersections, the $P_i$'s are the values of the points of the covariates grid. As a result of this procedure, the interpolated value of the covariates is now associated to the municipality and not to a point on the map.
+\subsection{Model training}
+
+For this step, we used as a base the code provided by Kim \cite{Kim_2022}. The code was modified to fit the data into the model and to make it more modular.
+
+The data generated in the previous steps was given to the model as input and, due to computational limitations, we trained the model with a limited configuration of 2000 iterations (less than the recommended, 10000), 200 trees, and 200 warmup iterations. This configuration was chosen to reduce the computational time, as the original configuration would take approximately 20 hours to run the model.
+
+\subsection{Results}
+\label{sec:Results}
+We forecast the $PM_{2.5}$ values for all municipalities within the Lombardy region. Initially, we approached this task by examining a one-year interval with a limited number of iterations.
+
+We considered various date ranges but ultimately decided to consider the year 2018. Specifically, considering all the covariates, and employing a configuration of 2000 iterations, 200 trees, and 200 warm-up iterations, we obtained the results illustrated in Figure~\ref{FirstApproach2018}.
+These results were obtained using the 10-meter height and 30-degree wind adjacency matrix.
+
+\begin{figure} [H]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.71\linewidth]{images/First_approach_2018.png}
+        \vspace{1.7cm}
+        \captionof{figure}{Predicted $PM_{2.5}$ values for 2018.}
+        \label{FirstApproach2018}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.71\linewidth]{images/Covariates_first_approach.jpeg}
+        \captionsetup{format=hang}
+        \captionof{figure}{Frequency of covariates selection for prediction of $PM_{\text{2.5}}$ values for 2018.}
+        \label{fig:Covariates_first_approach2018}
+    \end{minipage}
+\end{figure}
+
+% \begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.40\linewidth]{images/First_approach_2018.png}
+%    \caption{Predicted $PM_{2.5}$ values for the year 2018.}
+%     \label{FirstApproach2018}
+% \end{figure}
+
+Figure~\ref{fig:Covariates_first_approach2018}. highlights influential covariates in our $PM_{\text{2.5}}$ concentration model. Notably, "LA\_hvi" (Leafy Vegetation Index) and \texttt{EM\_nox\_traffic} (Traffic-related $NO_{x}$ Emissions) emerge as significant factors. As explained in section~\ref{sec:AGRIMONIA}, "LA\_hvi" measures the density of leafy vegetation, particularly focusing on low-lying types within the area, while "EM\_nox\_traffic" quantifies $NO_{x}$ emissions from on-road transportation.
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.45\linewidth]{images/Covariates_first_approach.jpeg}
+%     \caption{Frequency of covariates selection for prediction of $PM_{\text{2.5}}$ values for the year 2018}
+%     \label{fig:Covariates_first_approach2018}
+% \end{figure}
+
+The covariates selected align with our expectations. However, it's important to note that our model was run with a reduced number of iterations (2000) of which the first 1000 iterations were designated as burn-in iterations and therefore excluded. Considering this, along with the difference in the number of iterations used, raises doubts about whether our model performs effectively.
+
+
+Provided with more iterations and an appropriate time to converge, we expect the model to perform similarly to the results presented in the following sections. Unfortunately, due to the formulation of the model, it is not immediately obvious how to optimize this approach to be run faster as it requires a $1054 \times 1504$ adjacency matrix resulting in $2.262.016$ potential values to be computed at each iteration.
+
+% 2. percentage of municipalities with information 
+
+\section{Second approach}
+\label{sec:second_approach}
+Due to the computational limitations of the first approach, we decided to use a simplified version of the Lombardy region. In this approach, we maintained the municipalities where we observed data and replaced the others with squares that aligned with the AgrImOnIA Covariate Grid.
+
+This approach offers several advantages. Firstly, it leads to a more homogeneous prediction, as the covariates relate to natural features and are not influenced by the political boundaries of the region, such as municipalities. This new approach offers another advantage: it treats the areas around Milan with equal consideration to those in the northern part of Lombardy. Meanwhile, in the initial model, the numerous municipalities around Milan received more consideration compared to the fewer ones in the mountains.
+
+\subsection{Data pre-processing}
+\label{Second_Approach_Data_prep}
+
+For the second interpolation method, we integrate the covariate grid with the municipalities where we have observed data. As shown in Figure \ref{fig:example_method_2}. In the figure, the red crosses represent the AGC grid, and the colored shapes represent the municipalities with stations. On the right, is an example of the shapes created by mixing the grid and the actual municipality shapes.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/interpolation_method_2.png}
+    \captionsetup{font=small}
+    \caption{Example of shapes used in the second interpolation method.}
+    \label{fig:example_method_2}
+\end{figure}
+
+This allows us to reduce the overall number of areas to predict, as the grid has a lower density compared to some of the areas in Lombardy.
+
+For generating the grid and implementing the interpolation algorithm in this method, we can refer to the procedure described in Section \ref{sec:data_preprocessing}.
+By doing this, we will obtain the Lombardy region partitioned as shown in Figure \ref{fig:lombary_method_2}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[Areas considered in the second approach. The gray areas barred in red are the ones added to replace the municipalities without data]{\includegraphics[width=0.45\textwidth]{images/new_lombardy.jpeg}}
+    \hfill
+    \subfigure[Known $PM_{2.5}$ values for the Lombardy region]{\includegraphics[width=0.45\textwidth]{images/Second_approach_Lombardy_complete.png}}
+    \caption{Lombardy region partitioned using the second method.}
+    \label{fig:lombary_method_2}
+\end{figure}
+
+Note that the new areas are squares, and their rectangular shape is due to the map projection chosen (EPSG 4326 coordinate reference system).
+
+\subsection{Model training}
+
+The model training was done using the same code as in the first approach, but with the new data generated in the previous steps. The configuration used this time followed the recommended values, 10000 iterations, 200 trees, and 1000 warm-up iterations coupled with a burn-in period equal to half of the total iterations (5000) and a thinning factor of 10 to reduce autocorrelation. This new approach allowed us to use more potential of the model and to obtain better results without the restrictions of political boundaries.
+
+\subsection{Results}
+
+Using the second interpolation method described by Section \ref{Second_Approach_Data_prep}, we forecast the $PM_{2.5}$ values for all the squares that we created within the Lombardy region. We experimented with various date ranges and configurations within the year 2018 and 2019, considering all the covariates.
+% Due to the improvements in the computational efficiency of this method, we were able to consider a more extensive range of dates to predict the $PM_{2.5}$ values.
+
+Firstly, we ran the model for dates ranging from 01/01/2018 to 31/12/2018, and we obtained the results illustrated in Figure~\ref{SecondApproach2018}. These results were obtained using the 10-meter height and 30-degree wind adjacency matrix.
+
+\begin{figure} [H]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.71\linewidth]{images/2018_full_year_model_30wind_10m_0_map_da.png}
+        \vspace{1.7cm}
+        \captionof{figure}{Predicted $PM_{2.5}$ values for 2018.}
+        \label{SecondApproach2018}
+    \end{minipage}%
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.71\linewidth]{images/Covariate _2018_full_year_model_30wind_10m_0_da.png}
+        \captionsetup{format=hang}
+        \captionof{figure}{Frequency of covariates selection for prediction of $PM_{\text{2.5}}$ values for 2018.}
+        \label{Covariate_Second_Approach2018}
+    \end{minipage}
+\end{figure}
+
+Figure~\ref{Covariate_Second_Approach2018} Highlights influential covariates in the $PM_{\text{2.5}}$ concentration model. Notably, some of the most influential variables are "EM\_nox\_sum" and "EM\_nh3\_Agri\_soils". These covariates indicate respectively the emissions of $NO_{x}$, and the emissions of, $NH_{3}$ across all sectors. It's also worth noticing the importance of the covariates "LA\_land\_use" and "LI\_pigs". \\
+
+Given its lower computational requirements, this model enables us to conduct analyses on $PM_{\text{2.5}}$. In the next sections, we will explore these analyses.
+
+\subsubsection{Comparison between high and low season}
+\label{comp_HL}
+
+In our analysis of the time series data for $PM_{\text{2.5}}$, as outlined in Section~\ref{subsec:pm25}, we observed significant variations in its values between the ``warm'' and ``cold'' periods. Consequently, we opted to conduct a more thorough examination of these disparities by dividing the data into two distinct periods: the high season (from 01/10/2018 to 31/03/2019) and then the low season (from 01/03/2018 to 30/09/2018). As the previous result shows, these were obtained considering the 30° and 10m height wind adjacency matrix.
+
+\begin{figure}[h]
+    % Model run by Paolo
+    \centering
+    \subfigure[High season 2018]{\includegraphics[width=0.38\textwidth]{images/2018_high_season_year_model_30wind_10m_0_map_da.png}}
+    % Model run by Rita
+    \hspace{0.5cm}
+    \centering
+    \subfigure[Low season 2018]{\includegraphics[width=0.45\textwidth]{images/2018_low_season_model_30wind_10m_0_da_map.png}}
+    \caption{Predicted $PM_{2.5}$ values.}
+    \label{fig:subfigures}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[High season 2018]{
+        \includegraphics[width=0.45\textwidth]{images/covariates_inclusion_high_season_2018.png}
+    }
+    \hfill
+    \subfigure[Low season 2018]{\includegraphics[width=0.45\textwidth]{images/Cov_2018_low_season_model_30wind_10m_0_da_map.png}}
+    \caption{Frequency of covariates selection for prediction of $PM_{\text{2.5}}$.}
+    \label{fig: Covariates_subfigures}
+\end{figure}
+
+Figure~\ref{fig: Covariates_subfigures} Highlights influential covariates in the $PM_{\text{2.5}}$ concentration model. Notably, some of the most influential variables depend on $NH_{3}$, also both of them are highly influenced by the covariate "WE\_wind\_speed\_10m\_max".
+\\
+
+% In both cases one of the most influential covariates is "EM\_rh\_min", this value represents the minimum amount of water vapor present as a percentage of the amount needed for saturation at the same temperature. We can also notice the importance of $NH_{3}$ for both periods.
+
+% Put maybe somewhere here all the ranges in total that we ran
+% 2017 low season (30 wind)
+% 2017-2018 high season (30 wind)
+% 2017-2018 high season (no milano) (leave one out)
+% 2018 full year (30 wind)
+% 2018 full year (60 wind) 100m
+% 2018 high season (30 wind)
+% 2018 low season (30 wind)
+% 2019 low season (abril hasta diciembre)? (30 wind)
+% 2019-2020 high season (sept hasta feb) (60 wind)
+% 2020 low season (marzo hasta sept) (60 wind)
+
+% Also the images that Paolo generated about the important municipalities
+
+% \subsubsection{Comparison between SIAM structure with 30° and 60°}
+% \label{sec:comp_wind}
+% As explained in section~\ref{sec:SIAM}, we consider two municipalities adjacent if their centroids are within a certain angle parameter to the left and right of the prevailing wind direction, and using that angle we calculate the wind adjacency matrix. To highlight the influence of the SIAM matrix within the model, we explored different periods, using angles of both 30° and 60°.
+
+% \begin{figure}[H]
+%     \centering
+%      \subfigure[60 degrees]{\includegraphics[width=0.42\textwidth]{images/2018_low_season_model_60wind_10m_0_map.png}}
+%     \hfill
+%      \subfigure[30 degrees]{\includegraphics[width=0.45\textwidth]{images/2018_low_season_model_30wind_10m_0_map.png}}
+%     \caption{Predicted $PM_{2.5}$ values for the low season of 2018 using different SIAM}
+%     \label{fig:Comp_Milan}
+% \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%      \subfigure[60 degrees]{\includegraphics[width=0.42\textwidth]{images/2018_low_season_model_60wind_10m_0_cov_inclusion_cov_inclusion.png}}
+%     \hfill
+%      \subfigure[30 degrees]{\includegraphics[width=0.45\textwidth]{images/2018_low_season_model_30wind_10m_0_cov_inclusion_cov_inclusion.png}}
+%     \caption{Frequency of covariates for the low season of 2018 using different SIAM}
+%     \label{fig:Cov_Comp_Milan}
+% \end{figure}
+
+% \subsubsection{Comparison between March-August 2019 and September-February 2020 }
+% \label{sec:comp_MA2019}
+
+% Those results are obtained considering the 60° SIAM and 100m height.
+
+% \begin{figure}[H]
+%     \centering
+%      \subfigure[March-August 2019]{\includegraphics[width=0.42\textwidth]{images/2019_march_august_model_60wind_100m_0_map.png}}
+%     \hfill
+%      \subfigure[September-February 2020]{\includegraphics[width=0.45\textwidth]{images/2019_2020_sept_feb_model_60wind_100m_0_map.png}}
+%     \captionsetup{format=hang}
+%     \caption{Predicted $PM_{2.5}$ values for for March-August 2019 and September-February 2020}
+%     \label{fig:comp_MA2019}
+% \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%      \subfigure[March-August 2019]{\includegraphics[width=0.42\textwidth]{images/2019_march_august_model_60wind_100m_0_cov_inclusion_cov_inclusion.png}}
+%     \hfill
+%      \subfigure[September-February 2020]{\includegraphics[width=0.45\textwidth]{images/2019_2020_sept_feb_model_60wind_100m_0_cov_inclusion_cov_inclusion.png}}
+%     \captionsetup{format=hang}
+%     \caption{Frequency of covariates for March-August 2019 and September-February 2020}
+%     \label{fig:Cov_comp_MA2019}
+% \end{figure}
+
+\subsubsection{Comparison between wind adjacency matrix considering wind at 10 meters and 100 meters}
+\label{sec:comp_wind}
+In this section, we present the outcomes obtained considering in both scenario the low period of 2018 and the 30 degrees adjacency matrix. Specifically, we explore the impact of wind direction at two distinct heights: once with the predominant wind direction analyzed at 10 meters and alternatively at 100 meters.
+
+
+% here we insert the 2nd rita run and compare with the first one
+\begin{figure}[H]
+    % Model runned by Rita
+    \centering
+    \subfigure[100m]{\includegraphics[width=0.45\textwidth]{images/2018_low_season_model_30wind_100m_0_da_map.png}} %Model is still running
+    \hfill
+    % Model runned by Rita
+    \centering
+    \subfigure[10m]{\includegraphics[width=0.45\textwidth]{images/2018_low_season_model_30wind_10m_0_da_map.png}}
+    \caption{Predicted $PM_{2.5}$ values for 2018 low season.}
+    \label{fig:Comp_10_100}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \subfigure[100m]{\includegraphics[width=0.45\textwidth]{images/Cov_2018_low_season_model_30wind_100m_0_da.png}}
+    \hfill
+    \subfigure[10m]{\includegraphics[width=0.45\textwidth]{images/Cov_2018_low_season_model_30wind_10m_0_da_map.png}}
+    \caption{Frequency of covariates selection for prediction of $PM_{\text{2.5}}$ for 2018 low season.}
+    \label{fig: Covariates_Comp_10_100}
+\end{figure}
+
+
+\subsubsection{Comparison considering Milan and not considering it}
+\label{sec:comp_Milan}
+%check this, I'm not sure that's what happened
+Given our initial expectation of significant influence from the density of pigs on the model, the absence of such influence prompted a decision to conduct further runs without incorporating the $PM_{\text{2.5}}$ values for Milan.
+For this analysis, we considered the whole 2018 year.
+
+
+%probably it's better to add also the covariates, to show the relevance of pigs
+
+\begin{figure}[h]
+    % Update with 
+    \centering
+    \subfigure[Not considering Milan]{\includegraphics[width=0.45\textwidth]{images/2018_without_Milan.png}}
+    \hfill
+    \subfigure[Considering Milan]{\includegraphics[width=0.45\textwidth]{images/2018_full_year_model_30wind_10m_0_map_da.png}}
+    \caption{Predicted $PM_{2.5}$ values}
+    \label{fig:Comp_Milan}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 1\linewidth]{images/pigs_and_bovines.png}
+    \caption{Distribution of swine (on the left) and bovine (on the right) in the Lombardy region}
+    \label{fig:pigs_bovines}
+\end{figure}
+
+% Section about PAOLO experimenting
+% former Paolo's Playground
+\subsection{Extras and Experiments}
+\begin{figure}[h]
+    % Update with 
+    \centering
+    \subfigure[Traceplot for predictions of the first missing location (after an initial burn-in of 5000 iterations)]{\includegraphics[width=0.45\textwidth]{images/traceplot_for_first_missing_location.png}}
+    \hfill
+    \subfigure[Posterior density plot for the first missing location]{\includegraphics[width=0.45\textwidth]{images/posterior_density_plot.png}}
+    \caption{The plots show a brief analysis of the MCMC samples produced for the first missing location.}
+    \label{fig:MCMC_posterior_plots}
+\end{figure}
+
+To further test the model, we run a brief experiment by changing the probability enforcing shallow trees going from $T_i \sim Tree(0.95, 2)$ to $T_i \sim Tree(0.95, 1)$ ($\beta = 1$), hence preferring deeper trees. The resulting model produced interesting results regarding the covariate selection by picking with higher probability those that had already been chosen, making evident the use of the Dirichlet distribution for sparsity.
+
+\begin{figure}[h]
+    % Update with 
+    \centering
+    \subfigure[Covariates selected with standard settings ($\beta = 2$)]{\includegraphics[width=0.45\textwidth]{images/covariate_selection_with_shallow_trees.png}}
+    \hfill
+    \subfigure[Covariates selected with deeper trees ($\beta = 1$)]{\includegraphics[width=0.45\textwidth]{images/covariate_selection_with_deeper_trees.png}}
+    \caption{Covariate selection with different tree parameters}
+    \label{fig:cov_sel_tree_depths}
+\end{figure}
+
+% Insert model of the hyperparameter modified
+
+% Insert plots he has sent to the group may be
+
+
+\section{Conclusions}
+\label{sec:End}
+
+% STRUCTURE
+
+% 1. Summary of everything already written
+
+% 2. Inference about results
+% * Good results
+%   - Show the relief map of Lombardy, maybe population density map, and I think this article can also be used: https://www.researchgate.net/publication/294581946_Periurban_agriculture_in_Lombardy_between_urban_sprawl_multifunctionality_and_new_lifestyles_towards_a_territorial_approach_for_rural_development
+% https://www.cartografia.servizirl.it/viewer31/index.jsp?config=config_download.json
+%   - Show the Covariates graph of all models to show the 5 covariates that were chosen the most (Also might be interesting to show more plots to justify that these picks of covariates weren't random but there is a sort of pattern that puts them in the model)
+% https://link.springer.com/article/10.1007/s40726-019-00124-5
+% https://www.researchgate.net/publication/258457414_Meteorological_modes_of_variability_for_fine_particulate_matter_PM25_air_quality_in_the_United_States_Implications_for_PM25_sensitivity_to_climate_change
+% https://www.sciencedirect.com/science/article/pii/S1352231007003329?via%3Dihub
+% https://core.ac.uk/download/pdf/289999636.pdf
+
+% * Bad results
+%  - Here we can show how in some runs the result was very different from the others.
+%  - Also I would put some covariates that we didn't find justification e(Pending selection)
+
+% 3. Model by itself: Here we can talk about how the model does not take into account time-series, and to be able to do it the model should be optimized and principally we recommend moving the implementation to a faster and more stable programming language.
+
+% 4. Summary of everything said and the end paragraph with a summary of our thoughts in general.
+
+In this project, we applied the Model described by Kim \cite{Kim_2022} to predict the $PM_{2.5}$ levels in the Lombardy region. We used two different approaches to preprocess the data and train the model. The first approach involved making predictions for each municipality in Lombardy separately, while the second method divided the region using a grid system in the areas that don't have a station. Following these two approaches, we defined the adjacency matrix and the SIAM as described by Kim \cite{Kim_2022}.
+
+The results obtained from the first approach were promising, but the computational limitations of the model made it difficult to obtain more predictions with higher accuracy. The second approach allowed us to use more of the potential of the model and to obtain better results without the restrictions of political boundaries.
+
+The results obtained from the second approach were more promising, and we were able to run, train, and predict the model in several different periods. This allowed us to observe the influence of different covariates in the model and to understand the importance of some of them.
+
+In most results obtained from the second approach, we could observe that the predictions for $PM_{2.5}$ in the northern region of Lombardy were lower than in the southern region. This is consistent with the relief map of Lombardy, as the northern region is mountainous and has a lower population density and less agricultural and industrial activity, as shown in Figure~\ref{fig:relief_map} and Figure~\ref{fig:systems_lombardy}.
+
+\begin{figure}[H]
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.7\linewidth]{images/relief_lombardy.png}
+        \captionsetup{format=hang}
+        \caption{Relief map of Lombardy.}
+        \label{fig:relief_map}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.65\linewidth]{images/systems_lombardy.jpg}
+        \captionsetup{format=hang}
+        \caption{Agricultural and industrial systems in Lombardy \cite{inproceedings}}
+        \label{fig:systems_lombardy}
+    \end{minipage}
+\end{figure}
+
+Moreover, we can identify several zones where the $PM_{2.5}$ value is higher, such as the area around Milan and the major cities of Lombardy (Figure~\ref{fig:polluted_cities}).
+
+% In some executions we obtained results that were very different from the others, this can be evidenced in Figure~\ref{fign:subfigures} for the Low season where a darker square is located in the northern region of Lombardy due to unknown reasons.
+
+Transitioning to the results of covariate selection in our model, putting together all findings across various periods yields the visualization depicted in Figure~\ref{fig:covariate_selection_all}.
+
+\begin{figure} [H]
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{images/political_map_2018.png}
+        \captionsetup{format=hang}
+        \caption{Cities in Lombardy with the highest PM2.5 levels.}
+        \label{fig:polluted_cities}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{images/covariates_selection_all.png}
+        \captionsetup{format=hang}
+        \caption{Frequency of covariate selection for predicting $PM_{\text{2.5}}$ concentrations across all analyzed periods.}
+        \label{fig:covariate_selection_all}
+    \end{minipage}
+\end{figure}
+
+Among the prominently selected covariates are "EM\_so2\_sum", "LI\_pigs", "EM\_nh3\_livestock\_mm", \\ "EM\_nh3\_agr\_soils", "WE\_rh\_min", and "WE\_wind\_speed\_100m\_mean." These covariates correspond to the following descriptors:
+
+\begin{itemize}
+    \item "EM\_so2\_sum": Total sulfur dioxide emissions.
+    \item "LI\_pigs": Number of pigs.
+    \item "EM\_nh3\_livestock\_mm": Ammonia emissions from livestock.
+    \item "EM\_nh3\_agr\_soils": Ammonia emissions from agricultural soils.
+    \item "WE\_rh\_min": Minimum relative humidity.
+    \item "WE\_wind\_speed\_100m\_mean": Mean wind speed at 100 meters.
+\end{itemize}
+
+These selected covariates align with existing literature. Notably, ammonia ($NH_{3}$) emissions from both livestock and agricultural soils have been identified as substantial contributors to fine particulate matter ($PM_{2.5}$) levels in the atmosphere, as shown in Figure~\ref{fig:agri_paper}. Ti et al. \cite{TI2022131507} emphasize $NH_{3}$ emissions' detrimental effects on environmental quality and public health, advocating for agricultural $NH_{3}$ emission mitigation to reduce $PM_{2.5}$ pollution effectively. Similarly, Erisman et al. \cite{ERISMAN20083209} highlight $NH_{3}$ emissions from agriculture as significant contributors to PM concentrations, underscoring the need for $NH_{3}$ reduction alongside other gas emissions to mitigate $PM_{2.5}$ pollution effectively.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{images/contribution_agri_paper.png}
+    \caption{Contribution of agriculture to each contaminant \cite{ERISMAN20083209}.}
+    \label{fig:agri_paper}
+\end{figure}
+
+Moreover, environmental factors like relative humidity (RH) and wind speed further support the inclusion of "WE\_rh\_min" and "WE\_wind\_speed\_100m\_mean" as covariates. Ryu et al. \cite{RYU2019253} demonstrate RH's role, influenced by actively transpiring plants, in enhancing smoke $PM_{2.5}$ removal efficiency, emphasizing its significance in determining PM level. Additionally, studies like the one done by Liu et al. \cite{liu2020analysis} in Qinhuangdao (China) indicate the crucial roles of precipitation, wind direction, and speed in wet scavenging and PM dispersion.
+
+% In this paragraph Maybe some plot about the variation or something could be added to justify that the covariates selected for the threes have actually a sense and are not random 
+However, it's notable that some covariates known to be important in the literature weren't selected by our model. For instance, while precipitation is recognized as pivotal in $PM_{2.5}$ removal from the atmosphere, it wasn't selected as a significant covariate in our model. Similarly, the presence of bovines, known for their contribution to $NH_{3}$ emissions, wasn't deemed significant by our model. Additionally, an also high selected covariate was "LA\_lvi" which refers to low vegetation type, and information about an existing direct relationship with $PM2.5$ was not found in the literature.
+
+Focusing on the model itself, it's clear that the model does not take into account time-series, and to overcome this limitation, the model should be optimized. Primarily, we recommend moving the implementation to a faster and more stable programming language. This adjustment would allow us to use more potential of the model and to achieve better results without the restrictions of computational power.
+
+In conclusion, the results obtained from the model are promising due to the consistency of the results obtained, both taking into account the current literature concerning the covariates and the known information about the Lombardy region. However, the model has limitations that need to be addressed, such as the computational limitations and the current lack of capacity to take into account time-series data.
+
+% Cites for sustenting the consistency of the covariates:
+% "Ammonia (NH3) emissions have been linked to the formation of fine particulate matter (PM2.5) in the air, and PM2.5 pollution has been shown to damage environment quality and public health on a global scale."
+% TI2022131507
+
+% "The last pressing issue is the contribution of
+%  agriculture to PM concentrations, both primary
+%  PM10 emissions as well as secondary formation of
+%  PM2.5 with NH3 as precursor. Erisman and Schaap
+%  (2004) presented scenario studies for different
+%  regions in Europe, where only SO2, only NOx or
+%  only NH3 emissions were reduced compared to"
+% reducing the three together and going further with
+% NH3 emission reduction. They concluded that
+% PM2.5 concentrations can best be reduced when
+% all three gas emissions are reduced, but since sulfur
+% and NOx is still in excess over NH3, further NH3
+% reductions were effective in reducing PM2.5".
+% "Image that shows that Agriculture produces NH3 and NOx and SO2 which consequently produces PM2.5"
+% ERISMAN20083209
+
+% "The change in RH caused by actively transpiring plants is closely related to the removal efficiency of smoke PM2.5 (Fig. 2, Fig. 3)"
+% RYU2019253
+
+% "Precipitation has a certain wet scavenging effect on PM2.5 and PM10, and the scavenging effect of precipitation on PM10 is greater than that of PM2.5."
+% "The more westerly the wind is, the more serious the pollution will be, and, with the increase of wind speed, PM2.5 concentration will increase. North wind and northwest wind have the most obvious scavenging effect on PM2.5 and Pm10. In addition to west and southwest winds, when the wind speed increases to 2 m/s, PM2.5 and PM10 concentrations can be reduced. However, when the wind speed is more than 4 m/s, the PM10 concentration under the south, southeast, east, and northeast wind rebounds. As the wind speed increases, dust is generated on the ground and PM10 pollution is aggravate"
+% liu2020analysis
+
+%THIS PART WAS IN THE RESULT, I JUST COPIED AND PASTED IT HERE FOR NOW
+% The mapping results align well with our expectations. The northern region of Lombardy exhibits notably lower $PM_{2.5}$ values, consistent with its mountainous terrain and relatively lower industrial activity. Furthermore, within this area, the Valtellina demonstrates a slightly higher $PM_{2.5}$ level, which is in line with our expectations due to its higher population density, industrialization, and traffic.
+
+% Moreover, we can identify several zones where the $PM_{2.5}$ value is higher, such as the area around Milan and the major cities of Lombardy. \\
+
+%Particularly noteworthy is Crema, as it exhibits the highest PM2.5 levels among the municipalities studied. These elevated levels can be attributed to various factors including wind patterns and local environmental conditions. 
+% It's not true in this version, the darker municipality is Acquanegra sul Chiese for unknown reasons
+
+%THIS SHOULD GO IN THE CONCLUSIONS
+%The significance of these covariates aligns with expectations, considering the well-established influence of traffic on $PM_{2.5}$ levels. Additionally, previous studies have shown that the presence of small trees impacts $PM_{2.5}$ concentration. 
+
+% Could be added:
+% https://www.researchgate.net/publication/313920249_World_air_particulate_matter_sources_distribution_and_health_effects
+
+
+% \subsection{Algorithms}
+% \label{subsec:algorithms}
+
+% Pseudo-algorithms can be written in \LaTeX{} with the \texttt{algorithm} and \texttt{algorithmic} packages.
+% An example is shown in Algorithm~\ref{alg:var}.
+% \begin{algorithm}[H]
+% \label{alg:example}
+% \caption{Name of the Algorithm}
+% \label{alg:var}
+% \label{protocol1}
+% \begin{algorithmic}[1]
+% \STATE Initial instructions
+% \FOR{$for-condition$}
+% \STATE{Some instructions}
+% \IF{$if-condition$}
+% \STATE{Some other instructions}
+% \ENDIF
+% \ENDFOR
+% \WHILE{$while-condition$}
+% \STATE{Some further instructions}
+% \ENDWHILE
+% \STATE Final instructions
+% \end{algorithmic}
+% \end{algorithm} 
+
+%-----------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%-----------------------------------------------------------------------------
+\newpage
+\bibliography{bib}
+
+
+%-----------------------------------------------------------------------------
+% ACKNOWLEDGEMENTS
+%-----------------------------------------------------------------------------
+\section*{Acknowledgements}
+Our thanks go to Alessandro Carminati who suggested the second approach to reduce the overall computational complexity of the algorithm and to Paolo Maranzano who suggested the interpolation method for the covariates grid.
+\newpage
+
+\appendix
+\section{Metropolis Hastings for Tree proposal}
+The following section details the derivation of the acceptance probabilities for the Metropolis-Hastings steps in the proposal of new tree structures following the procedure described by \cite{Tan_2019} and \cite{bartmachine_2014}.
+Consider the full conditional for the tree structures:
+\begin{equation}
+    \label{eq:tree_posterior_gibbs}
+    [(T_t, M_t) | \vect{R}_{-t}, \sigma]
+\end{equation}
+
+We can obtain a draw for (\ref{eq:tree_posterior_gibbs}) by integrating out the leaf parameters $M_t$, thus obtaining $[T_t | \vect{R}_{-t}, \sigma]$. The marginalization is fairly simple given the choice of a conjugate normal prior for the $\mu_{ti}$'s.
+We now want to build a reversible Markov Chain (MC) with stationary density $\pi$. Thus, we want to guarantee
+\begin{equation}
+    \label{eq:reversibility_guarantee}
+    \prob(T\to T^*) \alpha(T, T^*) \pi(T | \vect{R}_{-t}, \sigma) = \prob(T^*\to T) \alpha(T^*, T) \pi(T^* | \vect{R}_{-t}, \sigma).
+\end{equation}
+Through the usual considerations, we get the following acceptance probability:
+
+\begin{equation}
+    \label{eq:accept_ratio_general}
+    \alpha(T, T^*) = \min \left\{ \frac{\prob(T^* \to T) \pi(T^* | \vect{R}, \sigma)}{\prob(T \to T^*) \pi(T | \vect{R}, \sigma)}, 1 \right\}.
+\end{equation}
+Note that computing the posterior for the trees is difficult, if not impossible, therefore we employ Bayes' rule:
+\begin{equation}
+    \label{eq:posterio_bayes_rule}
+    \pi(T | \vect{R}, \sigma) = \frac{\prob(\vect{R} | T, \sigma) \pi(T | \sigma)}{\prob(\vect{R} | \sigma)} = \frac{\prob(\vect{R} | T, \sigma) \pi(T)}{\prob(\vect{R} | \sigma)}
+\end{equation}
+We now substitute (\ref{eq:posterio_bayes_rule}) into (\ref{eq:accept_ratio_general}) and get (\ref{eq:accept_ratio_semantic}).
+The computation for the acceptance ratio for each one of the three alterations can be split into:
+\begin{equation}
+    \label{eq:accept_ratio_semantic}
+    \alpha(T, T^*) = \min\left\{1, \underbrace{\frac{\prob(T^* \to T)}{\prob(T \to T^*)}}_{\text{transition ratio}} \times \underbrace{\frac{\pi(\vect{R} | T^*, \sigma)}{\pi(\vect{R} | T, \sigma)}}_{\text{likelihood ratio}} \times \underbrace{\frac{\pi(T^*)}{\pi(T)}}_{\text{structure ratio}}\right\},
+\end{equation}
+where each ratio depends on the type of alteration. The ratios will be described in further detail in the following sections.
+
+\subsection{GROW alteration}
+With the GROW alteration, we choose a terminal node to expand and we grow it into two new terminal nodes. The expanded node will then become a singly-internal node, thus it will be associated with a splitting rule.
+
+Commencing with the transition ratio, this signifies the proportion of the likelihood of transitioning from the pre-existing tree structure $T$ to the updated one $T^*,$ against the probability of the reverse scenario occurring. We denote these probabilities as $\prob(T \to T^*)$ and $\prob(T^* \to T)$ respectively. Thus, we write
+\begin{equation}
+    \label{eq:GROW_transition}
+    \begin{split}
+        \prob(T \to T^*)  = & \prob(GROW) \times \prob(\text{select node } \eta \text{ to grow}) \times   \\
+                            & \prob(\text{select the } j\text{th predictor as splitting variable}) \times \\ & \prob(\text{select the } i\text{th value of } x_j \text{ as splitting constant}) \\
+        =                   & \rho_{GROW}\frac{1}{b}\frac{1}{p(\eta)}\frac{1}{n_{j}(\eta)},
+    \end{split}
+\end{equation}
+where $b$ is the number of terminal nodes for $T$, $\rho_{GROW}$ is the probability of choosing the GROW alteration, $p(\eta)$ is the number of predictors still available to split on, $n_{j}(\eta)$ is the number of \textit{unique} values left for the chosen predictor, accounting for previous splits.
+
+The opposite operation is equivalent to a PRUNE alteration, therefore we write:
+\begin{equation}
+    \label{eq:GROW_transition_back}
+    \begin{split}
+        \prob(T^*\to T)  = & \prob(PRUNE) \times \prob(\text{select node } \eta \text{ to prune}) = \rho_{PRUNE}\frac{1}{w^*},
+    \end{split}
+\end{equation}
+where $w^*$ is the number of singly-internal nodes for $T^*$ and $\rho_{PRUNE}$ is the probability of choosing the PRUNE alteration.
+
+The resulting transition ratio is:
+\begin{equation}
+    \label{eq:GROW_transition_ratio}
+    \frac{\prob(T^* \to T)}{\prob(T \to T^*)} = \frac{\rho_{PRUNE}}{\rho_{GROW}} \frac{b}{w^*}{p(\eta)n_{j}(\eta)}
+\end{equation}
+
+Let us now consider the likelihood ratio for the GROW alteration.
+Considering the model (\ref{eq:BART_model}), the likelihood is determined by how the responses fall into the $b_t$ terminal nodes of the tree structure. Thus,
+\begin{equation}
+    \label{eq:likelihood_ratio_deriv}
+    \prob(R_1, ... , R_n | T, \sigma) \overset{ind}{=} \prod_{i = 1}^b \prob(R_{i_1}, ... , R_{i_{n_i}} | \sigma),
+\end{equation}
+where the $R_i$'s denote the residuals in the $i$th terminal node, and $n_i$ is the number of observations in the $i$th terminal node such that $n = \sum_{i=1}^b n_i$.
+Given that $R_{i_1}, ... , R_{i_{n_i}} | \mu_i, \sigma \overset{iid}{\sim} \mathcal{N}(\mu_i, \sigma^2)$, we integrate out $\mu_i$ for the reasons described by \textit{Chipman et al. (page 275)}\cite{Chipman_2010}. Remembering that a priori $\mu \sim \mathcal{N}(0, \sigma^2_\mu)$,
+\begin{equation}
+    \label{eq:likelihood_integrate_out_mu}
+    \begin{split}
+        \prob(R_{i_1}, ... , R_{i_{n_i}} | \sigma) & = \int_\mathbb{R} \prob(R_{i_1}, ... , R_{i_{n_1}}, d\mu_i| \sigma)                         \\
+                                                   & = \int_\mathbb{R} \prob(R_{i_1}, ... , R_{i_{n_1}}| \mu_i, \sigma)\pi(\mu_i | \sigma)d\mu_i \\
+    \end{split}
+\end{equation}
+We can prove via completion of the square that the resulting likelihood is:
+\begin{equation}
+    \label{eq:likelihood_square_completion}
+    \begin{split}
+        \prob(R_{i_1}, ... , R_{i_{n_i}} | \sigma) = & \frac{1}{(2\pi\sigma^2)^{n_i/2}}\sqrt{\frac{\sigma^2}{\sigma^2 + n_i \sigma^2_\mu}}\times                                                                                      \\
+                                                     & \exp\left\{-\frac{1}{2\sigma^2}\left(\sum_{i=1}^{n_i} (R_{i_1} - \bar{R_{i}})^2 - \frac{\bar{R_i}^2n_i^2}{n_i + \frac{\sigma^2}{\sigma_\mu^2}} + n_i\bar{R_i}^2\right)\right\}
+    \end{split}
+\end{equation}
+The new proposed tree $T^*$ differs from $T$ only by the number of terminal nodes and the grown node. We denote with $i_L$ and $i_R$ the new terminal nodes on the left and right respectively.
+The resulting likelihood ratio is:
+\begin{equation}
+    \label{eq:grow_likelihood_ratio}
+    \begin{split}
+          & \frac{\prob(\vect{R} | T^*, \sigma)}{\prob(\vect{R} | T, \sigma)} = \frac{\prob(R_{i_{L,1}}, ... , R_{i_{L,n_{i,L}}} | \sigma) \prob(R_{i_{R,1}}, ... , R_{i_{R,n_{i,R}}} | \sigma)}{\prob(R_{i_1}, ... , R_{i_{n_i}} | \sigma)}                                                                                                                                                                                                                        \\
+        = & \sqrt{\frac{\sigma^2(\sigma^2 + n_i \sigma^2_\mu)}{(\sigma^2 + n_{i,L}\sigma^2_\mu)(\sigma^2 + n_{i,R}\sigma^2_\mu)}}\exp\left\{\frac{\sigma_\mu^2}{2\sigma^2}\left(\frac{\left(\sum_{j=1}^{n_{i,L}}R_{i_{L,j}}\right)^2}{(\sigma^2 + n_{i,L}\sigma^2_\mu)} + \frac{\left(\sum_{j=1}^{n_{i,R}}R_{i_{R,j}}\right)^2}{(\sigma^2 + n_{i,R}\sigma^2_\mu) }-\frac{\left(\sum_{j=1}^{n_{i}}R_{i_{j}}\right)^2}{(\sigma^2 + n_{i}\sigma^2_\mu)}\right)\right\}
+    \end{split}
+\end{equation}
+Finally, for the structure ratio, we have the following:
+\begin{equation}
+    \label{eq:tree_struct_prob}
+    \pi(T) = \prod_{\eta \in H_T} (1 - \prob_{SPLIT}(\eta)) \prod_{\eta \in H_I} \prob_{SPLIT}(\eta)\prod_{\eta \in H_I} \prob_{RULE}(\eta),
+\end{equation}
+where $H_T$ is the set of terminal nodes, and $H_I$ is the set of internal nodes.
+The probability of splitting is $\prob_{SPLIT}(\eta) = \alpha / (1+d_\eta)^\beta$, and the probability of picking a rule (as per the transition ratio) is $\prob_{RULE}(\eta) = {1}/{p(\eta)} \times {1}/{n_j(\eta)}$ (probability of picking a covariate $\times$ probability of picking a value for the covariate).
+
+The original tree differs from the new tree by the grown node $\eta$ and the two new terminal nodes: $H_T^* = H_T \cup \{\eta_L, \eta_R\} \setminus \{\eta\}$, $H_I^* = H_I \cup \{\eta\}$, thus the ratio is:
+\begin{equation}
+    \label{eq:grow_struct_ratio}
+    \begin{split}
+        \frac{\pi(T^*)}{\pi(T)} = & \frac{\prod_{\eta \in H_T^*} (1 - \prob_{SPLIT}(\eta)) \prod_{\eta \in H_I^*} \prob_{SPLIT}(\eta)\prod_{\eta \in H_I^*} \prob_{RULE}(\eta)}{\prod_{\eta \in H_T} (1 - \prob_{SPLIT}(\eta)) \prod_{\eta \in H_I} \prob_{SPLIT}(\eta)\prod_{\eta \in H_I} \prob_{RULE}(\eta)} \\
+        =                         & \frac{(1-\prob_{SPLIT}(\eta_L))(1-\prob_{SPLIT}(\eta_R))\prob_{SPLIT}(\eta)\prob_{RULE}(\eta)}{(1-\prob_{SPLIT}(\eta))}                                                                                                                                                     \\
+        =                         & \frac{\left(1 - \frac{\alpha}{(1 + d_{\eta_L})^\beta}\right)\left(1 - \frac{\alpha}{(1 + d_{\eta_R})^\beta}\right)\frac{\alpha}{(1 + d_{\eta})^\beta}\frac{1}{p(\eta)}\frac{1}{n_j(\eta)}}{\left(1 - \frac{\alpha}{(1 + d_{\eta})^\beta}\right)}                            \\
+        =                         & \alpha \frac{\left(1 - \frac{\alpha}{(2 + d_{\eta})^\beta}\right)^2}{\left((1+d_\eta)^\beta - \alpha\right) p(\eta) n_j(\eta)}
+    \end{split}
+\end{equation}
+The last step can be derived considering that $d_{\eta_L} = d_{\eta_R} = d_\eta + 1$, this is because the new terminal nodes will be at the depth of the parent (the grown node $\eta$), plus one.
+
+Thus, the full GROW alteration proposal ratio is given by:
+\begin{equation}
+    \label{eq:grow_ratio}
+    \begin{split}
+        r_{GROW} = & \frac{\rho_{PRUNE}}{\rho_{GROW}} \frac{b}{w^*}{p(\eta)n_{j}(\eta)} \times                                                      \\
+                   & \sqrt{\frac{\sigma^2(\sigma^2 + n_i \sigma^2_\mu)}{(\sigma^2 + n_{i,L}\sigma^2_\mu)(\sigma^2 + n_{i,R}\sigma^2_\mu)}} \times   \\ & \exp\left\{\frac{\sigma_\mu^2}{2\sigma^2}\left(\frac{\left(\sum_{j=1}^{n_{i,L}}R_{i_{L,j}}\right)^2}{(\sigma^2 + n_{i,L}\sigma^2_\mu)} + \frac{\left(\sum_{j=1}^{n_{i,R}}R_{i_{R,j}}\right)^2}{(\sigma^2 + n_{i,R}\sigma^2_\mu) }-\frac{\left(\sum_{j=1}^{n_{i}}R_{i_{j}}\right)^2}{(\sigma^2 + n_{i}\sigma^2_\mu)}\right)\right\} \times \\
+                   & \alpha \frac{\left(1 - \frac{\alpha}{(2 + d_{\eta})^\beta}\right)^2}{\left((1+d_\eta)^\beta - \alpha\right) p(\eta) n_j(\eta)}
+    \end{split}
+\end{equation}
+Note that the probability of picking a covariate and one of its values can be simplified.
+
+
+\subsection{PRUNE alteration}
+The PRUNE alteration represents the opposite alteration to GROW. PRUNE selects a singly-internal node, removes both children and transforms the node itself into a terminal node.
+
+As for the GROW alteration, let's start with the transition ratio:
+\begin{equation}
+    \label{eq:prune_transition_ratio}
+    \prob(T \to T^*) = \prob({PRUNE})\prob(\text{select } \eta \text{ to prune}) = \rho_{PRUNE}\frac{1}{w},
+\end{equation}
+where $w$ is the number of singly-internal nodes for the old tree structure.
+The opposite operation is equivalent to a GROW alteration as described for equation (\ref{eq:GROW_transition}).
+The difference in this transition is that the old tree has $b - 1$ terminal nodes, thus the transition probability is:
+\begin{equation}
+    \label{eq:PRUNE_transition}
+    \prob(T \to T^*)
+    = \rho_{GROW}\frac{1}{b - 1}\frac{1}{p(\eta^*)}\frac{1}{n_{j}(\eta^*)}.
+\end{equation}
+The transition ratio is:
+\begin{equation}
+    \label{eq:PRUNE_tranition_ratio}
+    \frac{ \prob(T^* \to T)  }{ \prob(T \to T^*)  } = \frac{\rho_{GROW}}{\rho_{PRUNE}}\frac{w}{b-1}\frac{1}{p(\eta^*)n_j(\eta^*)}
+\end{equation}
+The likelihood ratio is nothing more than the inverse of the likelihood ratio for the GROW alteration in equation (\ref{eq:grow_likelihood_ratio}).
+
+\begin{equation}
+    \label{eq:prune_likelihood_ratio}
+    \begin{split}
+          & \frac{\prob(\vect{R} | T^*, \sigma)}{\prob(\vect{R} | T, \sigma)} = \frac{\prob(R_{i_1}, ... , R_{i_{n_i}} | \sigma)}{\prob(R_{i_{L,1}}, ... , R_{i_{L,n_{i,L}}} | \sigma) \prob(R_{i_{R,1}}, ... , R_{i_{R,n_{i,R}}} | \sigma)}                                                                                                                                                                                                                         \\
+        = & \sqrt{\frac{(\sigma^2 + n_{i,L}\sigma^2_\mu)(\sigma^2 + n_{i,R}\sigma^2_\mu)}{\sigma^2(\sigma^2 + n_i \sigma^2_\mu)}}\exp\left\{-\frac{\sigma_\mu^2}{2\sigma^2}\left(\frac{\left(\sum_{j=1}^{n_{i,L}}R_{i_{L,j}}\right)^2}{(\sigma^2 + n_{i,L}\sigma^2_\mu)} + \frac{\left(\sum_{j=1}^{n_{i,R}}R_{i_{R,j}}\right)^2}{(\sigma^2 + n_{i,R}\sigma^2_\mu) }-\frac{\left(\sum_{j=1}^{n_{i}}R_{i_{j}}\right)^2}{(\sigma^2 + n_{i}\sigma^2_\mu)}\right)\right\}
+    \end{split}
+\end{equation}
+This is also true for the structure ratio:
+\begin{equation}
+    \label{eq:prune_struct_ratio}
+    \begin{split}
+        \frac{\pi(T^*)}{\pi(T)} = \frac{1}{\alpha} \frac{\left((1+d_\eta)^\beta - \alpha\right) p(\eta^*) n_j(\eta^*)}{\left(1 - \frac{\alpha}{(2 + d_{\eta})^\beta}\right)^2}
+    \end{split}
+\end{equation}
+The complete ratio is thus given by:
+\begin{equation}
+    \label{eq:prune_ratio}
+    \begin{split}
+        r_{PRUNE} = & \frac{\rho_{GROW}}{\rho_{PRUNE}}\frac{w}{b-1}\frac{1}{p(\eta^*)n_j(\eta^*)} \times                                                           \\
+                    & \sqrt{\frac{(\sigma^2 + n_{i,L}\sigma^2_\mu)(\sigma^2 + n_{i,R}\sigma^2_\mu)}{\sigma^2(\sigma^2 + n_i \sigma^2_\mu)}} \times                 \\ & \exp\left\{-\frac{\sigma_\mu^2}{2\sigma^2}\left(\frac{\left(\sum_{j=1}^{n_{i,L}}R_{i_{L,j}}\right)^2}{(\sigma^2 + n_{i,L}\sigma^2_\mu)} + \frac{\left(\sum_{j=1}^{n_{i,R}}R_{i_{R,j}}\right)^2}{(\sigma^2 + n_{i,R}\sigma^2_\mu) }-\frac{\left(\sum_{j=1}^{n_{i}}R_{i_{j}}\right)^2}{(\sigma^2 + n_{i}\sigma^2_\mu)}\right)\right\}\times \\
+                    & \frac{1}{\alpha} \frac{\left((1+d_\eta)^\beta - \alpha\right) p(\eta^*) n_j(\eta^*)}{\left(1 - \frac{\alpha}{(2 + d_{\eta})^\beta}\right)^2}
+    \end{split}
+\end{equation}
+Once again, the probability of picking a covariate and one of its values can be simplified.
+
+\subsection{CHANGE alteration}
+The CHANGE alteration picks an internal node and changes its rule by picking a new predictor and a new value among the available ones for the chosen predictor. In this particular case, we consider only the singly-internal nodes, although it can easily be extended to all internal nodes.
+
+The transition probability is as follows:
+\begin{equation}
+    \label{eq:CHANGE_transition}
+    \begin{split}
+        \prob(T \to T^*) = & \prob(CHANGE) \prob(\text{select node } \eta \text{ to change}) \times \\
+                           & \prob(\text{select new covariate as splitting variable}) \times        \\
+                           & \prob(\text{select value for covariate as splitting constant})         \\
+        =                  & \rho_{CHANGE}\frac{1}{w}\frac{1}{p(\eta)n_j(\eta)}
+    \end{split}
+\end{equation}
+Similarly, the opposite is:
+\begin{equation}
+    \label{eq:CHANGE_transition}
+    \begin{split}
+        \prob(T^* \to T) =
+        \rho_{CHANGE}\frac{1}{w^*}\frac{1}{p(\eta^*)n_j(\eta^*)}
+    \end{split}
+\end{equation}
+However, the number of singly-internal nodes and available covariates remains unchanged, therefore the transition ratio is simply:
+\begin{equation}
+    \label{change_transition_ratio}
+    \frac{ \prob(T^* \to T)  }{ \prob(T \to T^*)  } = \frac{n_j(\eta)}{n_j(\eta^*)}
+\end{equation}
+For the likelihood ratio, the new tree differs from the original in the child nodes and the split rule. However, the likelihood is effected only by the new child nodes, thus:
+\begin{equation}
+    \label{eq:change_likelihood_ratio}
+    \begin{split}
+        \frac{\prob(\vect{R}|T^*, \sigma)}{\prob(\vect{R}|T, \sigma)} = & \frac{\prob(R_{1^*,1}, ... , R_{1^*,n_{1^*}} | \sigma)\prob(R_{2^*,1}, ... , R_{2^*,n_{2^*}} | \sigma)}{\prob(R_{1,1}, ... , R_{1,n_{1}} | \sigma)\prob(R_{2,1}, ... , R_{2,n_{2}} | \sigma)} \\
+        =                                                               & \sqrt{\frac{(\sigma^2 + n_1 \sigma^2_\mu)(\sigma^2 + n_2 \sigma^2_\mu)}{(\sigma^2 + n_1^* \sigma^2_\mu)(\sigma^2 + n_2^* \sigma^2_\mu)}} \times                                               \\
+                                                                        & \exp\left\{
+        \frac{\sigma^2_\mu}{2\sigma^2}\left(\frac{(\sum_{j = 1}^{n_1^*} R_{1^*,j})^2}{n_1^*\sigma^2_\mu + \sigma^2} + \frac{(\sum_{j = 1}^{n_2^*} R_{2^*,j})^2}{n_2^*\sigma^2_\mu + \sigma^2} -
+        \frac{(\sum_{j = 1}^{n_1} R_{1,j})^2}{n_1\sigma^2_\mu + \sigma^2}  - \frac{(\sum_{j = 1}^{n_2} R_{2,j})^2}{n_2\sigma^2_\mu + \sigma^2}
+        \right) \right\},
+    \end{split}
+\end{equation}
+where we denote with $R_1,\cdot$ the residuals in the first child node and with $R_2,\cdot$ the residuals in the second child node. Similarly, we denote with $n_1$ and $n_2$ the number of observations in the two nodes.
+Lastly, the tree structure ratio is given by:
+
+\begin{equation}
+    \label{eq:change_struct_ratio}
+    \begin{split}
+        \frac{\pi(T^*)}{\pi(T)} = & \frac{(1 - \prob_{SPLIT}(\eta_1^*))(1 - \prob_{SPLIT}(\eta_2^*))\prob_{SPLIT}(\eta^*)\prob_{RULE}(\eta^*)}{(1 - \prob_{SPLIT}(\eta_1))(1 - \prob_{SPLIT}(\eta_2))\prob_{SPLIT}(\eta)\prob_{RULE}(\eta)} \\
+        = \frac{n_j(\eta)}{n_j(\eta^*)},
+    \end{split}
+\end{equation}
+this is because the depth of the tree does not change.
+Also, note that the structure ratio is the opposite of the transition ratio, thus we are left with only the likelihood ratio:
+\begin{equation}
+    \label{eq:change_ratio}
+    \begin{split}
+        r_{CHANGE} = & \sqrt{\frac{(\sigma^2 + n_1 \sigma^2_\mu)(\sigma^2 + n_2 \sigma^2_\mu)}{(\sigma^2 + n_1^* \sigma^2_\mu)(\sigma^2 + n_2^* \sigma^2_\mu)}} \times \\
+                     & \exp\left\{
+        \frac{\sigma^2_\mu}{2\sigma^2}\left(\frac{(\sum_{j = 1}^{n_1^*} R_{1^*,j})^2}{n_1^*\sigma^2_\mu + \sigma^2} + \frac{(\sum_{j = 1}^{n_2^*} R_{2^*,j})^2}{n_2^*\sigma^2_\mu + \sigma^2} -
+        \frac{(\sum_{j = 1}^{n_1} R_{1,j})^2}{n_1\sigma^2_\mu + \sigma^2}  - \frac{(\sum_{j = 1}^{n_2} R_{2,j})^2}{n_2\sigma^2_\mu + \sigma^2}
+        \right) \right\}
+    \end{split}
+\end{equation}
+\newpage
+\section{Computation of the wind adjacency matrix}
+\label{sec:SIAM}
+The Structurally Informed Adjacency Matrix requires a particular adjacency matrix based on wind direction. In the paper, Kim proposed a couple of ways to calculate the matrix and we decided to use the same one he used in the example at the end of the paper.
+
+Specifically, we consider two municipalities adjacent if their centroids are within a certain angle parameter to the left and
+right of the prevailing wind direction. Following is the algorithm we developed to calculate the wind adjacency matrix.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/vectors.png}
+    \caption{Diagram of the vectors used in the algorithm}
+    \label{fig:vectors}
+\end{figure}
+
+Let $\mathbf{c} = (c_x, c_y)$ be a point on the map, $\mathbf{w} = (w_x, w_y)$ the prevailing wind vector in that point and $\theta$ the angle parameter. We can define two other vectors $\mathbf{u}$ and $\mathbf{v}$ (displayed in \textit{Figure \ref{fig:vectors}}) in this way:
+\begin{align}
+    \mathbf{u} =
+    \begin{pmatrix}
+        \cos{\theta} & -\sin{\theta}\cr
+        \sin{\theta} & \cos{\theta}
+    \end{pmatrix}
+    (-\mathbf{w}) =
+    \begin{pmatrix}
+        -\cos{\theta} & \sin{\theta}\cr
+        -\sin{\theta} & -\cos{\theta}
+    \end{pmatrix}
+    \mathbf{w} =
+    \begin{pmatrix}
+        -w_x\cos{\theta} + w_y\sin{\theta}\cr
+        -w_x\sin{\theta} - w_y\cos{\theta}
+    \end{pmatrix} \\
+    \mathbf{v} =
+    \begin{pmatrix}
+        \cos{(-\theta)} & -\sin{(-\theta)}\cr
+        \sin{(-\theta)} & \cos{(-\theta)}
+    \end{pmatrix}
+    (-\mathbf{w}) =
+    \begin{pmatrix}
+        -\cos{\theta} & -\sin{\theta}\cr
+        \sin{\theta}  & -\cos{\theta}
+    \end{pmatrix}
+    \mathbf{w} =
+    \begin{pmatrix}
+        -w_x\cos{\theta} - w_y\sin{\theta}\cr
+        +w_x\sin{\theta} - w_y\cos{\theta}
+    \end{pmatrix}
+\end{align}
+Note that the matrix $\begin{pmatrix}\cos{\theta} & -\sin{\theta} \cr \sin{\theta} & \cos{\theta}\end{pmatrix}$ is the \textit{transformation matrix} that rotates the points in the plane counterclockwise through an angle of $\theta$ about the origin.
+\\[2mm]
+With these two vectors ($\mathbf{u}$ and $\mathbf{v}$) we can define the points in the shaded area shown in orange in \textit{Figure \ref{fig:vectors}}.
+\\
+A point $\mathbf{d}$ is adjacent to $\mathbf{c}$ (is in the shaded area) if there exist two \textbf{non-negative} real numbers $s$ and $t$ such that:
+\begin{align}
+    \label{eq:shaded_area}
+    \mathbf{d} = \mathbf{c} + s \mathbf{u} + t \mathbf{v}
+\end{align}
+If we define $\mathbf{d'} = \mathbf{d}-\mathbf{c} = (x,y)$, we can rewrite \eqref{eq:shaded_area} as a $2\times 2$ linear system.
+\begin{align}
+    \begin{pmatrix}
+        -w_x\cos{\theta} + w_y\sin{\theta} & -w_x\cos{\theta} - w_y\sin{\theta}\cr
+        -w_x\sin{\theta} - w_y\cos{\theta} & +w_x\sin{\theta} - w_y\cos{\theta}
+    \end{pmatrix}
+    \begin{pmatrix}
+        s \cr
+        t
+    \end{pmatrix}=
+    \begin{pmatrix}
+        x \cr
+        y
+    \end{pmatrix}
+\end{align}
+Notice that as long as $\theta$ is between $0$ and $\pi/2$ both excluded, then $u$ and $v$ are linearly independent and so the system admits a unique solution.
+\begin{align}
+    \label{eq:linear_solution}
+    \begin{pmatrix}
+        s \cr
+        t
+    \end{pmatrix}=
+    \begin{pmatrix}
+        -w_x\cos{\theta} + w_y\sin{\theta} & -w_x\cos{\theta} - w_y\sin{\theta}\cr
+        -w_x\sin{\theta} - w_y\cos{\theta} & +w_x\sin{\theta} - w_y\cos{\theta}
+    \end{pmatrix}^{-1}
+    \begin{pmatrix}
+        x \cr
+        y
+    \end{pmatrix}
+\end{align}
+The matrix is always invertible and so we can expand \eqref{eq:linear_solution} in a more explicit form.
+\begin{align}
+    \begin{pmatrix}
+        s \cr
+        t
+    \end{pmatrix}=
+    \frac{1}{-(w_x^2+w_y^2)\sin{(2\theta)}}
+    \begin{pmatrix}
+        w_x\sin{\theta} - w_y\cos{\theta} & w_x\cos{\theta} + w_y\sin{\theta}\cr
+        w_x\sin{\theta} + w_y\cos{\theta} & w_y\sin{\theta}-w_x\cos{\theta}
+    \end{pmatrix}
+    \begin{pmatrix}
+        x \cr
+        y
+    \end{pmatrix}
+\end{align}
+Finally, we can check if the components of the solution ($s$ and $t$) are all non negative. In that case, $\mathbf{d}$ is in the shaded region and therefore considered adjacent to $\mathbf{c}$, otherwise the two points are not adjacent.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/wind graph.png}
+    \captionsetup{format=hang}
+    \caption{Example: here all the municipalities that are considered adjacent to Cremona are colored in red.}
+    \label{windAdjacency}
+\end{figure}
+\newpage
+\section{AgrImOnIA dataset}
+\subsection{AGC\_Dataset\_v\_3\_0\_0}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \hline
+        \textbf{Column}                 & \textbf{Description}                                            \\
+        \hline
+        Latitude                        & Latitude of the measurement.                                    \\
+        Longitude                       & Longitude of the measurement.                                   \\
+        Time                            & Time of the measurement.                                        \\
+        Altitude                        & Altitude of the measurement.                                    \\
+        WE\_temp\_2m                    & Temperature at 2 meters.                                        \\
+        WE\_wind\_speed\_10m\_mean      & Wind speed at 10 meters.                                        \\
+        WE\_wind\_speed\_10m\_max       & Maximum wind speed at 10 meters.                                \\
+        WE\_mode\_wind\_direction\_10m  & Mode wind direction at 10 meters.                               \\
+        WE\_tot\_precipitation          & Total precipitation.                                            \\
+        WE\_precipitation\_t            & Precipitation type.                                             \\
+        WE\_surface\_pressure           & Surface pressure.                                               \\
+        WE\_solar\_radiation            & Solar radiation.                                                \\
+        WE\_rh\_min                     & Minimum relative humidity.                                      \\
+        WE\_rh\_mean                    & Mean relative humidity.                                         \\
+        WE\_rh\_max                     & Maximum relative humidity.                                      \\
+        WE\_wind\_speed\_100m\_mean     & Wind speed at 100 meters.                                       \\
+        WE\_wind\_speed\_100m\_max      & Maximum wind speed at 100 meters.                               \\
+        WE\_mode\_wind\_direction\_100m & Mode wind direction at 100 meters.                              \\
+        WE\_blh\_layer\_max             & Maximum boundary layer height.                                  \\ %?
+        WE\_blh\_layer\_min             & Minimum boundary layer height.                                  \\ %?
+        EM\_nh3\_livestock\_mm          & Ammonia emissions from livestock.                               \\
+        EM\_nh3\_agr\_soils             & Ammonia emissions from agricultural soils.                      \\
+        EM\_nh3\_agr\_waste\_burn       & Ammonia emissions from agricultural waste burning.              \\
+        EM\_nh3\_sum                    & Total ammonia emissions.                                        \\
+        EM\_nox\_traffic                & Nitrogen oxides emissions from traffic.                         \\
+        EM\_nox\_sum                    & Total nitrogen oxides emissions.                                \\
+        EM\_so2\_sum                    & Total sulfur dioxide emissions.                                 \\
+        LI\_pigs                        & Number of pigs.                                                 \\
+        LI\_bovine                      & Number of bovines.                                              \\
+        LA\_hvi                         & One-half of the total green leaf area for high vegetation type. \\ %?
+        LA\_lvi                         & One-half of the total green leaf area for low vegetation type.  \\ %?
+        LA\_land\_use                   & Land use.                                                       \\
+        \hline
+    \end{tabular}
+    \caption{Columns of the AgrImOnIA dataset (AGC\_Dataset\_v\_3\_0\_0.csv).}
+    \label{tab:agc_dataset}
+\end{table}
+
+\subsection{Agrimonia\_Dataset\_v\_3\_0\_0.csv}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        \hline
+        \textbf{Column}                 & \textbf{Description}                                            \\
+        \hline
+        IDStations                      & Station ID.                                                     \\
+        Latitude                        & Latitude of the station.                                        \\
+        Longitude                       & Longitude of the station.                                       \\
+        Time                            & Time of the measurement.                                        \\
+        Altitude                        & Altitude of the station.                                        \\
+        AQ\_pm10                        & Particulate matter 10.                                          \\
+        AQ\_pm25                        & Particulate matter 2.5.                                         \\
+        AQ\_co                          & Carbon monoxide.                                                \\
+        AQ\_nh3                         & Ammonia.                                                        \\
+        AQ\_nox                         & Nitrogen oxides.                                                \\
+        AQ\_no2                         & Nitrogen dioxide.                                               \\
+        AQ\_so2                         & Sulfur dioxide.                                                 \\
+        WE\_temp\_2m                    & Temperature at 2 meters.                                        \\
+        WE\_wind\_speed\_10m\_mean      & Wind speed at 10 meters.                                        \\
+        WE\_wind\_speed\_10m\_max       & Maximum wind speed at 10 meters.                                \\
+        WE\_mode\_wind\_direction\_10m  & Mode wind direction at 10 meters.                               \\
+        WE\_tot\_precipitation          & Total precipitation.                                            \\
+        WE\_precipitation\_t            & Precipitation type.                                             \\
+        WE\_surface\_pressure           & Surface pressure.                                               \\
+        WE\_solar\_radiation            & Solar radiation.                                                \\
+        WE\_rh\_min                     & Minimum relative humidity.                                      \\
+        WE\_rh\_mean                    & Mean relative humidity.                                         \\
+        WE\_rh\_max                     & Maximum relative humidity.                                      \\
+        WE\_wind\_speed\_100m\_mean     & Wind speed at 100 meters.                                       \\
+        WE\_wind\_speed\_100m\_max      & Maximum wind speed at 100 meters.                               \\
+        WE\_mode\_wind\_direction\_100m & Mode wind direction at 100 meters.                              \\
+        WE\_blh\_layer\_max             & Maximum boundary layer height.                                  \\ %?
+        WE\_blh\_layer\_min             & Minimum boundary layer height.                                  \\ %?
+        EM\_nh3\_livestock\_mm          & Ammonia emissions from livestock.                               \\
+        EM\_nh3\_agr\_soils             & Ammonia emissions from agricultural soils.                      \\
+        EM\_nh3\_agr\_waste\_burn       & Ammonia emissions from agricultural waste burning.              \\
+        EM\_nh3\_sum                    & Total ammonia emissions.                                        \\
+        EM\_nox\_traffic                & Nitrogen oxides emissions from traffic.                         \\
+        EM\_nox\_sum                    & Total nitrogen oxides emissions.                                \\
+        EM\_so2\_sum                    & Total sulfur dioxide emissions.                                 \\
+        LI\_pigs                        & Number of pigs.                                                 \\
+        LI\_bovine                      & Number of bovines.                                              \\
+        LI\_pigs\_v2                    & Number of pigs.                                                 \\
+        LI\_bovine\_v2                  & Number of bovines.                                              \\
+        LA\_hvi                         & One-half of the total green leaf area for high vegetation type. \\ %?
+        LA\_lvi                         & One-half of the total green leaf area for low vegetation type.  \\ %?
+        LA\_land\_use                   & Land use.                                                       \\
+        LA\_soil\_use                   & Soil use.                                                       \\
+        \hline
+    \end{tabular}
+    \caption{Columns of the AgrImOnIA dataset (Agrimonia\_Dataset\_v\_3\_0\_0.csv).}
+    \label{tab:agrimonia_dataset}
+\end{table}
+
+%-------------------------------------------------------------------------
+%	END OF YOUR DOCUMENT
+%-------------------------------------------------------------------------
+\end{document}

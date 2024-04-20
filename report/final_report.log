@@ -1,0 +1,1954 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.11.16)  20 APR 2024 10:41
+entering extended mode
+ \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex"
+(c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex
+LaTeX2e <2023-11-01>
+L3 programming layer <2023-11-09>
+(c:/texlive/2023/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(c:/texlive/2023/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (c:/texlive/2023/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2023/10/27 v2.16 Sectioning titles
+\ttl@box=\box51
+\beforetitleunit=\skip50
+\aftertitleunit=\skip51
+\ttl@plus=\dimen141
+\ttl@minus=\dimen142
+\ttl@toksa=\toks17
+\titlewidth=\dimen143
+\titlewidthlast=\dimen144
+\titlewidthfirst=\dimen145
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (c:/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+) (c:/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2023/11/11 v3.97 The Babel package
+\babel@savecnt=\count194
+\U@D=\dimen146
+\l@unhyphenated=\language89
+ (c:/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count195
+ (c:/texlive/2023/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language23). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language23). Reported on input line 108.
+)) (c:/texlive/2023/texmf-dist/tex/generic/babel/locale/en/babel-english.tex
+Package babel Info: Importing font and identification data for english
+(babel)             from babel-en.ini. Reported on input line 11.
+) (c:/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
+) (c:/texlive/2023/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen149
+\ESO@tempdimb=\dimen150
+) (c:/texlive/2023/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+ (c:/texlive/2023/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (c:/texlive/2023/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen151
+\captionmargin=\dimen152
+\caption@leftmargin=\dimen153
+\caption@rightmargin=\dimen154
+\caption@width=\dimen155
+\caption@indent=\dimen156
+\caption@parindent=\dimen157
+\caption@hangindent=\dimen158
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count196
+\c@continuedfloat=\count197
+)
+\c@KVtest=\count198
+\sf@farskip=\skip52
+\sf@captopadj=\dimen159
+\sf@capskip=\skip53
+\sf@nearskip=\skip54
+\c@subfigure=\count199
+\c@subfigure@save=\count266
+\c@lofdepth=\count267
+\c@subtable=\count268
+\c@subtable@save=\count269
+\c@lotdepth=\count270
+\sf@top=\skip55
+\sf@bottom=\skip56
+) (c:/texlive/2023/texmf-dist/tex/latex/transparent/transparent.sty
+Package: transparent 2022-10-27 v1.5 Transparency with color stacks
+ (c:/texlive/2023/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
+Package: transparent-nometadata 2022-10-27 v1.5 Transparency via pdfTeX's color stack (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+) (c:/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+))) (c:/texlive/2023/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+LaTeX Info: Redefining \subref on input line 189.
+Package subcaption Info: The counter `subfigure' was already defined by
+(subcaption)             \newsubfloat (offered by the subfig package) on input line 238.
+Package subcaption Info: The counter `subtable' was already defined by
+(subcaption)             \newsubfloat (offered by the subfig package) on input line 238.
+) (c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip57
+\subfigcapskip=\skip58
+\subfigcaptopadj=\dimen160
+\subfigbottomskip=\skip59
+\subfigcapmargin=\dimen161
+\subfiglabelskip=\skip60
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:113: LaTeX Error: Command \c@subfigure already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.113 \newcounter{subfigure}
+                            [figure]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:123: LaTeX Error: Command \l@subfigure already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.123 ...xxxline{\ext@subfigure}{2}{3.8em}{2.5em}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:124: LaTeX Error: Command \c@lofdepth already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.124 \newcounter{lofdepth}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:126: LaTeX Error: Command \c@subtable already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.126 \newcounter{subtable}
+                           [table]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:136: LaTeX Error: Command \l@subtable already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.136 ...dxxxline{\ext@subtable}{2}{3.8em}{2.5em}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:137: LaTeX Error: Command \c@lotdepth already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 \newcounter{lotdepth}
+                           
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip61
+\subfig@bottom=\skip62
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:294: LaTeX Error: Command \listsubcaptions already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.294     {\@listsubcaptions{\@captype}}}
+                                         
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:305: LaTeX Error: Command \@listsubcaptions already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.305   \gdef\@subfigcaptionlist{}}
+                                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:358: LaTeX Error: Command \@dottedxxxline already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.358   \fi}
+            
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:386: LaTeX Error: Command \subfloat@label already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.386 ...           \@nameuse{thesub\@captype}.)}}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:411: LaTeX Error: Command \sf@@sub@label already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.411   \@esphack}
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+c:/texlive/2023/texmf-dist/tex/latex/subfigure/subfigure.sty:413: LaTeX Error: Command \subref already defined.
+               Or name \end... illegal, see p.192 of the manual.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.413   \ref{sub@#1}}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip63
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2023/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen162
+)) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen163
+) (c:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count271
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count272
+\leftroot@=\count273
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count274
+\DOTSCASE@=\count275
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box52
+\strutbox@=\box53
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen164
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count276
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count277
+\dotsspace@=\muskip16
+\c@parentequation=\count278
+\dspbrk@lvl=\count279
+\tag@help=\toks22
+\row@=\count280
+\column@=\count281
+\maxfields@=\count282
+\andhelp@=\toks23
+\eqnshift@=\dimen165
+\alignsep@=\dimen166
+\tagshift@=\dimen167
+\tagwidth@=\dimen168
+\totwidth@=\dimen169
+\lineht@=\dimen170
+\@envbody=\toks24
+\multlinegap=\skip64
+\multlinetaggap=\skip65
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/texlive/2023/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks26
+\thm@bodyfont=\toks27
+\thm@headfont=\toks28
+\thm@notefont=\toks29
+\thm@headpunct=\toks30
+\thm@preskip=\skip66
+\thm@postskip=\skip67
+\thm@headsep=\skip68
+\dth@everypar=\toks31
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+) (c:/texlive/2023/texmf-dist/tex/latex/mathtools/empheq.sty
+Package: empheq 2017/03/31 v2.15 Emphasizing equations
+ (c:/texlive/2023/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+) (c:/texlive/2023/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
+ (c:/texlive/2023/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count283
+\calc@Bcount=\count284
+\calc@Adimen=\dimen171
+\calc@Bdimen=\dimen172
+\calc@Askip=\skip69
+\calc@Bskip=\skip70
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count285
+\calc@Cskip=\skip71
+)
+\g_MT_multlinerow_int=\count286
+\l_MT_multwidth_dim=\dimen173
+\origjot=\skip72
+\l_MT_shortvdotswithinadjustabove_dim=\dimen174
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen175
+\l_MT_above_intertext_sep=\dimen176
+\l_MT_below_intertext_sep=\dimen177
+\l_MT_above_shortintertext_sep=\dimen178
+\l_MT_below_shortintertext_sep=\dimen179
+\xmathstrut@box=\box54
+\xmathstrut@dim=\dimen180
+)
+\l_EQ_equationtype_int=\count287
+\l_EQ_alignmentmode_int=\count288
+\l_EQ_totalwidth_dim=\dimen181
+\l_EQ_displaywidth_dim=\dimen182
+\l_EQ_temp_linewidth_dim=\dimen183
+\l_EQ_linewidth_dim=\dimen184
+\EmphEqdelimitershortfall=\dimen185
+\EmphEqdelimiterfactor=\count289
+\g_EQ_toptag_height_dim=\dimen186
+\g_EQ_bottomtag_depth_dim=\dimen187
+\g_EQ_toprow_height_dim=\dimen188
+\g_EQ_bottomrow_depth_dim=\dimen189
+\g_EQ_widesttag_dim=\dimen190
+\EQ_mathdisplay_box=\box55
+\EQ_tag_box=\box56
+\g_EQ_temprow_int=\count290
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
+ (c:/texlive/2023/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen191
+\ar@mcellbox=\box57
+\extrarowheight=\dimen192
+\NC@list=\toks32
+\extratabsurround=\skip73
+\backup@length=\skip74
+\ar@cellbox=\box58
+)
+\TX@col@width=\dimen193
+\TX@old@table=\dimen194
+\TX@old@col=\dimen195
+\TX@target=\dimen196
+\TX@delta=\dimen197
+\TX@cols=\count291
+\TX@ftn=\toks33
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
+\LTleft=\skip75
+\LTright=\skip76
+\LTpre=\skip77
+\LTpost=\skip78
+\LTchunksize=\count292
+\LTcapwidth=\dimen198
+\LT@head=\box59
+\LT@firsthead=\box60
+\LT@foot=\box61
+\LT@lastfoot=\box62
+\LT@gbox=\box63
+\LT@cols=\count293
+\LT@rows=\count294
+\c@LT@tables=\count295
+\c@LT@chunks=\count296
+\LT@p@ftn=\toks34
+) (c:/texlive/2023/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks35
+\minrowclearance=\skip79
+\rownum=\count297
+) (c:/texlive/2023/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (c:/texlive/2023/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count298
+\float@exts=\toks36
+\float@box=\box64
+\@float@everytoks=\toks37
+\@floatcapt=\box65
+) (c:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks38
+\c@algorithm=\count299
+) (c:/texlive/2023/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count300
+\c@ALC@line=\count301
+\c@ALC@rem=\count302
+\c@ALC@depth=\count303
+\ALC@tlm=\skip80
+\algorithmicindent=\skip81
+) (c:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2023-11-09 v7.01f Hypertext links for LaTeX
+ (c:/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (c:/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (c:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (c:/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (c:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (c:/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (c:/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (c:/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-09 v2.55 Cross-referencing by name of section
+ (c:/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (c:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (c:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count304
+) (c:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count305
+)
+\@linkdim=\dimen199
+\Hy@linkcounter=\count306
+\Hy@pagecounter=\count307
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2023-11-09 v7.01f Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (c:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count308
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2023-11-09 v7.01f Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4054.
+Package hyperref Info: Hyper figures OFF on input line 4171.
+Package hyperref Info: Link nesting OFF on input line 4176.
+Package hyperref Info: Hyper index ON on input line 4179.
+Package hyperref Info: Plain pages OFF on input line 4186.
+Package hyperref Info: Backreferencing OFF on input line 4191.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4438.
+\c@Hy@tempcnt=\count309
+ (c:/texlive/2023/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4776.
+\XeTeXLinkMargin=\dimen256
+ (c:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count310
+\Field@Width=\dimen257
+\Fld@charsize=\dimen258
+Package hyperref Info: Hyper figures OFF on input line 6055.
+Package hyperref Info: Link nesting OFF on input line 6060.
+Package hyperref Info: Hyper index ON on input line 6063.
+Package hyperref Info: backreferencing OFF on input line 6070.
+Package hyperref Info: Link coloring ON on input line 6073.
+Package hyperref Info: Link coloring with OCG OFF on input line 6080.
+Package hyperref Info: PDF/A mode OFF on input line 6085.
+ (c:/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count311
+\c@Item=\count312
+\c@Hfootnote=\count313
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (c:/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2023-11-09 v7.01f Hyperref driver for pdfTeX
+ (c:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count314
+\c@bookmark@seq@number=\count315
+ (c:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (c:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip82
+) (c:/texlive/2023/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: `amsthm' support loaded on input line 3026.
+Package cleveref Info: `subfig' support loaded on input line 3164.
+) (c:/texlive/2023/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip83
+\bibsep=\skip84
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count316
+) (c:/texlive/2023/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count317
+\c@@ppsavesec=\count318
+\c@@ppsaveapp=\count319
+) (c:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip85
+\enit@outerparindent=\dimen259
+\enit@toks=\toks39
+\enit@inbox=\box66
+\enit@count@id=\count320
+\enitdp@description=\count321
+) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thmtools.sty
+Package: thmtools 2023/05/04 v0.76
+\thmt@toks=\toks40
+\c@thmt@dummyctr=\count322
+ (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-patch.sty
+Package: thm-patch 2023/05/04 v0.76
+ (c:/texlive/2023/texmf-dist/tex/latex/thmtools/parseargs.sty
+Package: parseargs 2023/05/04 v0.76
+\@parsespec=\toks41
+)) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-kv.sty
+Package: thm-kv 2023/05/04 v0.76
+Package thm-kv Info: Theorem names will be uppercased on input line 42.
+Package thm-kv Info: kvsetkeys patch (v1.16 or later) on input line 158.
+) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-autoref.sty
+Package: thm-autoref 2023/05/04 v0.76
+ (c:/texlive/2023/texmf-dist/tex/latex/thmtools/aliasctr.sty
+Package: aliasctr 2023/05/04 v0.76
+)) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-listof.sty
+Package: thm-listof 2023/05/04 v0.76
+) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-restate.sty
+Package: thm-restate 2023/05/04 v0.76
+) (c:/texlive/2023/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
+Package: thm-amsthm 2023/05/04 v0.76
+\thmt@style@headstyle=\toks42
+)) (c:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+LaTeX Info: Redefining \color on input line 758.
+ (c:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (c:/texlive/2023/texmf-dist/tex/latex/comment/comment.sty
+\CommentStream=\write3
+ Excluding comment 'comment') (c:/texlive/2023/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+\f@nch@headwidth=\skip86
+\f@nch@O@elh=\skip87
+\f@nch@O@erh=\skip88
+\f@nch@O@olh=\skip89
+\f@nch@O@orh=\skip90
+\f@nch@O@elf=\skip91
+\f@nch@O@erf=\skip92
+\f@nch@O@olf=\skip93
+\f@nch@O@orf=\skip94
+) (c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (c:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-11-09 L3 programming layer (loader) 
+ (c:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-11-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count323
+\l__pdf_internal_box=\box67
+))
+Package: l3keys2e 2023-10-10 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count324
+\l__lipsum_a_int=\count325
+\l__lipsum_b_int=\count326
+ (c:/texlive/2023/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (c:/texlive/2023/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2023/09/26 version 6.1.0 text color boxes
+ (c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks43
+\pgfutil@tempdima=\dimen260
+\pgfutil@tempdimb=\dimen261
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box68
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (c:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks44
+\pgfkeys@temptoks=\toks45
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks46
+))
+\pgf@x=\dimen262
+\pgf@y=\dimen263
+\pgf@xa=\dimen264
+\pgf@ya=\dimen265
+\pgf@xb=\dimen266
+\pgf@yb=\dimen267
+\pgf@xc=\dimen268
+\pgf@yc=\dimen269
+\pgf@xd=\dimen270
+\pgf@yd=\dimen271
+\w@pgf@writea=\write4
+\r@pgf@reada=\read3
+\c@pgf@counta=\count327
+\c@pgf@countb=\count328
+\c@pgf@countc=\count329
+\c@pgf@countd=\count330
+\t@pgf@toka=\toks47
+\t@pgf@tokb=\toks48
+\t@pgf@tokc=\toks49
+\pgf@sys@id@count=\count331
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count332
+\pgfsyssoftpath@bigbuffer@items=\count333
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen272
+\pgfmath@count=\count334
+\pgfmath@box=\box69
+\pgfmath@toks=\toks50
+\pgfmath@stack@operand=\toks51
+\pgfmath@stack@operation=\toks52
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count335
+)) (c:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen273
+\pgf@picmaxx=\dimen274
+\pgf@picminy=\dimen275
+\pgf@picmaxy=\dimen276
+\pgf@pathminx=\dimen277
+\pgf@pathmaxx=\dimen278
+\pgf@pathminy=\dimen279
+\pgf@pathmaxy=\dimen280
+\pgf@xx=\dimen281
+\pgf@xy=\dimen282
+\pgf@yx=\dimen283
+\pgf@yy=\dimen284
+\pgf@zx=\dimen285
+\pgf@zy=\dimen286
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen287
+\pgf@path@lasty=\dimen288
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen289
+\pgf@shorten@start@additional=\dimen290
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box70
+\pgf@hbox=\box71
+\pgf@layerbox@main=\box72
+\pgf@picture@serial@count=\count336
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen291
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen292
+\pgf@pt@y=\dimen293
+\pgf@pt@temp=\dimen294
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen295
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen296
+\pgf@sys@shading@range@num=\count337
+\pgf@shadingcount=\count338
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box73
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box74
+) (c:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen297
+\pgf@nodesepend=\dimen298
+) (c:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (c:/texlive/2023/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks53
+\verbatim@line=\toks54
+\verbatim@in@stream=\read4
+) (c:/texlive/2023/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (c:/texlive/2023/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box75
+\tcb@upperbox=\box76
+\tcb@lowerbox=\box77
+\tcb@phantombox=\box78
+\c@tcbbreakpart=\count339
+\c@tcblayer=\count340
+\c@tcolorbox@number=\count341
+\tcb@temp=\box79
+\tcb@temp=\box80
+\tcb@temp=\box81
+\tcb@temp=\box82
+) (./config_files_report/config.tex (c:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (c:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count342
+\Gm@cntv=\count343
+\c@Gm@tempcnt=\count344
+\Gm@bindingoffset=\dimen299
+\Gm@wd@mp=\dimen300
+\Gm@odd@mp=\dimen301
+\Gm@even@mp=\dimen302
+\Gm@layoutwidth=\dimen303
+\Gm@layoutheight=\dimen304
+\Gm@layouthoffset=\dimen305
+\Gm@layoutvoffset=\dimen306
+\Gm@dimlist=\toks55
+)
+\c@theorem=\count345
+\c@proposition=\count346
+\c@algsubstate=\count347
+)
+No file final_report.aux.
+\openout1 = `final_report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+(c:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count348
+\scratchdimen=\dimen307
+\scratchbox=\box83
+\nofMPsegments=\count349
+\nofMParguments=\count350
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count351
+\MPscratchDim=\dimen308
+\MPnumerator=\count352
+\makeMPintoPDFobject=\count353
+\everyMPtoPDFconversion=\toks57
+) (c:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+ (c:/texlive/2023/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: subfigure package is loaded.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \[ on input line 126.
+LaTeX Info: Redefining \] on input line 126.
+Package hyperref Info: Link coloring ON on input line 126.
+\@outlinefile=\write5
+\openout5 = `final_report.out'.
+
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(./config_files_report/title_page.tex
+Package epstopdf Info: Source file: <images/logo_polimi_ing_indinf.eps>
+(epstopdf)                    date: 2024-04-20 10:28:49
+(epstopdf)                    size: 1016894 bytes
+(epstopdf)             Output file: <images/logo_polimi_ing_indinf-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-20 10:37:14
+(epstopdf)                    size: 81959 bytes
+(epstopdf)             Command: <epstopdf --outfile=images/logo_polimi_ing_indinf-eps-converted-to.pdf images/logo_polimi_ing_indinf.eps>
+(epstopdf)             \includegraphics on input line 5.
+Package epstopdf Info: Output file is already uptodate.
+<images/logo_polimi_ing_indinf-eps-converted-to.pdf, id=7, 493.845pt x 227.85126pt>
+File: images/logo_polimi_ing_indinf-eps-converted-to.pdf Graphic file (type pdf)
+<use images/logo_polimi_ing_indinf-eps-converted-to.pdf>
+Package pdftex.def Info: images/logo_polimi_ing_indinf-eps-converted-to.pdf  used on input line 5.
+(pdftex.def)             Requested size: 290.22107pt x 133.9026pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <8.5359> not available
+(Font)              size <9> substituted on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/n' in size <8.5359> not available
+(Font)              size <9> substituted on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmr/bx/sc' in size <8.5359> not available
+(Font)              size <9> substituted on input line 11.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--32
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
+(c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 32.
+ (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+Package epstopdf Info: Source file: <images/raggiera_polimi.eps>
+(epstopdf)                    date: 2024-04-20 10:28:49
+(epstopdf)                    size: 1813066 bytes
+(epstopdf)             Output file: <images/raggiera_polimi-eps-converted-to.pdf>
+(epstopdf)                    date: 2024-04-20 10:37:16
+(epstopdf)                    size: 40512 bytes
+(epstopdf)             Command: <epstopdf --outfile=images/raggiera_polimi-eps-converted-to.pdf images/raggiera_polimi.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
+<images/raggiera_polimi-eps-converted-to.pdf, id=8, 502.87875pt x 502.87875pt>
+File: images/raggiera_polimi-eps-converted-to.pdf Graphic file (type pdf)
+<use images/raggiera_polimi-eps-converted-to.pdf>
+Package pdftex.def Info: images/raggiera_polimi-eps-converted-to.pdf  used on input line 134.
+(pdftex.def)             Requested size: 262.90492pt x 262.90266pt.
+ [1
+
+{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./images/raggiera_polimi-eps-converted-to.pdf> <./images/logo_polimi_ing_indinf-eps-converted-to.pdf>]
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:135: Undefined control sequence.
+<argument> \undefinedpagestyle 
+                               
+l.135 \blankpage
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Package hyperref Info: Option `pageanchor' set `false' on input line 135.
+[2
+
+]
+No file final_report.toc.
+\tf@toc=\write6
+\openout6 = `final_report.toc'.
+
+[3
+
+]
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:142: Undefined control sequence.
+<argument> \undefinedpagestyle 
+                               
+l.142 \blankpage
+                
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Package hyperref Info: Option `pageanchor' set `false' on input line 142.
+[4
+
+]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 156.
+ (c:/texlive/2023/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+
+Package natbib Warning: Citation `Chipman_2010' on page 5 undefined on input line 160.
+
+
+Package natbib Warning: Citation `Chipman_2010' on page 5 undefined on input line 179.
+
+[5
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 187.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 187.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 187.
+
+
+Package natbib Warning: Citation `Chipman_2010' on page 6 undefined on input line 192.
+
+[6]
+
+Package natbib Warning: Citation `Muller_2007' on page 7 undefined on input line 226.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 7 undefined on input line 240.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 7 undefined on input line 244.
+
+
+LaTeX Warning: Reference `sec:SIAM' on page 7 undefined on input line 250.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 7 undefined on input line 251.
+
+
+LaTeX Warning: Reference `sec:TreeMarginal' on page 7 undefined on input line 262.
+
+[7]
+
+LaTeX Warning: Reference `tab:agc_dataset' on page 8 undefined on input line 279.
+
+
+LaTeX Warning: Reference `fig:agrimonia_grid' on page 8 undefined on input line 279.
+
+
+LaTeX Warning: File `images/covariates_grid.png' not found on input line 284.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:284: Package pdftex.def Error: File `images/covariates_grid.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.284 ...71\linewidth]{images/covariates_grid.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/output_stations.png' not found on input line 290.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:290: Package pdftex.def Error: File `images/output_stations.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.290 ...81\linewidth]{images/output_stations.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (2.42162pt too wide) in paragraph at lines 282--295
+[]$[]$ $[]$ 
+ []
+
+
+LaTeX Warning: Reference `tab:agrimonia_dataset' on page 8 undefined on input line 309.
+
+
+LaTeX Warning: Reference `fig:agrimonia_stations' on page 8 undefined on input line 309.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 318.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 318.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 318.
+
+
+LaTeX Warning: Reference `fig:pm25_series' on page 8 undefined on input line 322.
+
+
+LaTeX Warning: File `images/pm25_time.png' not found on input line 326.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:326: Package pdftex.def Error: File `images/pm25_time.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.326 ...idth=0.8\textwidth]{images/pm25_time.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[8]
+
+LaTeX Warning: Reference `fig:pm25_missing' on page 9 undefined on input line 333.
+
+
+LaTeX Warning: File `images/Nan_per_day.png' not found on input line 337.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:337: Package pdftex.def Error: File `images/Nan_per_day.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.337 ...th=0.8\textwidth]{images/Nan_per_day.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[9]
+
+LaTeX Warning: Reference `sec:second_approach' on page 10 undefined on input line 359.
+
+[10]
+
+LaTeX Warning: Reference `fig:interp_ex' on page 11 undefined on input line 368.
+
+
+LaTeX Warning: File `./images/interpolation_example.png' not found on input line 372.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:372: Package pdftex.def Error: File `./images/interpolation_example.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.372 ...idth]{./images/interpolation_example.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `fig:interp_ex' on page 11 undefined on input line 379.
+
+
+LaTeX Warning: Reference `fig:interp_ex' on page 11 undefined on input line 381.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 11 undefined on input line 390.
+
+
+LaTeX Warning: Reference `FirstApproach2018' on page 11 undefined on input line 398.
+
+[11]
+
+LaTeX Warning: File `images/First_approach_2018.png' not found on input line 404.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:404: Package pdftex.def Error: File `images/First_approach_2018.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.404 ...inewidth]{images/First_approach_2018.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/Covariates_first_approach.jpeg' not found on input line 411.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:411: Package pdftex.def Error: File `images/Covariates_first_approach.jpeg' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.411 ...h]{images/Covariates_first_approach.jpeg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `fig:Covariates_first_approach2018' on page 12 undefined on input line 425.
+
+
+LaTeX Warning: Reference `sec:AGRIMONIA' on page 12 undefined on input line 425.
+
+
+LaTeX Warning: Reference `fig:example_method_2' on page 12 undefined on input line 450.
+
+
+LaTeX Warning: File `images/interpolation_method_2.png' not found on input line 454.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:454: Package pdftex.def Error: File `images/interpolation_method_2.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.454 ...width]{images/interpolation_method_2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[12]
+
+LaTeX Warning: Reference `sec:data_preprocessing' on page 13 undefined on input line 462.
+
+
+LaTeX Warning: Reference `fig:lombary_method_2' on page 13 undefined on input line 463.
+
+
+LaTeX Warning: File `images/new_lombardy.jpeg' not found on input line 467.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:467: Package pdftex.def Error: File `images/new_lombardy.jpeg' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.467 ....45\textwidth]{images/new_lombardy.jpeg}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/Second_approach_Lombardy_complete.png' not found on input line 469.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:469: Package pdftex.def Error: File `images/Second_approach_Lombardy_complete.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.469 ...s/Second_approach_Lombardy_complete.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[13]
+
+LaTeX Warning: Reference `Second_Approach_Data_prep' on page 14 undefined on input line 482.
+
+
+LaTeX Warning: Reference `SecondApproach2018' on page 14 undefined on input line 485.
+
+
+LaTeX Warning: File `images/2018_full_year_model_30wind_10m_0_map_da.png' not found on input line 490.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:490: Package pdftex.def Error: File `images/2018_full_year_model_30wind_10m_0_map_da.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.490 ..._full_year_model_30wind_10m_0_map_da.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/Covariate _2018_full_year_model_30wind_10m_0_da.png' not found on input line 497.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:497: Package pdftex.def Error: File `images/Covariate _2018_full_year_model_30wind_10m_0_da.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.497 ...2018_full_year_model_30wind_10m_0_da.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `Covariate_Second_Approach2018' on page 14 undefined on input line 504.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--505
+
+ []
+
+
+LaTeX Warning: Reference `subsec:pm25' on page 14 undefined on input line 511.
+
+
+LaTeX Warning: File `images/2018_high_season_year_model_30wind_10m_0_map_da.png' not found on input line 516.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:516: Package pdftex.def Error: File `images/2018_high_season_year_model_30wind_10m_0_map_da.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.516 ...ason_year_model_30wind_10m_0_map_da.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/2018_low_season_model_30wind_10m_0_da_map.png' not found on input line 520.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:520: Package pdftex.def Error: File `images/2018_low_season_model_30wind_10m_0_da_map.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.520 ...ow_season_model_30wind_10m_0_da_map.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `images/covariates_inclusion_high_season_2018.png' not found on input line 529.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:529: Package pdftex.def Error: File `images/covariates_inclusion_high_season_2018.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.529     }
+           
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/Cov_2018_low_season_model_30wind_10m_0_da_map.png' not found on input line 531.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:531: Package pdftex.def Error: File `images/Cov_2018_low_season_model_30wind_10m_0_da_map.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.531 ...ow_season_model_30wind_10m_0_da_map.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[14{c:/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+LaTeX Warning: Reference `fig: Covariates_subfigures' on page 15 undefined on input line 536.
+
+
+Overfull \hbox (27.0518pt too wide) in paragraph at lines 536--538
+\T1/cmr/m/n/10 tial vari-ables de-pend on $\OML/cmm/m/it/10 NH[]$\T1/cmr/m/n/10 , also both of them are highly in-flu-enced by the co-vari-ate "WE_wind_speed_10m_max". 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 536--538
+
+ []
+
+
+LaTeX Warning: File `images/2018_low_season_model_30wind_100m_0_da_map.png' not found on input line 611.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:611: Package pdftex.def Error: File `images/2018_low_season_model_30wind_100m_0_da_map.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.611 ...w_season_model_30wind_100m_0_da_map.png}}
+                                                   %Model is still running
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/2018_low_season_model_30wind_10m_0_da_map.png' not found on input line 615.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:615: Package pdftex.def Error: File `images/2018_low_season_model_30wind_10m_0_da_map.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.615 ...ow_season_model_30wind_10m_0_da_map.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[15]
+
+LaTeX Warning: File `images/Cov_2018_low_season_model_30wind_100m_0_da.png' not found on input line 622.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:622: Package pdftex.def Error: File `images/Cov_2018_low_season_model_30wind_100m_0_da.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.622 ...8_low_season_model_30wind_100m_0_da.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/Cov_2018_low_season_model_30wind_10m_0_da_map.png' not found on input line 624.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:624: Package pdftex.def Error: File `images/Cov_2018_low_season_model_30wind_10m_0_da_map.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.624 ...ow_season_model_30wind_10m_0_da_map.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/2018_without_Milan.png' not found on input line 642.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:642: Package pdftex.def Error: File `images/2018_without_Milan.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.642 ...extwidth]{images/2018_without_Milan.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/2018_full_year_model_30wind_10m_0_map_da.png' not found on input line 644.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:644: Package pdftex.def Error: File `images/2018_full_year_model_30wind_10m_0_map_da.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.644 ...full_year_model_30wind_10m_0_map_da.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: File `images/pigs_and_bovines.png' not found on input line 651.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:651: Package pdftex.def Error: File `images/pigs_and_bovines.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.651 ...1\linewidth]{images/pigs_and_bovines.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[16]
+Overfull \vbox (59.31857pt too high) has occurred while \output is active []
+
+ [17]
+
+LaTeX Warning: File `images/traceplot_for_first_missing_location.png' not found on input line 662.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:662: Package pdftex.def Error: File `images/traceplot_for_first_missing_location.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.662 ...raceplot_for_first_missing_location.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/posterior_density_plot.png' not found on input line 664.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:664: Package pdftex.def Error: File `images/posterior_density_plot.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.664 ...idth]{images/posterior_density_plot.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/covariate_selection_with_shallow_trees.png' not found on input line 674.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:674: Package pdftex.def Error: File `images/covariate_selection_with_shallow_trees.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.674 ...ariate_selection_with_shallow_trees.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/covariate_selection_with_deeper_trees.png' not found on input line 676.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:676: Package pdftex.def Error: File `images/covariate_selection_with_deeper_trees.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.676 ...variate_selection_with_deeper_trees.png}}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 18 undefined on input line 711.
+
+
+Package natbib Warning: Citation `Kim_2022' on page 18 undefined on input line 711.
+
+[18]
+
+LaTeX Warning: Reference `fig:relief_map' on page 19 undefined on input line 717.
+
+
+LaTeX Warning: Reference `fig:systems_lombardy' on page 19 undefined on input line 717.
+
+
+LaTeX Warning: File `images/relief_lombardy.png' not found on input line 722.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:722: Package pdftex.def Error: File `images/relief_lombardy.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.722 ....7\linewidth]{images/relief_lombardy.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/systems_lombardy.jpg' not found on input line 730.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:730: Package pdftex.def Error: File `images/systems_lombardy.jpg' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.730 ...5\linewidth]{images/systems_lombardy.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Package natbib Warning: Citation `inproceedings' on page 19 undefined on input line 732.
+
+
+Package natbib Warning: Citation `inproceedings' on page 19 undefined on input line 732.
+
+
+LaTeX Warning: Reference `fig:polluted_cities' on page 19 undefined on input line 737.
+
+
+LaTeX Warning: Reference `fig:covariate_selection_all' on page 19 undefined on input line 741.
+
+
+LaTeX Warning: File `images/political_map_2018.png' not found on input line 746.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:746: Package pdftex.def Error: File `images/political_map_2018.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.746 ...linewidth]{images/political_map_2018.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `images/covariates_selection_all.png' not found on input line 754.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:754: Package pdftex.def Error: File `images/covariates_selection_all.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.754 ...dth]{images/covariates_selection_all.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 756--756
+\T1/cmr/m/n/10.95 pre-dict-ing $\OML/cmm/m/it/10.95 PM[]$ \T1/cmr/m/n/10.95 con-cen-tra-tions
+ []
+
+[19]
+
+LaTeX Warning: Reference `fig:agri_paper' on page 20 undefined on input line 772.
+
+
+Package natbib Warning: Citation `TI2022131507' on page 20 undefined on input line 772.
+
+
+Package natbib Warning: Citation `ERISMAN20083209' on page 20 undefined on input line 772.
+
+
+LaTeX Warning: File `images/contribution_agri_paper.png' not found on input line 776.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:776: Package pdftex.def Error: File `images/contribution_agri_paper.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.776 ...idth]{images/contribution_agri_paper.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Package natbib Warning: Citation `ERISMAN20083209' on page 20 undefined on input line 777.
+
+
+Package natbib Warning: Citation `ERISMAN20083209' on page 20 undefined on input line 777.
+
+
+Package natbib Warning: Citation `RYU2019253' on page 20 undefined on input line 781.
+
+
+Package natbib Warning: Citation `liu2020analysis' on page 20 undefined on input line 781.
+
+[20] [21] (./final_report.bbl) [22]
+
+Package natbib Warning: Citation `Tan_2019' on page 23 undefined on input line 873.
+
+
+Package natbib Warning: Citation `bartmachine_2014' on page 23 undefined on input line 873.
+
+
+LaTeX Warning: Reference `eq:tree_posterior_gibbs' on page 23 undefined on input line 880.
+
+
+LaTeX Warning: Reference `eq:posterio_bayes_rule' on page 23 undefined on input line 897.
+
+
+LaTeX Warning: Reference `eq:accept_ratio_general' on page 23 undefined on input line 897.
+
+
+LaTeX Warning: Reference `eq:accept_ratio_semantic' on page 23 undefined on input line 897.
+
+
+LaTeX Warning: Reference `eq:BART_model' on page 23 undefined on input line 935.
+
+
+Package natbib Warning: Citation `Chipman_2010' on page 23 undefined on input line 941.
+
+[23] [24]
+
+LaTeX Warning: Reference `eq:GROW_transition' on page 25 undefined on input line 1007.
+
+
+LaTeX Warning: Reference `eq:grow_likelihood_ratio' on page 25 undefined on input line 1019.
+
+[25] [26]
+
+LaTeX Warning: File `images/vectors.png' not found on input line 1116.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:1116: Package pdftex.def Error: File `images/vectors.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1116 ...width=0.4\textwidth]{images/vectors.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Reference `fig:vectors' on page 27 undefined on input line 1121.
+
+
+LaTeX Warning: Reference `fig:vectors' on page 27 undefined on input line 1156.
+
+
+LaTeX Warning: Reference `eq:shaded_area' on page 27 undefined on input line 1163.
+
+
+LaTeX Warning: Reference `eq:linear_solution' on page 27 undefined on input line 1194.
+
+
+LaTeX Warning: File `images/wind graph.png' not found on input line 1213.
+
+
+c:/Users/camil/OneDrive/Escritorio/ACA project/report/Pardo_Remolina_Sinning/final_report.tex:1213: Package pdftex.def Error: File `images/wind graph.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1213 ...th=0.5\linewidth]{images/wind graph.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[27] [28]
+Overfull \hbox (1.68309pt too wide) in paragraph at lines 1223--1262
+ [][] 
+ []
+
+
+Overfull \hbox (1.68309pt too wide) in paragraph at lines 1269--1319
+ [][] 
+ []
+
+[29]
+
+Package caption Warning: Unused \captionsetup[algorithm] on input line 16.
+See the caption package documentation for explanation.
+
+
+Package transparent Warning: Rerun to get transparencies right.
+
+
+Package natbib Warning: There were undefined citations.
+
+[30] (./final_report.aux)
+ ***********
+LaTeX2e <2023-11-01>
+L3 programming layer <2023-11-09>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.4641pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `final_report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `final_report.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  1B7F22BB1F4C355EF0FD57F2677FAB47;5881.
+ ) 
+Here is how much of TeX's memory you used:
+ 30152 strings out of 474267
+ 587881 string characters out of 5751470
+ 1964558 words of memory out of 5000000
+ 51634 multiletter control sequences out of 15000+600000
+ 588766 words of font info for 118 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 83i,22n,93p,914b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfxc0900.pfb>
+Output written on final_report.pdf (30 pages, 718888 bytes).
+PDF statistics:
+ 539 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
+ 197 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+
