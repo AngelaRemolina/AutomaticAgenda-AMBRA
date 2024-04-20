@@ -30,6 +30,13 @@
     "strict": true,
     "skipLibCheck": true
   },
+  "ts-node": {
+    "files": true
+  },
+  "files": [
+    "src/index.ts",
+    "src/shared/custom/global.d.ts"
+  ],
   "include": ["src/**/*", "src/shared/custom/**/*", "__tests__/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist"]
 }
