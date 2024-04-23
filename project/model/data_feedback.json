@@ -1,1 +1,1 @@
-[{"user_id": "U1", "picked": "football"}, {"user_id": "U1", "picked": "salsa"}, {"user_id": "U2", "picked": "chess"}, {"user_id": "U3", "picked": "jenga"}, {"user_id": "U3", "picked": "salsa"}, {"user_id": "U3", "picked": "salsa"}, {"user_id": "U3", "picked": "salsa"}]
+[{"user_id": "U1", "act_name": "football"}, {"user_id": "U1", "act_name": "salsa"}, {"user_id": "U2", "act_name": "chess"}, {"user_id": "U3", "act_name": "jenga"}, {"user_id": "U3", "act_name": "salsa"}, {"user_id": "U3", "act_name": "salsa"}, {"user_id": "U3", "act_name": "salsa"}]
