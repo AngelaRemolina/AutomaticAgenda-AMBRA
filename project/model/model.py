@@ -11,9 +11,9 @@ data_activities = {}
 with open("data_activities.json", "r") as f:
     data_activities = json.load(f)
 
-unique_activity_names = set(activity["act_name"] for activity in data_activities)
+unique_activity_ids = set(activity["act_id"] for activity in data_activities)
 # convert to bytes (tensorflow requires)
-unique_activity_names = np.array(list(map(str.encode, unique_activity_names)))
+unique_activity_ids = np.array(list(map(str.encode, unique_activity_ids)))
 
 data_feedback = []
 with open("data_feedback.json", "r") as f:
@@ -24,14 +24,29 @@ unique_user_ids = set(u["user_id"] for u in data_feedback)
 unique_user_ids = np.array(list(map(str.encode, unique_user_ids)))
 
 # cast activity data into TF tensor
-activities_list = [act["act_name"] for act in data_activities]
+activities_list = [act["act_id"] for act in data_activities]
 activities = tf.data.Dataset.from_tensor_slices(activities_list)
 
 # cast feedback data into TF tensor
+
+user_id_list = []
+act_id_list = []
+act_name_list = []
+act_class_list = []
+for entry in data_feedback:
+    user_id_list.append(entry["user_id"])
+    act_id_list.append(entry["act_id"])
+    # from 'act_id' extract also the other activity attributes
+    act_name_list.append(next(filter(lambda x: x['act_id'] == entry["act_id"], data_activities), {}).get('act_name'))
+    act_class_list.append(next(filter(lambda x: x['act_id'] == entry["act_id"], data_activities), {}).get('act_class'))
+    
+
 feedback = tf.data.Dataset.from_tensor_slices(
     {
-        "user_id": [entry["user_id"] for entry in data_feedback],
-        "act_name": [entry["act_name"] for entry in data_feedback],
+        "user_id": user_id_list,
+        "act_id": act_id_list,
+        "act_name": act_name_list,
+        "class": act_class_list,
     }
 )
 
@@ -70,8 +85,8 @@ user_model = tf.keras.Sequential(
 # Candidate tower = activity
 activity_model = tf.keras.Sequential(
     [
-        tf.keras.layers.StringLookup(vocabulary=unique_activity_names, mask_token=None),
-        tf.keras.layers.Embedding(len(unique_activity_names) + 1, EMBEDDING_DIMENSION),
+        tf.keras.layers.StringLookup(vocabulary=unique_activity_ids, mask_token=None),
+        tf.keras.layers.Embedding(len(unique_activity_ids) + 1, EMBEDDING_DIMENSION),
     ]
 )
 

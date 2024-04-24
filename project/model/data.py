@@ -3,17 +3,17 @@ import json
 # this is just a simulation, the real data must be obtain by a call to the database api
 # returns all the activities available in that slot!
 activities = [
-    {'id': 'A1', 'act_name': 'football', 'class': 'sports'},
-    {'id': 'A2', 'act_name': 'chess', 'class': 'boardgame'},
-    {'id': 'A3', 'act_name': 'jenga', 'class': 'boardgame'},
-    {'id': 'A4', 'act_name': 'salsa', 'class': 'dancing'},
-    {'id': 'A5', 'act_name': 'bachata', 'class': 'dancing'},
-    {'id': 'A6', 'act_name': 'yoga', 'class': 'sports'},
-    {'id': 'A7', 'act_name': 'drawing', 'class': 'leisure'},
-    {'id': 'A8', 'act_name': 'singing', 'class': 'leisure'},
-    {'id': 'A9', 'act_name': 'jump rope', 'class': 'sports'},
-    {'id': 'A10', 'act_name': 'karate', 'class': 'sports'},
-    {'id': 'A11', 'act_name': 'play uno', 'class': 'boardgame'},
+    {'act_id': 'A1', 'act_name': 'football', 'act_class': 'sports'},
+    {'act_id': 'A2', 'act_name': 'chess', 'act_class': 'boardgame'},
+    {'act_id': 'A3', 'act_name': 'jenga', 'act_class': 'boardgame'},
+    {'act_id': 'A4', 'act_name': 'salsa', 'act_class': 'dancing'},
+    {'act_id': 'A5', 'act_name': 'bachata', 'act_class': 'dancing'},
+    {'act_id': 'A6', 'act_name': 'yoga', 'act_class': 'sports'},
+    {'act_id': 'A7', 'act_name': 'drawing', 'act_class': 'leisure'},
+    {'act_id': 'A8', 'act_name': 'singing', 'act_class': 'leisure'},
+    {'act_id': 'A9', 'act_name': 'jump rope', 'act_class': 'sports'},
+    {'act_id': 'A10', 'act_name': 'karate', 'act_class': 'sports'},
+    {'act_id': 'A11', 'act_name': 'play uno', 'act_class': 'boardgame'},
     # .... all activities note: dataset must have at least 10
 ]
 
@@ -32,13 +32,14 @@ with open('data_activities.json', 'w') as f:
 # picked        +1
 # not picked    +0
 user_feedback = [
-    {'user_id':'U1', 'act_name': 'football'},
-    {'user_id':'U1', 'act_name': 'salsa'},
-    {'user_id':'U2', 'act_name': 'chess'},
-    {'user_id':'U3', 'act_name': 'jenga'},
-    {'user_id':'U3', 'act_name': 'salsa'},
-    {'user_id':'U3', 'act_name': 'salsa'},
-    {'user_id':'U3', 'act_name': 'salsa'},
+    {'user_id':'U1', 'act_id': 'A1'},
+    {'user_id':'U1', 'act_id': 'A8'},
+    {'user_id':'U2', 'act_id': 'A11'},
+    {'user_id':'U3', 'act_id': 'A1'},
+    {'user_id':'U3', 'act_id': 'A4'},
+    {'user_id':'U3', 'act_id': 'A2'},
+    {'user_id':'U3', 'act_id': 'A5'},
+    {'user_id':'U3', 'act_id': 'A5'},
     # Todo: check if it's better to add a counter or
     # to append each selection individually
     # Todo: Append feedback when recieving
