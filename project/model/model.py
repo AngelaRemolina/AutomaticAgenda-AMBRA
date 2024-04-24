@@ -31,13 +31,11 @@ activities = tf.data.Dataset.from_tensor_slices(activities_list)
 
 user_id_list = []
 act_id_list = []
-act_name_list = []
 act_class_list = []
 for entry in data_feedback:
     user_id_list.append(entry["user_id"])
     act_id_list.append(entry["act_id"])
-    # from 'act_id' extract also the other activity attributes
-    act_name_list.append(next(filter(lambda x: x['act_id'] == entry["act_id"], data_activities), {}).get('act_name'))
+    # from 'act_id' extract also the activity class
     act_class_list.append(next(filter(lambda x: x['act_id'] == entry["act_id"], data_activities), {}).get('act_class'))
     
 
@@ -45,7 +43,6 @@ feedback = tf.data.Dataset.from_tensor_slices(
     {
         "user_id": user_id_list,
         "act_id": act_id_list,
-        "act_name": act_name_list,
         "class": act_class_list,
     }
 )
@@ -113,7 +110,7 @@ class ActivityModel(tfrs.Model):
         user_embeddings = self.user_model(features["user_id"])
         # And pick out the activity features and pass them into the activity model,
         # getting embeddings back.
-        positive_activity_embeddings = self.activity_model(features["act_name"])
+        positive_activity_embeddings = self.activity_model(features["act_id"])
 
         # The task computes the loss and the metrics.
         return self.task(user_embeddings, positive_activity_embeddings)
