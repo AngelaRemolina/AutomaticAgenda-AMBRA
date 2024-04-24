@@ -40,8 +40,6 @@ user_feedback = [
     {'user_id':'U3', 'act_id': 'A2'},
     {'user_id':'U3', 'act_id': 'A5'},
     {'user_id':'U3', 'act_id': 'A5'},
-    # Todo: check if it's better to add a counter or
-    # to append each selection individually
     # Todo: Append feedback when recieving
 ]
 

@@ -139,5 +139,10 @@ index.index_from_dataset(
 )
 
 # Get recommendations.
-_, titles = index(tf.constant(["U1"]))
-print(f"Recommendations for user U1: {titles[0, :5]}")
+user_test = 'U4' # New user example, it does recomend
+_, titles = index(tf.constant([user_test]))
+print(f"\nRecommendations for user {user_test}: {titles[0, :5]}")
+
+user_test = 'U3'
+_, titles = index(tf.constant([user_test]))
+print(f"\nRecommendations for user {user_test}: {titles[0, :5]}")
