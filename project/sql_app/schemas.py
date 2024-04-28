@@ -1,22 +1,22 @@
 from pydantic import BaseModel
+import datetime
 
 
 class ActivityBase(BaseModel):
     title: str
     category: str
     description: str
-    start_time: str
-    duration: int
-    always_open: bool | None = None
+    start_time: datetime.datetime
+    always_open: bool 
+    end_time: datetime.datetime
 
 
 class ActivityCreate(ActivityBase):
     pass
 
-
 class Activity(ActivityBase):
     id: int
-    owner_id: int
+    
 
     class Config:
         orm_mode = True
@@ -25,6 +25,7 @@ class Activity(ActivityBase):
 class AgendaBase(BaseModel):
     start_time: str
     end_time: str
+    owner_id: int
 
 
 class AgendaCreate(AgendaBase):
@@ -33,7 +34,6 @@ class AgendaCreate(AgendaBase):
 
 class Agenda(AgendaBase):
     id: int
-    owner_id: int
     activities: list[Activity] = []
 
     class Config:
@@ -52,9 +52,18 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    is_active: bool
     agendas: list[Agenda] = []
 
     class Config:
         orm_mode = True
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class AgendaOut(Agenda):
+    activity: list[Activity]
+
+
+class ActivityOut(Activity):
+    agendas: list[Agenda]
