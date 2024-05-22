@@ -5,8 +5,7 @@ import tensorflow_recommenders as tfrs
 
 #--------------- Loading the models -----------
 
-user_model = tf.keras.models.load_model('user_model')
-activity_model = tf.keras.models.load_model('activity_model')
+model = tf.keras.models.load_model("./trained_model")
 
 
 # --------------- Loading necessary data ---------------
@@ -22,10 +21,10 @@ activities = tf.data.Dataset.from_tensor_slices(activities_list)
 #--------------- Making predictions -----------
 
 # Create a model that takes in raw query features, and
-index = tfrs.layers.factorized_top_k.BruteForce(user_model)
+index = tfrs.layers.factorized_top_k.BruteForce(model.user_model)
 # recommends activities out of the entire activity dataset.
 index.index_from_dataset(
-  tf.data.Dataset.zip((activities.batch(BATCH_SIZE), activities.batch(BATCH_SIZE).map(activity_model)))
+  tf.data.Dataset.zip((activities.batch(BATCH_SIZE), activities.batch(BATCH_SIZE).map(model.movie_model)))
 )
 
 # Get recommendations.
