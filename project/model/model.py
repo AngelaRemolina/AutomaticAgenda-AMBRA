@@ -11,24 +11,22 @@ data_activities = {}
 with open("data_activities.json", "r") as f:
     data_activities = json.load(f)
 
-unique_activity_ids = set(activity["act_id"] for activity in data_activities)
-# convert to bytes (tensorflow requires)
-unique_activity_ids = np.array(list(map(str.encode, unique_activity_ids)))
-
 data_feedback = []
 with open("data_feedback.json", "r") as f:
     data_feedback = json.load(f)
 
+unique_activity_ids = set(activity["act_id"] for activity in data_activities)
 unique_user_ids = set(u["user_id"] for u in data_feedback)
+
 # convert to bytes (tensorflow requires)
 unique_user_ids = np.array(list(map(str.encode, unique_user_ids)))
+unique_activity_ids = np.array(list(map(str.encode, unique_activity_ids)))
 
 # cast activity data into TF tensor
 activities_list = [act["act_id"] for act in data_activities]
 activities = tf.data.Dataset.from_tensor_slices(activities_list)
 
 # cast feedback data into TF tensor
-
 user_id_list = []
 act_id_list = []
 act_class_list = []
@@ -50,16 +48,15 @@ feedback = tf.data.Dataset.from_tensor_slices(
 
 # ----------Train/test split ---------------
 
-tf.random.set_seed(42)
 num_samples = len(data_feedback)
 shuffled = feedback.shuffle(
-    buffer_size=num_samples, seed=42, reshuffle_each_iteration=False
+    buffer_size=num_samples, reshuffle_each_iteration=False
 )
 
 train_percent = 0.8  # 0.2 test
 
 train_size = int(train_percent * num_samples)
-test_size = num_samples - train_size  # El resto para el conjunto de prueba
+test_size = num_samples - train_size 
 
 train = shuffled.take(train_size)
 test = shuffled.skip(train_size)
@@ -87,6 +84,7 @@ activity_model = tf.keras.Sequential(
     ]
 )
 
+
 # --------- Metrics -----------
 metrics = tfrs.metrics.FactorizedTopK(
     candidates=activities.batch(BATCH_SIZE).map(activity_model)
@@ -94,8 +92,8 @@ metrics = tfrs.metrics.FactorizedTopK(
 
 task = tfrs.tasks.Retrieval(metrics=metrics)
 
-# -----------Class model ---------
 
+# -----------Class model ---------
 
 class ActivityModel(tfrs.Model):
 
@@ -115,6 +113,7 @@ class ActivityModel(tfrs.Model):
         # The task computes the loss and the metrics.
         return self.task(user_embeddings, positive_activity_embeddings)
 
+
 #----------Fitting the model--------------------
 
 model = ActivityModel(user_model, activity_model)
@@ -129,20 +128,7 @@ model.fit(cached_train, epochs=NUM_EPOCH)
 model.evaluate(cached_test, return_dict=True)
 
 
-#--------------- Making predictions-----------
+#--------------- Exporting the model -----------
 
-# Create a model that takes in raw query features, and
-index = tfrs.layers.factorized_top_k.BruteForce(model.user_model)
-# recommends activities out of the entire activity dataset.
-index.index_from_dataset(
-  tf.data.Dataset.zip((activities.batch(BATCH_SIZE), activities.batch(BATCH_SIZE).map(model.activity_model)))
-)
-
-# Get recommendations.
-user_test = 'U4' # New user example, it does recomend
-_, titles = index(tf.constant([user_test]))
-print(f"\nRecommendations for user {user_test}: {titles[0, :5]}")
-
-user_test = 'U3'
-_, titles = index(tf.constant([user_test]))
-print(f"\nRecommendations for user {user_test}: {titles[0, :5]}")
+model.user_model.save('user_model', save_format='tf')
+model.activity_model.save('activity_model', save_format='tf')
