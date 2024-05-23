@@ -4,16 +4,41 @@ from typing import Dict, Text
 import numpy as np
 import tensorflow as tf
 import tensorflow_recommenders as tfrs
-
+from flask import Flask, request
 
 # --- Constants ---
 EMBEDDING_DIMENSION = 32  # Higher values will correspond to models that may be more accurate, but will also be slower to fit and more prone to overfitting.
 BATCH_SIZE = 128
 
 
-# --- Data handle ---
+# --- Api routes ---
+# todo flask routes
+app = Flask(__name__)
 
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+
+@app.route("/recommendations/<user_id>", methods=['GET'])
+def get_recommendations(user_id):
+    # User request to have agenda recommendation - top 5?
+    predictions = predicting(user_id, 5)
+    return predictions
+
+
+def set_feedback(data_feedback):
+    # re train model with user selection
+    # data_feedback should be structured like:
+    # data_feedback = {"user_id": "U1", "act_id": "A1"}
+
+    retrain(data_feedback)
+
+
+# --- Data handle ---
 def get_activities():
+    update_activities()
     data_activities = []
     with open("data_activities.json", "r") as f:
         data_activities = json.load(f)
@@ -29,11 +54,11 @@ def get_feedback():
 
 def update_activities():
     pass  # todo: API DB call to get updated activities
-    data_activities = []  # here
-    with open("data_activities.json", "w") as f:
-        json.dump(data_activities, f)
+    # data_activities = []  # here
+    # with open("data_activities.json", "w") as f:
+    #     json.dump(data_activities, f)
 
-    print("data_activities.json updated")
+    # print("data_activities.json updated")
 
 
 def update_feedback(new_feedback):
@@ -50,26 +75,7 @@ def update_feedback(new_feedback):
     print("data_feedback.json updated")
 
 
-# --- Api routes ---
-# todo flask routes
-# @app.route("/")
-def get_recommendations(user_id):
-    # User request to have agenda recommendation - top 5?
-    return predicting(user_id, 5)
-
-
-def set_feedback(data_feedback):
-    # re train model with user selection
-
-    # data_feedback should be structured like:
-    # data_feedback = {"user_id": "U1", "act_id": "A1"}
-
-    retrain(data_feedback)
-
-
 # --- model methods ---
-
-
 def predicting(user, top_n=3):
     # Example of use
     # print(get_recommendations('u2'))
@@ -135,6 +141,7 @@ def structure_input(data_feedback):
     feedback = feedback.shuffle(len(data_feedback)).batch(BATCH_SIZE).cache()
 
 
+# --- Class methods ---
 def get_activities_tensor():
     # cast activity data into TF tensor
     activities_list = [act["act_id"] for act in get_activities()]
@@ -153,6 +160,7 @@ def get_unique_user_id():
     return unique_user_ids
 
 
+# --- Model class ---
 class ActivityModel(tfrs.models.Model):
 
     def __init__(self, retrieval_weight: float) -> None:
