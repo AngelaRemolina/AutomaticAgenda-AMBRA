@@ -14,6 +14,11 @@ BATCH_SIZE = 128
 # --- Api ---
 app = Flask(__name__)
 
+@app.route("/")
+def hello():
+    response = make_response("flask server is running", 200)
+    return response
+
 
 @app.route("/recommendations/<user_id>", methods=["GET"])
 def get_recommendations(user_id):

@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 
 // routes
 app.get('/', (req, res) => {
-  res.send('server is running');
+  res.send('node server is running');
 });
 
 app.use('/api', routes);

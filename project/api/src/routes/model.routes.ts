@@ -4,7 +4,7 @@ import { verifyToken } from '@middlewares/auth';
 
 const router = Router();
 
-router.post('/activity', verifyToken, modelController.setActivity);
+router.post('/feedback', verifyToken, modelController.setActivity);
 router.get('/recommendations', verifyToken, modelController.getRecommendations);
 
 export default router;

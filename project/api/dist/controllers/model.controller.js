@@ -5,19 +5,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRecommendations = exports.setActivity = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const MODEL_URL = process.env.MODEL_URL;
 const DB_URL = process.env.DB_URL;
 const setActivity = async (req, res) => {
     try {
-        if (!req.body.name || !req.body.description) {
+        const token = req.headers['authorization'];
+        const user_id = jsonwebtoken_1.default.decode(token);
+        if (!req.body.act_id) {
             return res.status(400).send();
         }
         const response_model = await (0, node_fetch_1.default)(MODEL_URL + '/feedback', {
             method: 'POST',
-            body: JSON.stringify(req.body),
+            body: JSON.stringify({ user_id: user_id, act_id: req.body.act_id }),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': req.headers['authorization']
+                'Authorization': token
             },
         });
         if (!response_model.ok) {
@@ -28,7 +31,7 @@ const setActivity = async (req, res) => {
             body: JSON.stringify(req.body),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': req.headers['authorization']
+                'Authorization': token
             },
         });
         if (!response_db.ok) {
