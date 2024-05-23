@@ -11,8 +11,7 @@ EMBEDDING_DIMENSION = 32  # Higher values will correspond to models that may be 
 BATCH_SIZE = 128
 
 
-# --- Api routes ---
-# todo flask routes
+# --- Api ---
 app = Flask(__name__)
 
 
@@ -62,8 +61,9 @@ def get_feedback():
 
 
 def update_activities():
-    pass  # todo: API DB call to get updated activities
-    # data_activities = []  # here
+    pass  
+    # todo: API DB call to get updated activities
+    # data_activities = []  # fetch and save here
     # with open("data_activities.json", "w") as f:
     #     json.dump(data_activities, f)
 
