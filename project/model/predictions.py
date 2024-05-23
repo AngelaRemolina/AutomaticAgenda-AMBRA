@@ -3,7 +3,7 @@ import json
 import tensorflow as tf
 import tensorflow_recommenders as tfrs
 
-# --------------- Loading the models -----------
+# --------------- Loading the model -----------
 
 model = tf.keras.models.load_model("./trained_model")
 
