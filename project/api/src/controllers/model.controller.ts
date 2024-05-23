@@ -1,21 +1,24 @@
 import { Request, Response } from 'express';
 import fetch from 'node-fetch';
+import jwt from 'jsonwebtoken';
 
 const MODEL_URL = process.env.MODEL_URL;
 const DB_URL = process.env.DB_URL;
 
 export const setActivity = async (req: Request, res: Response) => {
     try {
-        if (!req.body.name || !req.body.description) {
+        const token = req.headers['authorization']!;
+        const user_id = jwt.decode(token);
+        if (!req.body.act_id) {
             return res.status(400).send();
         }
 
         const response_model = await fetch(MODEL_URL + '/feedback', {
             method: 'POST',
-            body: JSON.stringify(req.body),
+            body: JSON.stringify({ user_id: user_id, act_id: req.body.act_id }),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': req.headers['authorization']!
+                'Authorization': token
             },
         });
 
@@ -28,7 +31,7 @@ export const setActivity = async (req: Request, res: Response) => {
             body: JSON.stringify(req.body),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': req.headers['authorization']!
+                'Authorization': token
             },
         });
 
