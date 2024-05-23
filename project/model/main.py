@@ -4,7 +4,7 @@ from typing import Dict, Text
 import numpy as np
 import tensorflow as tf
 import tensorflow_recommenders as tfrs
-from flask import Flask, request
+from flask import Flask, request, jsonify, make_response
 
 # --- Constants ---
 EMBEDDING_DIMENSION = 32  # Higher values will correspond to models that may be more accurate, but will also be slower to fit and more prone to overfitting.
@@ -16,24 +16,33 @@ BATCH_SIZE = 128
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-
-@app.route("/recommendations/<user_id>", methods=['GET'])
+@app.route("/recommendations/<user_id>", methods=["GET"])
 def get_recommendations(user_id):
     # User request to have agenda recommendation - top 5?
-    predictions = predicting(user_id, 5)
-    return predictions
+    if request.method == "GET":
+        predictions = predicting(user_id, 5)
+        response = make_response(jsonify(predictions), 200)
+        return response
+    else:
+        return make_response("bad_request", 400)
 
 
-def set_feedback(data_feedback):
+@app.route("/feedback", methods=["POST"])
+def set_feedback():
     # re train model with user selection
     # data_feedback should be structured like:
     # data_feedback = {"user_id": "U1", "act_id": "A1"}
 
-    retrain(data_feedback)
+    if request.method == "POST":
+        body = request.get_json(force=True)
+        user_id = body["user_id"]
+        act_id = body["act_id"]
+        retrain({"user_id": user_id, "act_id": act_id})
+        response = make_response("Feedback recieved", 200)
+        return response
+
+    else:
+        return make_response("bad_request", 400)
 
 
 # --- Data handle ---
@@ -78,7 +87,7 @@ def update_feedback(new_feedback):
 # --- model methods ---
 def predicting(user, top_n=3):
     # Example of use
-    # print(get_recommendations('u2'))
+    # get_recommendations('u2')
 
     activities_list = [act["act_id"] for act in get_activities()]
     activities = tf.data.Dataset.from_tensor_slices(activities_list)
@@ -113,7 +122,7 @@ def retrain(data_feedback):
     model = ActivityModel(retrieval_weight=1.0)
     model.compile(optimizer=tf.keras.optimizers.Adagrad(0.1))
 
-    feedback = structure_input(data_feedback)
+    feedback = structure_input(get_feedback())
     model.fit(feedback, epochs=3)
 
     model.retrieval_task = tfrs.tasks.Retrieval()
@@ -123,22 +132,27 @@ def retrain(data_feedback):
 
 def structure_input(data_feedback):
     data_activities = get_activities()
+    user_id_list = []
+    act_id_list = []
+    act_class_list = []
+    for entry in data_feedback:
+        user_id_list.append(entry["user_id"])
+        act_id_list.append(entry["act_id"])
+        act_class_list.append(
+            next(
+                filter(lambda x: x["act_id"] == entry["act_id"], data_activities), {}
+            ).get("act_class")
+        )
+
     feedback = tf.data.Dataset.from_tensor_slices(
         {
-            "user_id": [data_feedback["user_id"]],
-            "act_id": [data_feedback["act_id"]],
-            "act_class": [
-                next(
-                    filter(
-                        lambda x: x["act_id"] == data_feedback["act_id"],
-                        data_activities,
-                    ),
-                    {},
-                ).get("act_class")
-            ],
+            "user_id": user_id_list,
+            "act_id": act_id_list,
+            "act_class": act_class_list,
         }
     )
     feedback = feedback.shuffle(len(data_feedback)).batch(BATCH_SIZE).cache()
+    return feedback
 
 
 # --- Class methods ---
@@ -157,6 +171,7 @@ def get_unique_activities_id():
 
 def get_unique_user_id():
     unique_user_ids = set(u["user_id"] for u in get_feedback())
+    unique_user_ids = np.array(list(map(str.encode, unique_user_ids)))
     return unique_user_ids
 
 
