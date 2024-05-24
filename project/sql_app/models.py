@@ -26,8 +26,8 @@ class Activity(Base):
     title = Column(String, index=True)
     category = Column(String, index=True)
     description = Column(String, index=True)
-    start_time = Column(Time, index=True)
-    end_time = Column(Time, index=True)
+    start_time = Column(String, index=True)
+    end_time = Column(String, index=True)
     always_open = Column(Boolean, default=False)
 
     agendas = relationship("Agenda", 
@@ -38,8 +38,8 @@ class Agenda(Base):
     __tablename__ = "agendas"
 
     id = Column(Integer,primary_key=True)
-    start_time = Column(DateTime, index=True)
-    end_time = Column(DateTime, index=True)
+    start_time = Column(String, index=True)
+    end_time = Column(String, index=True)
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="agendas")

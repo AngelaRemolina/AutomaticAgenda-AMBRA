@@ -6,9 +6,9 @@ class ActivityBase(BaseModel):
     title: str
     category: str
     description: str
-    start_time: datetime.datetime
+    start_time: str
     always_open: bool 
-    end_time: datetime.datetime
+    end_time: str
 
 
 class ActivityCreate(ActivityBase):

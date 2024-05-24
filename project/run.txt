@@ -1,0 +1,8 @@
+flask --app main run
+
+
+uvicorn sql_app.main:app --reload
+
+
+npm run build
+npm run start
