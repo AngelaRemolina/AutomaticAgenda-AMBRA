@@ -4,15 +4,17 @@ from typing import Dict, Text
 import numpy as np
 import tensorflow as tf
 import tensorflow_recommenders as tfrs
+import requests
 from flask import Flask, request, jsonify, make_response
 
 # --- Constants ---
 EMBEDDING_DIMENSION = 32  # Higher values will correspond to models that may be more accurate, but will also be slower to fit and more prone to overfitting.
 BATCH_SIZE = 128
-
+DB_URL = "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/"
 
 # --- Api ---
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello():
@@ -24,6 +26,7 @@ def hello():
 def get_recommendations(user_id):
     # User request to have agenda recommendation - top 5?
     if request.method == "GET":
+        update_activities()
         predictions = predicting(user_id, 5)
         response = make_response(jsonify(predictions), 200)
         return response
@@ -39,8 +42,9 @@ def set_feedback():
 
     if request.method == "POST":
         body = request.get_json(force=True)
-        user_id = body["user_id"]
-        act_id = body["act_id"]
+        user_id = str(body["user_id"])
+        act_id = str(body["act_id"])
+        update_activities()
         retrain({"user_id": user_id, "act_id": act_id})
         response = make_response("Feedback recieved", 200)
         return response
@@ -51,7 +55,6 @@ def set_feedback():
 
 # --- Data handle ---
 def get_activities():
-    update_activities()
     data_activities = []
     with open("data_activities.json", "r") as f:
         data_activities = json.load(f)
@@ -66,13 +69,19 @@ def get_feedback():
 
 
 def update_activities():
-    pass  
-    # todo: API DB call to get updated activities
-    # data_activities = []  # fetch and save here
-    # with open("data_activities.json", "w") as f:
-    #     json.dump(data_activities, f)
-
-    # print("data_activities.json updated")
+    res = requests.get(DB_URL)
+    json_activities = json.loads(res.text)
+    data_activities = [
+        {
+            "act_id": str(activity["id"]),
+            "act_name": activity["title"],
+            "act_class": activity["category"],
+        }
+        for activity in json_activities
+    ]
+    with open("data_activities.json", "w") as f:
+        json.dump(data_activities, f)
+    print("data_activities.json updated")
 
 
 def update_feedback(new_feedback):

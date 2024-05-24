@@ -1,8 +1,15 @@
+bash #1
+cd project/model
 flask --app main run
 
+bash #2
+service postgresql start
 
+bash #3
+cd project
 uvicorn sql_app.main:app --reload
 
-
+bash #4
+cd project/api
 npm run build
 npm run start
