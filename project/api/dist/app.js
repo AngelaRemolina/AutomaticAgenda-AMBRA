@@ -15,7 +15,7 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, morgan_1.default)('dev'));
 // routes
 app.get('/', (req, res) => {
-    res.send('server is running');
+    res.send('node server is running');
 });
 app.use('/api', _routes_1.default);
 exports.default = app;

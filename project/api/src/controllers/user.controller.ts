@@ -4,30 +4,23 @@ import jwt from 'jsonwebtoken';
 
 const DB_URL = process.env.DB_URL;
 
-// declare module "express-serve-static-core" {
-//     interface Request {
-//         userId: string
-//     }
-// }
-
 export const createUser = async (req: Request, res: Response) => {
     try {
-        if (!req.body.username || !req.body.password || !req.body.name) {
+        if (!req.body.username || !req.body.password || !req.body.name || !req.body.email) {
             return res.status(400).send();
         }
-
-        const response = await fetch(DB_URL + '/users', {
+        const response = await fetch(DB_URL + 'users/', {
             method: 'POST',
             body: JSON.stringify(req.body),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (!response.ok) {
-            return res.status(400).send();
+            const message = await response.json();
+            return res.status(400).send(message);
         }
 
         const user = await response.json();
-
         res.status(201).send(user);
     } catch (error) {
         res.status(400).send(error);

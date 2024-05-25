@@ -7,23 +7,19 @@ exports.getUserToken = exports.createUser = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const DB_URL = process.env.DB_URL;
-// declare module "express-serve-static-core" {
-//     interface Request {
-//         userId: string
-//     }
-// }
 const createUser = async (req, res) => {
     try {
-        if (!req.body.username || !req.body.password || !req.body.name) {
+        if (!req.body.username || !req.body.password || !req.body.name || !req.body.email) {
             return res.status(400).send();
         }
-        const response = await (0, node_fetch_1.default)(DB_URL + '/users', {
+        const response = await (0, node_fetch_1.default)(DB_URL + 'users/', {
             method: 'POST',
             body: JSON.stringify(req.body),
             headers: { 'Content-Type': 'application/json' },
         });
         if (!response.ok) {
-            return res.status(400).send();
+            const message = await response.json();
+            return res.status(400).send(message);
         }
         const user = await response.json();
         res.status(201).send(user);
