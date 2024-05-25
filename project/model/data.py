@@ -40,7 +40,6 @@ user_feedback = [
     {'user_id':'U3', 'act_id': 'A2'},
     {'user_id':'U3', 'act_id': 'A5'},
     {'user_id':'U3', 'act_id': 'A5'},
-    # Todo: Append feedback when recieving
 ]
 
 with open('data_feedback.json', 'w') as f:

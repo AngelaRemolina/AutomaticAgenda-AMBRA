@@ -29,23 +29,38 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const getUserToken = async (req: Request, res: Response) => {
     try {
-
-        const response = await fetch(DB_URL + '/users/' + req.body.username);
+        const response = await fetch(DB_URL + 'users/');
 
         if (!response.ok) {
             return res.status(404).send();
         }
 
-        const user = await response.json();
+        const users = await response.json();
+
+        if (!users) {
+            return res.status(401).send();
+        }
+
+        let user;
+        for (const u of users) {
+            if (u.username === req.body.username) {
+                user = u;
+                break;
+            }
+        }
 
         if (!user) {
             return res.status(401).send();
         }
 
+        // todo: when DB hashes the password here it would have to unhash it to do comparison
         const isPasswordMatch = req.body.password === user.password;
+        console.log(req.body.password);
+        console.log(user);
+        // todo: this fails because DB is not returning the password
 
         if (!isPasswordMatch) {
-            return res.status(402).send();
+            return res.status(402).send({"message":"Wrong username or password"});
         }
         const token = jwt.sign(
             { _id: user._id.toString() },
