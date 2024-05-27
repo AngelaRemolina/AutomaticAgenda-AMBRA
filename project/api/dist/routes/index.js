@@ -11,4 +11,8 @@ const model_routes_1 = __importDefault(require("./model.routes"));
 router.use('/users', user_routes_1.default);
 router.use('/agendas', agenda_routes_1.default);
 router.use('/models', model_routes_1.default);
+// test calendar view
+router.get('/calendar', (req, res) => {
+    res.render("calendar/calendar");
+});
 exports.default = router;
