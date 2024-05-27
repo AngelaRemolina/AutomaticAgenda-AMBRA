@@ -9,9 +9,4 @@ router.use('/users', userRouter);
 router.use('/agendas', agendaRouter);
 router.use('/models', modelRouter);
 
-// test calendar view
-router.get('/calendar', (req, res) => {
-    res.render("calendar/calendar");
-});
-
 export default router;

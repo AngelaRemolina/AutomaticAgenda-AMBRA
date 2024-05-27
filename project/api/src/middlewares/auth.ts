@@ -1,15 +1,18 @@
 import jwt, { JwtPayload, VerifyErrors } from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
 
+
 export function verifyToken(req: Request, res: Response, next: NextFunction) {
-  const token = req.headers['authorization'];
-  if (!token) {
+  let token = req.headers['authorization'];
+  const tokenCookie = req.headers.cookie?.split('=')[1];
+  if (!token && !tokenCookie) {
     return res.status(403).send({ message: 'No token provided!' });
   }
-
-  console.log(token);
+  if (!token) {
+    token = tokenCookie
+  }
   jwt.verify(
-    token.split(' ')[1],
+    token!,
     process.env.SECRET_KEY! || 'secret',
     (err: VerifyErrors | null, decoded: any | undefined) => {
       if (err) {

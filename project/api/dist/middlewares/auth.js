@@ -7,7 +7,9 @@ exports.verifyToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function verifyToken(req, res, next) {
     const token = req.headers['authorization'];
-    if (!token) {
+    const tokenCookie = req.headers.cookie;
+    console.log(tokenCookie);
+    if (!token || !tokenCookie) {
         return res.status(403).send({ message: 'No token provided!' });
     }
     console.log(token);

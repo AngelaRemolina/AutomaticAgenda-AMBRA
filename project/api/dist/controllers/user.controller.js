@@ -10,7 +10,7 @@ const DB_URL = process.env.DB_URL;
 const createUser = async (req, res) => {
     try {
         if (!req.body.username || !req.body.password || !req.body.name || !req.body.email) {
-            return res.status(400).send();
+            return res.status(400).send("Missing fields"); //todo show message on screen don't use .send()
         }
         const response = await (0, node_fetch_1.default)(DB_URL + 'users/', {
             method: 'POST',
@@ -22,8 +22,10 @@ const createUser = async (req, res) => {
             return res.status(400).send(message);
         }
         const user = await response.json();
-        res.status(201).send(user);
-        res.render("auth/register");
+        const token = jsonwebtoken_1.default.sign({ _id: user.id.toString() }, process.env.SECRET_KEY);
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200); //.send({ token });
+        res.redirect('/api/agendas/');
     }
     catch (error) {
         res.status(400).send(error);
@@ -51,15 +53,19 @@ const getUserToken = async (req, res) => {
             return res.status(401).send();
         }
         // todo: when DB hashes the password here it would have to unhash it to do comparison
-        const isPasswordMatch = req.body.password === user.password;
-        console.log(req.body.password);
-        console.log(user);
-        // todo: this fails because DB is not returning the password
+        // const isPasswordMatch = req.body.password === user.password;
+        // console.log(req.body.password);
+        // console.log(user);
+        // todo: this fails because DB is not returning the password,
+        // in the mean time I will set a unique static password for testing
+        const isPasswordMatch = req.body.password === "123456789";
         if (!isPasswordMatch) {
             return res.status(402).send({ "message": "Wrong username or password" });
         }
-        const token = jsonwebtoken_1.default.sign({ _id: user._id.toString() }, process.env.SECRET_KEY);
-        res.status(200).send({ token });
+        const token = jsonwebtoken_1.default.sign({ _id: user.id.toString() }, process.env.SECRET_KEY);
+        res.cookie('token', token, { httpOnly: true });
+        res.status(200); //.send({ token });
+        res.redirect('/api/agendas/');
     }
     catch (error) {
         res.status(500).send(error);

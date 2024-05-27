@@ -9,4 +9,7 @@ router.post('/login', _controllers_1.userController.getUserToken);
 router.get('/register', (req, res) => {
     res.render('auth/register');
 });
+router.get('/login', (req, res) => {
+    res.render('auth/login');
+});
 exports.default = router;
