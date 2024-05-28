@@ -109,3 +109,5 @@ def set_activity_to_agenda(owner_id: int, activity_id: int, db: Session = Depend
     if agenda is None:
         raise HTTPException(status_code=404, detail="Agenda not found")
     return agenda
+
+# if activity already in agenda, don't return error, it can be added again for another day.

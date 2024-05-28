@@ -8,7 +8,6 @@ export const getAgenda = async (req: Request, res: Response) => {
     try {
         const responseAgendas = await fetch(DB_URL + 'agendas/' + req.userId);
         if (!responseAgendas.ok) {
-            console.log(req.userId);
             return res.status(404).send();
         }
         let agenda = await responseAgendas.json();

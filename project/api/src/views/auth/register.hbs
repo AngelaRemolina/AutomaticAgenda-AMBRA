@@ -1,18 +1,18 @@
 <form action="/api/users/register" method="POST">
     <div class="form-group">
         <input class="form-control form-control-user" name="name" aria-describedby="nameHelp"
-            placeholder="Enter your name..." autofocus>
+            placeholder="Enter your name..." autofocus required>
     </div>
     <div class="form-group">
         <input type="email" class="form-control form-control-user" name="email" aria-describedby="emailHelp"
-            placeholder="Enter email address..." autofocus>
+            placeholder="Enter email address..." autofocus required>
     </div>
     <div class="form-group">
         <input class="form-control form-control-user" name="username" aria-describedby="usernameHelp"
-            placeholder="Enter username" autofocus>
+            placeholder="Enter username" autofocus required>
     </div>
     <div class="form-group">
-        <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+        <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
     </div>
     <button type="submit" class="btn btn-primary btn-user btn-block">
         Continue

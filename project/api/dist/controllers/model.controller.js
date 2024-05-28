@@ -10,6 +10,7 @@ const MODEL_URL = process.env.MODEL_URL;
 const DB_URL = process.env.DB_URL;
 const setActivity = async (req, res) => {
     try {
+        console.log("body es esto:", req.body);
         const token = req.headers['authorization'];
         const user_id = jsonwebtoken_1.default.decode(token);
         if (!req.body.act_id) {
@@ -38,7 +39,8 @@ const setActivity = async (req, res) => {
             return res.status(400).send();
         }
         const activity = await response_db.json();
-        res.status(201).send(activity);
+        res.status(201); //.send(activity);
+        res.redirect('/api/agendas/');
     }
     catch (error) {
         res.status(400).send(error);

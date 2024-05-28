@@ -11,7 +11,6 @@ const getAgenda = async (req, res) => {
     try {
         const responseAgendas = await (0, node_fetch_1.default)(DB_URL + 'agendas/' + req.userId);
         if (!responseAgendas.ok) {
-            console.log(req.userId);
             return res.status(404).send();
         }
         let agenda = await responseAgendas.json();
