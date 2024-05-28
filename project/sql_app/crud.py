@@ -36,9 +36,13 @@ def create_activity(db: Session, activity: schemas.ActivityCreate):
     db.refresh(db_activity)
     return db_activity
 
+# get activity by id
+def get_activity(db: Session, activity_id: int):
+    return db.query(models.Activity).filter(models.Activity.id == activity_id).first()
+
 # Add relationship between activity and agenda to the agenda_activity table
-def add_activity_to_agenda(db: Session, agenda_id: int, activity_id: int):
-    db_agenda = db.query(models.Agenda).filter(models.Agenda.id == agenda_id).first()
+def add_activity_to_agenda(db: Session, owner_id: int, activity_id: int):
+    db_agenda = db.query(models.Agenda).filter(models.Agenda.owner_id == owner_id).first()
     db_activity = db.query(models.Activity).filter(models.Activity.id == activity_id).first()
     db_agenda.activities.append(db_activity)
     db.commit()
@@ -59,3 +63,7 @@ def create_user_agenda(db: Session, activity: schemas.AgendaCreate, user_id: int
 
 def get_agendas(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Agenda).offset(skip).limit(limit).all()
+
+#get agenda by owner id
+def get_agenda_by_owner(db: Session, owner_id: int):
+    return db.query(models.Agenda).filter(models.Agenda.owner_id == owner_id).all()

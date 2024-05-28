@@ -66,13 +66,14 @@ def read_agendas(skip: int = 0, limit: int = 100, db: Session = Depends(get_db))
     agendas = crud.get_agendas(db, skip=skip, limit=limit)
     return agendas
 
-#Get activities from an agenda
-@app.get("/agendas/{agenda_id}/activities", response_model=schemas.Agenda)
-def read_agenda_activities(agenda_id: int, db: Session = Depends(get_db)):
-    agenda = crud.get_agenda_activities(db, agenda_id=agenda_id)
+#Get an agenda by owner id
+@app.get("/agendas/{owner_id}", response_model=schemas.Agenda)
+def read_agenda_by_owner(owner_id: int, db: Session = Depends(get_db)):
+    # owner = crud.get_user(db, user_id=owner_id)
+    agenda = crud.get_agenda_by_owner(db, owner_id=owner_id)
     if agenda is None:
         raise HTTPException(status_code=404, detail="Agenda not found")
-    return agenda
+    return agenda[0]
 
 ### Activity Methods ###
 
@@ -102,9 +103,9 @@ def read_activities_by_timeslot(start_time: str, end_time: str, db: Session = De
     return activities
 
 #Set an activity to an agenda
-@app.post("/agendas/{agenda_id}/activities/{activity_id}", response_model=schemas.Agenda)
-def set_activity_to_agenda(agenda_id: int, activity_id: int, db: Session = Depends(get_db)):
-    agenda = crud.add_activity_to_agenda(db, agenda_id=agenda_id, activity_id=activity_id)
+@app.post("/agendas/{owner_id}/activities/{activity_id}", response_model=schemas.Agenda)
+def set_activity_to_agenda(owner_id: int, activity_id: int, db: Session = Depends(get_db)):
+    agenda = crud.add_activity_to_agenda(db, owner_id=owner_id, activity_id=activity_id)
     if agenda is None:
         raise HTTPException(status_code=404, detail="Agenda not found")
     return agenda

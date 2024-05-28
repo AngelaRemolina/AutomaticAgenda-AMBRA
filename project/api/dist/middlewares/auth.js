@@ -6,14 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyToken = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function verifyToken(req, res, next) {
-    const token = req.headers['authorization'];
-    const tokenCookie = req.headers.cookie;
-    console.log(tokenCookie);
-    if (!token || !tokenCookie) {
+    let token = req.headers['authorization'];
+    const tokenCookie = req.headers.cookie?.split('=')[1];
+    if (!token && !tokenCookie) {
         return res.status(403).send({ message: 'No token provided!' });
     }
-    console.log(token);
-    jsonwebtoken_1.default.verify(token.split(' ')[1], process.env.SECRET_KEY || 'secret', (err, decoded) => {
+    if (!token) {
+        token = tokenCookie;
+    }
+    jsonwebtoken_1.default.verify(token, process.env.SECRET_KEY || 'secret', (err, decoded) => {
         if (err) {
             console.log(err);
             res.status(401).send({ message: 'Unauthorized!' });
