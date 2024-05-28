@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgresql://ambra:ambra@localhost:5432/ambra"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:postgres@localhost:5433/ambra"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={}
