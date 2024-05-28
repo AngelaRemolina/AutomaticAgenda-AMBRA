@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 
 from . import models, schemas
+from datetime import datetime
 
 import bcrypt
 
@@ -52,6 +53,8 @@ def create_activity(db: Session, activity: schemas.ActivityCreate):
     return db_activity
 
 def get_activities_by_timeslot(db: Session, start_time: str, end_time: str):
+    start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
+    end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
     return db.query(models.Activity).filter(models.Activity.start_time >= start_time, models.Activity.end_time <= end_time).all()
 
 # get activity by id

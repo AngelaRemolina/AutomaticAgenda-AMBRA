@@ -13,3 +13,8 @@ bash #4
 cd project/api
 npm run build
 npm run start
+
+### To drop tables ###
+DROP TABLE activities CASCADE;
+DROP TABLE users CASCADE;
+DROP TABLE user_activity CASCADE;

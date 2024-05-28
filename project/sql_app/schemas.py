@@ -1,14 +1,14 @@
 from pydantic import BaseModel
-import datetime
+from datetime import datetime
 
 
 class ActivityBase(BaseModel):
     title: str
     category: str
     description: str
-    start_time: str
+    start_time: datetime
     always_open: bool 
-    end_time: str
+    end_time: datetime
     image: str
 
 class ActivityCreate(ActivityBase):

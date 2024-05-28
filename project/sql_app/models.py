@@ -33,8 +33,8 @@ class Activity(Base):
     title = Column(String, index=True)
     category = Column(String, index=True)
     description = Column(String, index=True)
-    start_time = Column(String, index=True)
-    end_time = Column(String, index=True)
+    start_time = Column(DateTime, index=True)
+    end_time = Column(DateTime, index=True)
     always_open = Column(Boolean, default=False)
     image = Column(String, index=True)
 
