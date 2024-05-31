@@ -6,11 +6,11 @@ const MODEL_URL = process.env.MODEL_URL;
 
 export const getAgenda = async (req: Request, res: Response) => {
     try {
-        const responseAgendas = await fetch(DB_URL + 'agendas/' + req.userId);
-        if (!responseAgendas.ok) {
+        const responseUser = await fetch(DB_URL + 'users/' + req.userId);
+        if (!responseUser.ok) {
             return res.status(404).send();
         }
-        let agenda = await responseAgendas.json();
+        let agenda = await responseUser.json();
         const events = agenda.activities; //activities that user has scheduled
 
         const responseModel = await fetch(MODEL_URL + '/recommendations/' + req.userId);
