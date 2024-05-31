@@ -1,0 +1,630 @@
+{
+	"info": {
+		"_postman_id": "b85402f9-8f5c-45af-8e6c-4e539663d12f",
+		"name": "Agenda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23564428"
+	},
+	"item": [
+		{
+			"name": "Node",
+			"item": [
+				{
+					"name": "node /recommendations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-3000.app.github.dev/reco",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-3000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"reco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "node users/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"se\",\r\n    \"username\":\"se\",\r\n    \"password\":\"123\",\r\n    \"email\":\"se@a.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-3000.app.github.dev/api/users/register",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-3000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flask",
+			"item": [
+				{
+					"name": "flask /recommendations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-5000.app.github.dev/recommendations/89f5bb79-b162-4a27-a2da-ecab057f53d2",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-5000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"recommendations",
+								"89f5bb79-b162-4a27-a2da-ecab057f53d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "flask /feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"2\",\r\n    \"act_id\": \"6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-5000.app.github.dev/feedback",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-5000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Postgres populate DB",
+			"item": [
+				{
+					"name": "postgres create1 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Football\",\r\n    \"category\":\"Sport\",\r\n    \"description\":\"Go outside and play Football\",\r\n    \"start_time\":\"2024-06-10 10:00:00\",\r\n    \"end_time\":\"2024-06-10 11:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://cdn.britannica.com/51/190751-131-B431C216/soccer-ball-goal.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create2 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Chess\",\r\n    \"category\":\"Boardgames\",\r\n    \"description\":\"play chess\",\r\n    \"start_time\":\"2024-06-10 10:00:00\",\r\n    \"end_time\":\"2024-06-10 11:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ChessSet.jpg/640px-ChessSet.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create3 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Jenga\",\r\n    \"category\":\"Boardgames\",\r\n    \"description\":\"play Jenga\",\r\n    \"start_time\":\"2024-06-10 14:00:00\",\r\n    \"end_time\":\"2024-06-10 14:30:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://m.media-amazon.com/images/I/71QkAOpuO7L._AC_UF1000,1000_QL80_.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create4 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Salsa\",\r\n    \"category\":\"Dancing\",\r\n    \"description\":\"Salsa class with ms Diaz\",\r\n    \"start_time\":\"2024-06-15 14:00:00\",\r\n    \"end_time\":\"2024-06-15 15:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuUhUXqStrW7kvQvUeg8Xn1jFAR3y14t8X1Q&s\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create5 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Play UNO\",\r\n    \"category\":\"Boardgame\",\r\n    \"description\":\"Play uno\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Funo%2Fhome%2FGameName_Newsfeed_Game_Icon_400x400-400x400-bc5a62db5d04db170940782968565fdbac946fba.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create6 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Yoga\",\r\n    \"category\":\"Sport\",\r\n    \"description\":\"Do yoga\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://images.ctfassets.net/6ilvqec50fal/4etuYztO7f1eMUnRn8e4Ia/62281f46a148c25651f09b8f8287ad0c/GettyImages-1223389038.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create7 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Drawing\",\r\n    \"category\":\"Leisure\",\r\n    \"description\":\"Let your creativity flow\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://www.wikihow.com/images/9/9e/Draw-Step-23-Version-2.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create8 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Singing\",\r\n    \"category\":\"Leisure\",\r\n    \"description\":\"SIng your favorite songs\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://billwrightmusic.com/wp-content/uploads/2019/03/singing-at-bill-wright-school-of-music.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create9 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Karate\",\r\n    \"category\":\"Sport\",\r\n    \"description\":\"Practice Karate\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://www.melarossa.it/wp-content/uploads/2020/01/karate-cos-e-tecnica-combattimento-storia-benefici.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create10 /activities/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Jump rope\",\r\n    \"category\":\"Sport\",\r\n    \"description\":\"Go outside and jump rope\",\r\n    \"start_time\":\"2024-06-16 16:00:00\",\r\n    \"end_time\":\"2024-06-16 17:00:00\",\r\n    \"always_open\":false,\r\n    \"image\":\"https://www.verywellfamily.com/thmb/bQF7ZVUEoKbFj7DhmaipTj39Y3E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/summer-camp-is-full-of-fun-and-friendship-481510131-57d2eb743df78c5833443021.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Postgres",
+			"item": [
+				{
+					"name": "postgres getusers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/users/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres getuser by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/users/89f5bb79-b162-4a27-a2da-ecab057f53d2",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"users",
+								"89f5bb79-b162-4a27-a2da-ecab057f53d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres /schedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":\"89f5bb79-b162-4a27-a2da-ecab057f53d2\",\r\n    \"act_id\":\"8a949c77-c766-4808-ad56-04026a0e10de\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/schedule",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres get /activities/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres get /activities/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/activities/8a949c77-c766-4808-ad56-04026a0e10de",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"activities",
+								"8a949c77-c766-4808-ad56-04026a0e10de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postgres create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Sergio\",\r\n    \"username\":\"Sergio\",\r\n    \"password\":\"123\",\r\n    \"email\":\"b@a.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://shiny-space-system-6jpv467xxx24rq9-8000.app.github.dev/users/",
+							"protocol": "https",
+							"host": [
+								"shiny-space-system-6jpv467xxx24rq9-8000",
+								"app",
+								"github",
+								"dev"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
