@@ -5,20 +5,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRecommendations = exports.setActivity = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const MODEL_URL = process.env.MODEL_URL;
 const DB_URL = process.env.DB_URL;
 const setActivity = async (req, res) => {
     try {
-        console.log("body es esto:", req.body);
         const token = req.headers['authorization'];
-        const user_id = jsonwebtoken_1.default.decode(token);
         if (!req.body.act_id) {
             return res.status(400).send();
         }
+        const actId = req.body.act_id.toString();
+        const userId = req.userId;
         const response_model = await (0, node_fetch_1.default)(MODEL_URL + '/feedback', {
             method: 'POST',
-            body: JSON.stringify({ user_id: user_id, act_id: req.body.act_id }),
+            body: JSON.stringify({ user_id: userId, act_id: actId }),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -27,9 +26,8 @@ const setActivity = async (req, res) => {
         if (!response_model.ok) {
             return res.status(400).send();
         }
-        const response_db = await (0, node_fetch_1.default)(DB_URL + '/activities', {
+        const response_db = await (0, node_fetch_1.default)(DB_URL + 'agendas/' + userId + '/activities/' + actId, {
             method: 'POST',
-            body: JSON.stringify(req.body),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -38,7 +36,7 @@ const setActivity = async (req, res) => {
         if (!response_db.ok) {
             return res.status(400).send();
         }
-        const activity = await response_db.json();
+        // const activity = await response_db.json();
         res.status(201); //.send(activity);
         res.redirect('/api/agendas/');
     }

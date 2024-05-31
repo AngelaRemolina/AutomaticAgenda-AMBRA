@@ -15,28 +15,10 @@ class ActivityCreate(ActivityBase):
     pass
 
 class Activity(ActivityBase):
-    id: int
+    id: str
 
     class Config:
         orm_mode = True
-
-
-#class AgendaBase(BaseModel):
-#    start_time: str
-#    end_time: str
-#    owner_id: int
-
-
-# class AgendaCreate(AgendaBase):
-#     pass
-
-
-# class Agenda(AgendaBase):
-#     id: int
-#     activities: list[Activity] = []
-
-#     class Config:
-#         orm_mode = True
 
 
 class UserBase(BaseModel):
@@ -49,9 +31,8 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    id: int
+    id: str
     hashed_password: str
-#    agendas: list[Agenda] = []
     activities: list[Activity] = []
     class Config:
         orm_mode = True
@@ -59,13 +40,3 @@ class User(UserBase):
 class Token(BaseModel):
     access_token: str
     token_type: str
-
-# class UserOut(User):
-#     activity: list[Activity]
-
-# class AgendaOut(Agenda):
-#     activity: list[Activity]
-
-
-# class ActivityOut(Activity):
-#     users: list[User]
