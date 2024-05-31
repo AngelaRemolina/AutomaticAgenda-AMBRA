@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserToken = exports.createUser = void 0;
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const DB_URL = process.env.DB_URL;
 const createUser = async (req, res) => {
     try {
@@ -70,13 +71,10 @@ const getUserToken = async (req, res) => {
         if (!user) {
             return res.status(401).send();
         }
-        // todo: when DB hashes the password here it would have to unhash it to do comparison
-        // const isPasswordMatch = req.body.password === user.password;
-        // console.log(req.body.password);
-        // console.log(user);
-        // todo: this fails because DB is not returning the password,
-        // in the mean time I will set a unique static password for testing
-        const isPasswordMatch = req.body.password === "123456789";
+        const isPasswordMatch = bcrypt_1.default.compareSync(req.body.password, user.hashed_password);
+        console.log(isPasswordMatch);
+        console.log(req.body);
+        console.log(user);
         if (!isPasswordMatch) {
             return res.status(402).send({ "message": "Wrong username or password" });
         }

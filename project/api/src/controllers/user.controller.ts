@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import fetch from 'node-fetch';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const DB_URL = process.env.DB_URL;
 
@@ -77,17 +78,10 @@ export const getUserToken = async (req: Request, res: Response) => {
         if (!user) {
             return res.status(401).send();
         }
-
-        // todo: when DB hashes the password here it would have to unhash it to do comparison
-        // const isPasswordMatch = req.body.password === user.password;
-        // console.log(req.body.password);
-        // console.log(user);
-        // todo: this fails because DB is not returning the password,
-        // in the mean time I will set a unique static password for testing
-        const isPasswordMatch = req.body.password === "123456789";
+        const isPasswordMatch = bcrypt.compareSync(req.body.password, user.hashed_password);
 
         if (!isPasswordMatch) {
-            return res.status(402).send({"message":"Wrong username or password"});
+            return res.status(401).send({"message":"Wrong username or password"});
         }
         const token = jwt.sign(
             { _id: user.id.toString() },
