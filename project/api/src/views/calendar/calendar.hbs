@@ -24,7 +24,7 @@
       id: '{{id}}',
       name: '{{title}}',
       description: '{{category}}' + ': ' + '{{description}}',
-      date: new Date(), //todo: change to {{start_time}} when start_time is in the correct format (db fix needed) new Date("May 29, 2024 11:13:00");
+      date: new Date('{{start_time}}'),
       type: 'event',
     });
   </script>
@@ -38,7 +38,7 @@
       });
     })
   </script>
-
+{{> navigation_logged}}
   <div class="wrapper">
     <div class="row">
       <div class="col col-10">
@@ -48,14 +48,14 @@
         <h4 style="text-align: center;">Recommended Activities</h4>
         <text>Click to add to agenda</text>
         <div class="list-group">
-          {{#each activities}}
+          {{#each recommendations}}
           <a class="pb-2 list-group-item list-group-item-action flex-column align-items-start"
             onclick="submitForm('{{id}}')">
+            <h5 class="mb-1">{{title}}</h5>
             <div class="gap-2 d-flex w-100 mb-2 justify-content-between">
-              <h5 class="mb-1">{{title}}</h5>
-              <small>{{start_time}}</small>
-              {{!-- <small> - </small>
-              <small>{{end_time}}</small> --}}
+              {{!-- <h6 id="dateField">{{date_day}}</h6> --}}
+              <small id="timeField">{{start_time}}</small>
+              {{!-- <small id="timeEndField">{{end_time}}</small> --}}
             </div>
             <text class=" d-inline p-1 bg-secondary text-white rounded" style="font-size: 0.75rem;">
               {{category}}

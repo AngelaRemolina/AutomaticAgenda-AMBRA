@@ -1,18 +1,22 @@
+{{> navigation_notlogged}}
+<div style="padding: 10%;">
 <form action="/api/users/login" method="POST">
     <div class="form-group">
         <input class="form-control form-control-user" name="username" aria-describedby="usernameHelp"
             placeholder="Enter username" autofocus required>
     </div>
+    <br>
     <div class="form-group">
         <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
     </div>
+    <br>
     <button type="submit" class="btn btn-primary btn-user btn-block">
         Continue
     </button>
-    <hr>
     <br>
     <div class="text-center">
         <a class="small" href="/api/users/register">Create an Account!</a>
     </div>
     <br>
 </form>
+</div>

@@ -8,5 +8,8 @@ import modelRouter from './model.routes';
 router.use('/users', userRouter);
 router.use('/agendas', agendaRouter);
 router.use('/models', modelRouter);
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+});
 
 export default router;

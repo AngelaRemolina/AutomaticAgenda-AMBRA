@@ -26,8 +26,9 @@ const setActivity = async (req, res) => {
         if (!response_model.ok) {
             return res.status(400).send();
         }
-        const response_db = await (0, node_fetch_1.default)(DB_URL + 'agendas/' + userId + '/activities/' + actId, {
+        const response_db = await (0, node_fetch_1.default)(DB_URL + 'schedule', {
             method: 'POST',
+            body: JSON.stringify({ user_id: userId, act_id: actId }),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': token
@@ -36,8 +37,7 @@ const setActivity = async (req, res) => {
         if (!response_db.ok) {
             return res.status(400).send();
         }
-        // const activity = await response_db.json();
-        res.status(201); //.send(activity);
+        res.status(201);
         res.redirect('/api/agendas/');
     }
     catch (error) {
@@ -62,9 +62,6 @@ const getRecommendations = async (req, res) => {
         res.status(200).send(recommendations);
     }
     catch (error) {
-        if (error.name === 'CastError') {
-            return res.status(404).send();
-        }
         res.status(500).send(error);
     }
 };

@@ -11,4 +11,7 @@ const model_routes_1 = __importDefault(require("./model.routes"));
 router.use('/users', user_routes_1.default);
 router.use('/agendas', agenda_routes_1.default);
 router.use('/models', model_routes_1.default);
+router.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+});
 exports.default = router;

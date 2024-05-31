@@ -23,24 +23,6 @@ const createUser = async (req, res) => {
             return res.status(400).send(message);
         }
         const user = await response.json();
-        // create user agenda
-        const responseAgenda = await (0, node_fetch_1.default)(DB_URL + 'agendas/', {
-            method: 'POST',
-            body: JSON.stringify({
-                "start_time": "7:00",
-                "end_time": "17:00",
-                "owner_id": user.id
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        });
-        if (!responseAgenda.ok) {
-            const message = await response.json();
-            return res.status(400).send(message);
-        }
-        const agenda = await responseAgenda.json();
-        if (!agenda) {
-            return res.status(400).send("Error creating user agenda");
-        }
         const token = jsonwebtoken_1.default.sign({ _id: user.id.toString() }, process.env.SECRET_KEY);
         res.cookie('token', token, { httpOnly: true });
         res.status(200); //.send({ token });
@@ -72,11 +54,8 @@ const getUserToken = async (req, res) => {
             return res.status(401).send();
         }
         const isPasswordMatch = bcrypt_1.default.compareSync(req.body.password, user.hashed_password);
-        console.log(isPasswordMatch);
-        console.log(req.body);
-        console.log(user);
         if (!isPasswordMatch) {
-            return res.status(402).send({ "message": "Wrong username or password" });
+            return res.status(401).send({ "message": "Wrong username or password" });
         }
         const token = jsonwebtoken_1.default.sign({ _id: user.id.toString() }, process.env.SECRET_KEY);
         res.cookie('token', token, { httpOnly: true });

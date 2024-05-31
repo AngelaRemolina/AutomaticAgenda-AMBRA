@@ -10,7 +10,7 @@ export const getAgenda = async (req: Request, res: Response) => {
         if (!responseUser.ok) {
             return res.status(404).send();
         }
-        let agenda = await responseUser.json();
+        const agenda = await responseUser.json();
         const events = agenda.activities; //activities that user has scheduled
 
         const responseModel = await fetch(MODEL_URL + '/recommendations/' + req.userId);
@@ -18,16 +18,28 @@ export const getAgenda = async (req: Request, res: Response) => {
             return res.status(404).send();
         }
         let recomIDs = await responseModel.json();
-        let activities = [];
+
+        const responseActs = await fetch(DB_URL + 'activities/');
+        if (!responseActs.ok) {
+            return res.status(404).send();
+        }
+        const activities = await responseActs.json();
+
+        let recommendations = [];
         for (const id of recomIDs) {
             const responseRecom = await fetch(DB_URL + 'activities/' + id);
             if (!responseRecom.ok) {
                 return res.status(404).send();
             }
             let recom = await responseRecom.json();
-            activities.push(recom);
+            // handlebars is not taking the change
+            // recom.date_day = (new Date(recom.start_time)).toDateString();
+            // recom.start_time = (new Date(recom.start_time)).toLocaleTimeString('en-US');
+            // recom.end_time = (new Date(recom.end_time)).toLocaleTimeString('en-US');
+            recommendations.push(recom);
         }
-        res.render('calendar/calendar', { events: events, activities: activities });
+        // console.log(recommendations);
+        res.render('calendar/calendar', { events: events, activities: activities, recommendations: recommendations });
         res.status(200)//.send(agendas);
     } catch (error) {
         res.status(500).send(error);

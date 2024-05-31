@@ -6,7 +6,8 @@ export function verifyToken(req: Request, res: Response, next: NextFunction) {
   let token = req.headers['authorization'];
   const tokenCookie = req.headers.cookie?.split('=')[1];
   if (!token && !tokenCookie) {
-    return res.status(403).send({ message: 'No token provided!' });
+    // res.status(403)//.send({ message: 'No token provided!' });
+    return res.render('auth/login');
   }
   if (!token) {
     token = tokenCookie
