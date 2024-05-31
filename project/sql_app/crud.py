@@ -52,10 +52,11 @@ def create_activity(db: Session, activity: schemas.ActivityCreate):
     db.refresh(db_activity)
     return db_activity
 
-def get_activities_by_timeslot(db: Session, start_time: str, end_time: str):
-    start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
-    end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
-    return db.query(models.Activity).filter(models.Activity.start_time >= start_time, models.Activity.end_time <= end_time).all()
+# Future work
+# def get_activities_by_timeslot(db: Session, start_time: str, end_time: str):
+#     start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
+#     end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
+#     return db.query(models.Activity).filter(models.Activity.start_time >= start_time, models.Activity.end_time <= end_time).all()
 
 # get activity by id
 def get_activity(db: Session, activity_id: str):
