@@ -12,7 +12,7 @@ uvicorn sql_app.main:app --reload
 bash #4
 cd project/api
 npm run build
-npm run start
+npm run dev
 
 ### To drop tables ###
 DROP TABLE activities CASCADE;
