@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{float}
 
 \usepackage{pythonhighlight}
 
@@ -149,16 +150,29 @@ This is the potential that current state-of-the-art models and technology have i
 
 
 \section{Proposed approach}
-Our approach to building a system capable of personalizing agendas based on the context (fixed activities) and the preferences of the user (the educator planning the schedule of his pupil) was based on recommender systems. More specifically it was decided the system would be a content-based filtering, given the fact that educators know the profile of the individual to which they are designing the schedule and have external information they could input into the system, in order to trace to them the most suitable activities. Nonetheless, the most prioritized attribute of the RSs was the learning one; the system will learn on each individual preference's and will try to extrapolate this learning to other individuals with the same characteristics. Hence, the system would be able to provide recommended activities for the schedules of individuals who have never had this type of attention before, boosting the progress of their learning.
+The approach taken is to build a system capable of personalizing agendas based on the context (fixed activities) and the preferences of the user (the educator planning the schedule of his pupil) was based on recommender systems. More specifically it was decided the system would be a content-based filtering, given the fact that educators know the profile of the individual to which they are designing the schedule and have external information they could input into the system, in order to trace to them the most suitable activities. Nonetheless, the most prioritized attribute of the RSs was the learning one; the system will learn on each individual preference's and will try to extrapolate this learning to other individuals with the same characteristics. Hence, the system would be able to provide recommended activities for the schedules of individuals who have never had this type of attention before, boosting the progress of their learning. To illustrate the interaction of a user with the proposed system, a flow diagram is shown below \ref{fig:user_workflow1} \ref{fig:user_workflow2}.
+\begin{figure}[h]
+       \frame{\includegraphics[scale=0.33]{Diagrams/user_workflow1.png}}
+       \centering
+       \caption{User's flow diagram part 1}
+    \label{fig:user_workflow1}
+\end{figure}
+\begin{figure}[h]
+       \frame{\includegraphics[scale=0.3]{Diagrams/user_workflow2.png}}
+       \centering
+       \caption{User's flow diagram part 2}
+    \label{fig:user_workflow2}
+\end{figure}
 
 
-\section{Implementation}
+\section{System architecture and implementation}
 \subsection{General system architecture}
 
 The complete system architecture consists of three main components that interact with each other. The workflow can be seen below in figure \ref{fig:architecture}. 
 
 \begin{figure*}
-  \frame{\includegraphics[width=\textwidth]{Diagrams/architecture.png}}
+% width=\textwidth
+  \frame{\includegraphics[width=150mm]{Diagrams/architecture.png}}
        \centering
        \caption{Proposed architecture for the system.}
        \label{fig:architecture}
@@ -182,6 +196,23 @@ The complete system architecture consists of three main components that interact
 \item User Feedback: The user provides feedback on the recommendations, selecting the activity that wants to add to his agenda, which is sent to the general API and then to the Python model to improve future recommendations.
 \end{enumerate}
 This architecture ensures each component specializes in specific tasks and all interactions are efficiently managed through the APIs.
+
+\subsection{Recommendation model components}
+The recommender model is a reinforcement learner, specifically an adaptive learning system. To illustrate its functioning see the diagram below that is useful for understanding how adaptive learning systems personalize content and improve user experience over time.\ref{fig:model_components}.
+\begin{figure}[h]
+       \frame{\includegraphics[scale=0.3]{Diagrams/model_components.png}}
+       \centering
+       \caption{Model components}
+    \label{fig:model_components}
+\end{figure}
+
+This diagram is showing interactions between an \textit{Environment} and a \textit{System}. 
+
+\textbf{At time t:} Environment inputs the slot and the user's information (exact information explained in the \textit{two-tower retrieval model architecture} subsection). 
+Then it continues to the performance component. This component interacts with the external environment. It receives knowledge or information from outside sources. Then it reaches the exploration component, that is responsible for exploring new activities not fixing for single choices from before. It likely generates recommendations or suggestions based on user preferences. Also the performance component sends and receives information from de Learning Goals Component, that represents the system’s learning objectives or targets. Finally, the performance component gives an output with the top recommended activities for the user in matter.
+
+\textbf{At time t+1:} The user selects the activity it wishes from the recommended activities list obtained at the output. And then this feedback is sent back to the system, specifically to the Critic Component. This component processes feedback, where it is likely to evaluates user interactions, performance, and learning goals. The feedback loop influences both learning goals and performance standards.
+
 
 \subsection{Two-tower retrieval model architecture}
 Selecting the architecture of the model is a crucial step in the modeling process of the recommendation system. Since there are two entities the model should have into account: \textbf{User} and \textbf{Activity}, then a two-tower retrieval model is the chosen for the model architecture. Each tower is constructed independently before combining them into the final model. The building is illustrated in the following figure \ref{fig:tower}. 
@@ -236,13 +267,17 @@ Whereas the user's attributes are the following:
 \end{itemize}
 
 
+
 %-------------------------------------------------------------------------
 
 
 
 
 
-\section{System prototype}
+
+
+\section{Results}
+\subsection{System prototype}
 
 A prototype of the proposed system was developed to demonstrate its functionality. The system architecture includes a PostgreSQL database with a CRUD API, a recommendation model built using TensorFlow in Python, and a general API in Node.js that integrates user queries, database interactions, and the recommendation model.  Additionally, a simple frontend was created using Handlebars to visualize the system better. It is important to note that this is a low-fidelity prototype, and more sophisticated designs can be implemented to enhance the user experience. See figure \ref{fig:prototype}
 
@@ -252,6 +287,36 @@ A prototype of the proposed system was developed to demonstrate its functionalit
        \label{fig:prototype}
 \end{figure*}
 
+\subsection{Recommender System Results Overview}
+To show how the model gives recommendation, an example with fictional users is provided below \ref{fig:results}
+
+\begin{figure}[H]
+       \frame{\includegraphics[scale=0.65]{Diagrams/results.jpeg}}
+       \centering
+       \caption{Recommendations for simultated users}
+    \label{fig:results}
+\end{figure}
+
+The table demonstrates the effectiveness of our recommender system by showcasing the activities it recommends to users based on their past selections. The recommendations align closely with users' interests, ensuring they receive personalized and relevant suggestions. An analysis for each user is provided below:
+\\
+\begin{enumerate}
+    \item \textbf{User: Ana}
+    
+    Ana has previously chosen Play UNO and Salsa, indicating a preference for boardgames and dancing activities. The system accurately recommends similar activities such as Jenga, another boardgame, and Salsa. Additionally, it broadens the scope with related activities like Yoga, which falls under sport, and Drawing, under leisure, both offering Ana a variety while staying within her interest zones.
+
+    \item \textbf{User: Bob}
+    
+    Bob’s repeated selection of Karate highlights a strong interest in this sport, and the system recommends it again, acknowledging his preference. His interest in sports is further supported by recommendations like Jump rope and Football. The inclusion of Chess and Jenga, both boardgames, aligns with his past interest in Chess, offering variety within the same category.
+
+    \item \textbf{User: Carlos}
+
+    Carlos has selected Play UNO previously, showing an inclination towards boardgames. The system smartly recommends Play UNO again, along with another boardgame, Jenga, catering to his known interests. Additionally, it suggests Singing, Yoga, and Salsa, which introduce Carlos to activities from other categories he might enjoy, thus providing a well-rounded set of recommendations.
+    
+\end{enumerate}
+
+
+With these small examples, it is shown that the recommender system effectively personalizes activity suggestions by analyzing users’ past selections. For instance: Ana receives recommendations that reflect her interest in boardgames and dancing, with additional leisure and sport options. Bob’s suggestions emphasize his strong preference for sports, especially Karate, while also incorporating boardgames. Carlos is introduced to a broader range of activities while staying true to his interest in boardgames.
+By doing so, the system ensures users are likely to engage with and enjoy the recommended activities, demonstrating the system's accuracy and reliability in predicting user preferences
 
 \section{Conclusions and future work} 
 
